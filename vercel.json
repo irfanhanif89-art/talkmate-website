@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/status",
+      "has": [{ "type": "host", "value": "status.talkmate.com.au" }],
+      "permanent": false
+    }
+  ]
+}
