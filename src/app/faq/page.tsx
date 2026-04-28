@@ -70,7 +70,7 @@ export default function FAQPage() {
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
               <Link href="/demo" className="btn-orange">Book a Demo</Link>
-              <a href="tel:+61755555555" className="btn-ghost-light"><Phone size={16} /> Call us now</a>
+              <a href="mailto:hello@talkmate.com.au" className="btn-ghost-light"><Phone size={16} /> Email us</a>
             </div>
           </div>
         </div>

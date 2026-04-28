@@ -99,7 +99,7 @@ export default function DemoPage() {
 
             <div style={{ marginTop: 36, padding: 18, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 12, fontSize: 13, color: 'rgba(255,255,255,0.55)' }}>
               <Phone size={14} color="var(--orange)" style={{ verticalAlign: '-2px', marginRight: 6 }} />
-              Prefer to call us? Talk to a real person on the Gold Coast at <a href="tel:+61755555555" style={{ color: 'var(--bluel)', textDecoration: 'none' }}>(07) 5555 5555</a>.
+              Prefer to reach us by email? Get in touch at <a href="mailto:hello@talkmate.com.au" style={{ color: 'var(--bluel)', textDecoration: 'none' }}>hello@talkmate.com.au</a> and we&apos;ll get back to you same day.
             </div>
           </div>
 
