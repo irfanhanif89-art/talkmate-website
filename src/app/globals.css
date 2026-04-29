@@ -124,3 +124,18 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 .fade-up { animation: fade-up 0.3s ease-out; }
+
+/* Integrations marquee */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+.marquee-outer:hover .marquee-track {
+  animation-play-state: paused;
+}
