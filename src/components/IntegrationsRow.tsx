@@ -161,14 +161,20 @@ export default function IntegrationsRow() {
           display: flex;
           align-items: center;
           width: max-content;
-          animation: marquee 30s linear infinite;
+          animation: marquee 60s linear infinite;
+          will-change: transform;
+          transform: translate3d(0, 0, 0);
+          backface-visibility: hidden;
         }
         .marquee-outer:hover .marquee-track {
           animation-play-state: paused;
         }
         @keyframes marquee {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
+          0%   { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-track { animation: none; }
         }
       `}</style>
     </section>

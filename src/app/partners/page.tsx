@@ -1,6 +1,7 @@
+import Link from 'next/link'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/FinalCTA'
-import { ArrowRight, Check, Send, Trophy } from 'lucide-react'
+import { ArrowRight, Building2, Layers, LifeBuoy, Trophy } from 'lucide-react'
 
 const STEPS = [
   { n: '1', title: 'Share your referral link', body: 'Send via SMS, WhatsApp, or email. We write the message for you so you don\'t have to.' },
@@ -103,6 +104,51 @@ export default function PartnersPage() {
           <p style={{ marginTop: 14, fontSize: 12, color: 'var(--muted)', textAlign: 'center' }}>
             Numbers reflect Starter plan referrals. Higher tiers and Growth/Pro referrals pay more.
           </p>
+        </div>
+      </section>
+
+      {/* White-label section (Session 3 brief Part 7) */}
+      <section style={{ background: 'var(--navy)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div className="section-pad" style={{ maxWidth: 1080, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <div className="section-eyebrow">White label</div>
+            <h2 className="section-h">Power your entire network with TalkMate <span className="orange">under your brand</span>.</h2>
+            <p className="section-p" style={{ margin: '12px auto 0', maxWidth: 720 }}>
+              Built for agencies, franchise groups, and industry networks. Your branding. Your pricing. Our infrastructure.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 16, marginBottom: 36 }}>
+            {[
+              { icon: Building2, title: 'Your brand on every portal', body: 'Custom logo, colours, support contact, and (Gold tier) full removal of TalkMate branding. Your members log in to your portal — not ours.' },
+              { icon: Layers, title: 'Earn on every agent in your network', body: 'Bulk pricing built for franchise groups and agencies. Take the margin between TalkMate wholesale and your retail price.' },
+              { icon: LifeBuoy, title: 'Full support from the TalkMate team', body: 'Dedicated partner manager, priority engineering, and co-marketing collateral. We help you launch and stay successful.' },
+            ].map(b => {
+              const Icon = b.icon
+              return (
+                <div key={b.title} style={{
+                  background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)',
+                  borderRadius: 16, padding: 26,
+                }}>
+                  <div style={{ width: 44, height: 44, background: 'rgba(232,98,42,0.12)', borderRadius: 11, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
+                    <Icon size={22} color="#E8622A" />
+                  </div>
+                  <h3 style={{ fontSize: 17, fontWeight: 700, color: 'white', marginBottom: 8, letterSpacing: '-0.3px' }}>{b.title}</h3>
+                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.65 }}>{b.body}</p>
+                </div>
+              )
+            })}
+          </div>
+
+          <div style={{ textAlign: 'center' }}>
+            <Link
+              href="/demo?type=whitelabel"
+              className="btn-orange"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 15, padding: '14px 26px' }}
+            >
+              Talk to us about white labelling <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
       </section>
 

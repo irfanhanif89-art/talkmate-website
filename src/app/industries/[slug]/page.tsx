@@ -91,7 +91,7 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      {INDUSTRY_CRM[ind.slug] && (
+      {INDUSTRY_CRM[ind.slug.replace(/-/g, '_')] && (
         <section style={{ background: 'var(--navy)' }}>
           <div className="section-pad" style={{ maxWidth: 1080, margin: '0 auto' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(280px, 480px)', gap: 40, alignItems: 'center' }} className="crm-grid">
@@ -103,10 +103,10 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
                 <h2 style={{ fontSize: 32, fontWeight: 800, color: 'white', letterSpacing: '-1px', lineHeight: 1.15, marginBottom: 14 }}>
                   Every {ind.name.toLowerCase()} call becomes a contact.
                 </h2>
-                <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', lineHeight: 1.65 }}>{INDUSTRY_CRM[ind.slug].intro}</p>
+                <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', lineHeight: 1.65 }}>{INDUSTRY_CRM[ind.slug.replace(/-/g, '_')].intro}</p>
               </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                {INDUSTRY_CRM[ind.slug].useCases.map(uc => (
+                {INDUSTRY_CRM[ind.slug.replace(/-/g, '_')].useCases.map(uc => (
                   <li key={uc} style={{
                     display: 'flex', gap: 12, alignItems: 'flex-start',
                     padding: '12px 14px', background: 'rgba(255,255,255,0.03)',

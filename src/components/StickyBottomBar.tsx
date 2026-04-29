@@ -15,8 +15,7 @@ export default function StickyBottomBar() {
   return (
     <div style={{
       position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 80,
-      background: 'rgba(6,19,34,0.95)',
-      backdropFilter: 'blur(12px)',
+      background: 'rgba(6,19,34,0.97)',
       borderTop: '1px solid rgba(232,98,42,0.2)',
       padding: '12px 24px',
     }}>

@@ -42,8 +42,7 @@ export default function Nav() {
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
       height: 68, padding: '0 32px',
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      background: 'rgba(6,19,34,0.92)',
-      backdropFilter: 'blur(12px)',
+      background: 'rgba(6,19,34,0.97)',
       borderBottom: '1px solid rgba(255,255,255,0.06)',
     }} ref={ref}>
       <Link href="/" aria-label="TalkMate home" style={{ textDecoration: 'none' }}>

@@ -94,7 +94,6 @@ export default function DemoCard() {
       border: '1px solid rgba(255,255,255,0.08)',
       borderRadius: 20,
       overflow: 'hidden',
-      backdropFilter: 'blur(20px)',
     }}>
       <div style={{
         padding: '14px 18px',
