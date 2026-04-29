@@ -76,7 +76,6 @@ export default function PricingCards({ background = 'light' }: { background?: 'l
     <section style={{ background: isDark ? 'var(--navy)' : 'var(--light)', color: isDark ? 'white' : 'var(--navy)' }}>
       <div className="section-pad" style={{ maxWidth: 1280, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 24 }}>
-          <div className="section-eyebrow">Pricing</div>
           <h2 className={isDark ? 'section-h' : 'section-h dark'}>
             One subscription. <span style={{ color: 'var(--orange)' }}>No setup fees, ever.</span>
           </h2>
