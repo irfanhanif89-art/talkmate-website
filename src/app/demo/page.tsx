@@ -114,7 +114,7 @@ export default function DemoPage() {
               </div>
               <h2 style={{ fontSize: 22, fontWeight: 800, color: 'white', marginBottom: 10 }}>Booked. We&apos;ll be in touch.</h2>
               <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>
-                One of us will call you within 2 business hours to book your demo. Check your phone and your inbox.
+                One of us will be in touch within 1 business day to book your demo. Check your phone and your inbox.
               </p>
             </div>
           ) : (
