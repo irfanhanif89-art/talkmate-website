@@ -3,7 +3,8 @@ import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/FinalCTA'
 import IndustryDemo from '@/components/IndustryDemo'
 import { Check, MessageSquare } from 'lucide-react'
-import { INDUSTRIES, getIndustry } from '@/lib/industries'
+import { INDUSTRIES, getIndustry, INDUSTRY_CRM } from '@/lib/industries'
+import { Database } from 'lucide-react'
 
 export async function generateStaticParams() {
   return INDUSTRIES.map(i => ({ slug: i.slug }))
@@ -89,6 +90,38 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
           </div>
         </div>
       </section>
+
+      {INDUSTRY_CRM[ind.slug] && (
+        <section style={{ background: 'var(--navy)' }}>
+          <div className="section-pad" style={{ maxWidth: 1080, margin: '0 auto' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(280px, 480px)', gap: 40, alignItems: 'center' }} className="crm-grid">
+              <style>{`@media (max-width: 880px) { .crm-grid { grid-template-columns: 1fr !important; } }`}</style>
+              <div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '4px 12px', borderRadius: 99, background: 'rgba(74,159,232,0.1)', color: 'var(--bluel)', fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' as const, marginBottom: 12 }}>
+                  <Database size={12} /> Your CRM, automatic
+                </div>
+                <h2 style={{ fontSize: 32, fontWeight: 800, color: 'white', letterSpacing: '-1px', lineHeight: 1.15, marginBottom: 14 }}>
+                  Every {ind.name.toLowerCase()} call becomes a contact.
+                </h2>
+                <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', lineHeight: 1.65 }}>{INDUSTRY_CRM[ind.slug].intro}</p>
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+                {INDUSTRY_CRM[ind.slug].useCases.map(uc => (
+                  <li key={uc} style={{
+                    display: 'flex', gap: 12, alignItems: 'flex-start',
+                    padding: '12px 14px', background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(255,255,255,0.06)', borderRadius: 10,
+                    fontSize: 13, color: 'rgba(255,255,255,0.8)', lineHeight: 1.5,
+                  }}>
+                    <span style={{ color: 'var(--bluel)', flexShrink: 0, marginTop: 1 }}>✓</span>
+                    <span>{uc}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
 
       {ind.testimonial && (
         <section style={{ background: 'var(--light)' }}>

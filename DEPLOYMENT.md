@@ -1,8 +1,42 @@
 # TalkMate Website — Deployment Handoff
 
-**Build:** Initial implementation of `talkmate-website-redesign-brief.md` v1.0
+**Build:** Master website brief v1.0 + CRM Session 2 updates
 **Stack:** Next.js 14 App Router · Tailwind CSS · TypeScript · Lucide icons · Outfit font
 **Target:** Vercel (project name `talkmate-website`, alias to `talkmate.com.au` apex + `www`)
+
+---
+
+## SESSION 2 ADDENDUM — Website CRM updates
+
+Per the CRM Session 2 brief Part 6, the website now reflects the working CRM in the portal:
+
+| Surface | Change |
+|---|---|
+| Homepage `TwoProducts` | Voice Agent card adds "Every caller automatically becomes a contact in your CRM. No data entry." Command card adds 3 new chip examples: "Find Christina from Melbourne", "Show me lapsed regulars", "Who are my top callers this week?" |
+| Homepage | New `<CrmSection />` between `<PortalPreview />` and `<Testimonials />`: heading "Your business builds a CRM. Automatically." with 3 feature cards. |
+| `/features` | New "Built-in CRM" section between Two Products and Enterprise Reliability — 6 feature rows (auto-built contacts, smart lists per industry, pipeline view, search and merge, CSV import/export, Command queries). |
+| `/industries/[slug]` | New "Your CRM, automatic" section per industry with industry-specific use cases (4 per industry). Driven by the new `INDUSTRY_CRM` map in `src/lib/industries.ts`. |
+| `/privacy` | Replaced placeholder content with the full Privacy Policy v2.0 text — same text clients sign in onboarding. Source of truth: portal `src/lib/legal-docs.ts`. |
+| `/terms` | Replaced placeholder content with the full Terms of Service v2.0 text. |
+
+**No env-var changes, no migration, no Vercel config changes** — the website is fully static + the two existing form endpoints. Auto-deploys from `main` push.
+
+### Files added/modified
+
+```
+src/components/CrmSection.tsx                    (new)
+src/components/TwoProducts.tsx                   (chips + voice feature additions)
+src/app/page.tsx                                 (mounts CrmSection)
+src/app/features/page.tsx                        (CRM section + new icons)
+src/app/industries/[slug]/page.tsx               (Your-CRM block per industry)
+src/lib/industries.ts                            (INDUSTRY_CRM map)
+src/app/privacy/page.tsx                         (full v2.0 policy text)
+src/app/terms/page.tsx                           (full v2.0 terms text)
+```
+
+Build: `npm run build` → 25 routes, 0 errors.
+
+---
 
 ---
 

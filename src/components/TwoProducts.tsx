@@ -7,6 +7,7 @@ const VOICE_FEATURES = [
   'SMS confirmations to every customer',
   'Full call transcripts and dashboard',
   'Australian voice and accent',
+  'Every caller automatically becomes a contact in your CRM. No data entry.',
 ]
 
 const COMMAND_EXAMPLES = [
@@ -15,7 +16,9 @@ const COMMAND_EXAMPLES = [
   'Add prawn cutlets $18.50',
   'Pause agent for 2 hours',
   "What's my busiest day?",
-  'Read me yesterday',
+  'Find Christina from Melbourne',
+  'Show me lapsed regulars',
+  'Who are my top callers this week?',
 ]
 
 export default function TwoProducts() {

@@ -2,7 +2,7 @@ import PageHero from '@/components/PageHero'
 import TwoProducts from '@/components/TwoProducts'
 import FeatureRow from '@/components/FeatureRow'
 import FinalCTA from '@/components/FinalCTA'
-import { Phone, MessageSquare, FileText, Volume2, Zap, ShieldCheck, ListChecks, Bell, Activity, RefreshCw, CreditCard, Database, BarChart, Globe, Sparkles, Upload } from 'lucide-react'
+import { Phone, MessageSquare, FileText, Volume2, Zap, ListChecks, Bell, Activity, CreditCard, Database, BarChart, Globe, Sparkles, Upload, Users, ListFilter, GitBranch, Search, Download, MessageCircle } from 'lucide-react'
 
 const CORE = [
   { icon: Phone, title: 'AI Voice Agent', body: 'Answers every call in under 2 seconds. Trained on your business. Speaks your menu, your prices, your hours.', accent: '#E8622A' },
@@ -15,6 +15,15 @@ const CORE = [
   { icon: Sparkles, title: 'Upsells on every call', body: 'Suggests garlic bread, extras, premium options. Adds an average of $6.20 per order.', accent: '#E8622A' },
   { icon: Upload, title: 'AI menu import from URL', body: 'Paste your website, MenuLog, or Uber Eats URL. We scan it and pre-fill your menu in seconds.', accent: '#1565C0' },
   { icon: Zap, title: 'Live in 24 hours', body: 'Sign-up Monday, live Tuesday. No 6-week integrations. We handle everything.', accent: '#22C55E' },
+]
+
+const CRM = [
+  { icon: Users, title: 'Auto-built contacts from every call', body: 'Every unique caller becomes a contact with their name, phone, and what they asked about. Auto-deduplicated by phone, never a duplicate record.', accent: '#1565C0' },
+  { icon: ListFilter, title: 'Smart lists per industry', body: 'Regulars, lapsed regulars, hot leads, complaints. Filtered lists that update themselves as new calls land. Tailored to restaurants, real estate, trades, towing, healthcare, and more.', accent: '#22C55E' },
+  { icon: GitBranch, title: 'Pipeline view (real estate, trades, professional services)', body: 'Kanban board with default stages per industry. Drag cards between stages, or let calls auto-move them based on outcome (e.g. booking made → Inspection Booked).', accent: '#E8622A' },
+  { icon: Search, title: 'Contact search and merge', body: 'Search by name or phone. Merge duplicates with one click — call history combines automatically.', accent: '#8B5CF6' },
+  { icon: Download, title: 'CSV import and export', body: 'Bring an existing customer list across in 4 steps. Export everything anytime — name, phone, tags, call counts, industry data.', accent: '#06B6D4' },
+  { icon: MessageCircle, title: 'Command queries against contact database', body: '"Find Christina from Melbourne", "Show me lapsed regulars", "Who called about pricing this week?" — answered from WhatsApp or Telegram.', accent: '#F59E0B' },
 ]
 
 const RELIABILITY = [
@@ -47,6 +56,23 @@ export default function FeaturesPage() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 14 }}>
             {CORE.map(f => (
+              <FeatureRow key={f.title} icon={f.icon} title={f.title} body={f.body} accent={f.accent} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section style={{ background: 'var(--navy)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div className="section-pad" style={{ maxWidth: 1280, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 56 }}>
+            <div className="section-eyebrow">Built-in CRM</div>
+            <h2 className="section-h">Your contact list <span className="orange">writes itself</span>.</h2>
+            <p className="section-p" style={{ margin: '12px auto 0' }}>
+              Every TalkMate call adds, updates, or merges a contact in your CRM. Filtered lists, pipeline tracking, and natural-language queries — all included on every plan.
+            </p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 14 }}>
+            {CRM.map(f => (
               <FeatureRow key={f.title} icon={f.icon} title={f.title} body={f.body} accent={f.accent} />
             ))}
           </div>

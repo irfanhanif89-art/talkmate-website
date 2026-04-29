@@ -6,6 +6,7 @@ import HowItWorks from '@/components/HowItWorks'
 import TwoProducts from '@/components/TwoProducts'
 import RevenueCalculator from '@/components/RevenueCalculator'
 import PortalPreview from '@/components/PortalPreview'
+import CrmSection from '@/components/CrmSection'
 import Testimonials from '@/components/Testimonials'
 import IntegrationsRow from '@/components/IntegrationsRow'
 import PricingCards from '@/components/PricingCards'
@@ -22,6 +23,7 @@ export default function HomePage() {
       <TwoProducts />
       <RevenueCalculator />
       <PortalPreview />
+      <CrmSection />
       <Testimonials />
       <IntegrationsRow />
       <PricingCards />

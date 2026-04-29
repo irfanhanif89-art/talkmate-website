@@ -24,6 +24,86 @@ export interface IndustryDef {
     location: string
     badge: string
   }
+  crm?: {
+    intro: string
+    useCases: string[]
+  }
+}
+
+// CRM use cases per industry, surfaced on each /industries/[slug] page (Session 2 brief Part 6).
+export const INDUSTRY_CRM: Record<string, { intro: string; useCases: string[] }> = {
+  restaurants: {
+    intro: 'Every caller becomes a contact. Regulars get spotted, lapsed regulars get flagged for win-back, and your CRM updates itself with every order.',
+    useCases: [
+      'Auto-tag callers by order frequency — Regulars, Lapsed Regulars, Delivery Customers',
+      'Capture order history per customer including average value and most-ordered items',
+      'Identify lapsed regulars (was a regular, hasn\'t called in 21+ days) for win-back SMS',
+      'Find high-value upsell-accepting customers in one tap',
+    ],
+  },
+  towing: {
+    intro: 'Every breakdown call gets logged with vehicle details, location, and outcome. Regulars and account clients are tracked automatically.',
+    useCases: [
+      'Vehicle history per contact, including make/model/year',
+      'Identify repeat breakdowns and account clients with one filter',
+      'After-hours calls auto-tagged for bonus billing',
+      'Driver dispatch can pull caller history before arriving at the scene',
+    ],
+  },
+  real_estate: {
+    intro: 'Every enquiry becomes a qualified lead with budget, pre-approval status, and suburb preferences. Pipeline view tracks every prospect from enquiry to settlement.',
+    useCases: [
+      'Auto-create leads from every enquiry call with extracted budget and pre-approval status',
+      'Hot Leads list filters to pre-approved buyers — your highest-priority follow-ups',
+      'Inspection bookings auto-move contacts to "Inspection Booked" pipeline stage',
+      'Stale Leads list catches anyone in pipeline without contact for 14+ days',
+    ],
+  },
+  trades: {
+    intro: 'Every job enquiry is captured with property address, urgency, and service type. Quote requests get tagged for follow-up.',
+    useCases: [
+      'Quote Requested list shows all price enquiries from the last 30 days',
+      'Recurring clients identified after 3+ calls — perfect for loyalty offers',
+      'Emergency jobs auto-tagged "urgent" and routed to the top of your dashboard',
+      'Property addresses tracked per contact for fast site lookup on return visits',
+    ],
+  },
+  healthcare: {
+    intro: 'Every patient call is logged with appointment outcome and follow-up needs. Lapsed patients get flagged for re-engagement.',
+    useCases: [
+      'Recent patients (last 30 days) and lapsed patients (42+ days) tracked automatically',
+      'Appointment outcomes logged per contact including no-shows',
+      'New-patient enquiries auto-tagged for intake follow-up',
+      'Patient call history accessible from any device for the practice manager',
+    ],
+  },
+  ndis: {
+    intro: 'Every participant and support coordinator call is captured with care and respect. Contact history follows the participant, not just the call.',
+    useCases: [
+      'Participants and support coordinators tracked separately',
+      'New enquiries flagged for plan-coordinator review within 24 hours',
+      'Compliance-friendly call recording with consent prompt',
+      'Service history per participant captured automatically',
+    ],
+  },
+  retail: {
+    intro: 'Stock enquiries, holds, and laybys all get logged per customer. Repeat customers and complaints rise to the top.',
+    useCases: [
+      'Repeat customers (3+ calls) tracked for loyalty programs',
+      'Stock enquiries auto-tagged for follow-up when product arrives',
+      'Complaints surfaced immediately for owner review',
+      'Layby and hold history per customer at a glance',
+    ],
+  },
+  professional_services: {
+    intro: 'Every new enquiry becomes a qualified lead. Pipeline view tracks every prospect from first call to engaged client.',
+    useCases: [
+      'Auto-create leads from every enquiry with extracted matter type and urgency',
+      'Unconverted Leads list catches enquiries that didn\'t book a follow-up',
+      'Pipeline tracks consultations from booked through to engaged or closed lost',
+      'Existing clients identified after 2+ calls for retention',
+    ],
+  },
 }
 
 export const INDUSTRIES: IndustryDef[] = [
