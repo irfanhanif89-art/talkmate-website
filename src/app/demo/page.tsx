@@ -158,7 +158,7 @@ export default function DemoPage() {
               </button>
 
               <p style={{ marginTop: 12, fontSize: 11, color: 'rgba(255,255,255,0.4)', textAlign: 'center' }}>
-                We&apos;ll call within 2 business hours. No credit card required.
+                We&apos;ll be in touch within 1 business day. No credit card required.
               </p>
             </form>
           )}
