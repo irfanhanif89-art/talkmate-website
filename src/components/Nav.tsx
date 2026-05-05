@@ -20,6 +20,7 @@ const INDUSTRY_LINKS = [
 const COMPANY_LINKS = [
   { href: '/about', label: 'About us' },
   { href: '/partners', label: 'Partner program' },
+  { href: '/blog', label: 'Blog' },
   { href: '/status', label: 'System status' },
 ]
 

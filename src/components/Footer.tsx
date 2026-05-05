@@ -26,6 +26,7 @@ export default function Footer() {
         <FooterCol heading="Company" links={[
           { href: '/about', label: 'About us' },
           { href: '/partners', label: 'Partner program' },
+          { href: '/blog', label: 'Blog' },
           { href: '/status', label: 'System status' },
           { href: '/demo', label: 'Contact' },
         ]} />
