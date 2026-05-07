@@ -1,8 +1,20 @@
 # TalkMate Website — Deployment Handoff
 
-**Build:** Master website brief v1.0 + CRM Session 2 updates + Receptionist Reframe
+**Build:** Master website brief v1.0 + CRM Session 2 updates + Receptionist Reframe + About Page Rewrite
 **Stack:** Next.js 14 App Router · Tailwind CSS · TypeScript · Lucide icons · Outfit font
 **Target:** Vercel (project name `talkmate-website`, alias to `talkmate.com.au` apex + `www`)
+
+---
+
+## ABOUT PAGE REWRITE — May 2026
+
+`src/app/about/page.tsx` body copy fully replaced with the founder story (eleven-year tow truck operator origin, why TalkMate exists). Hero eyebrow → "Our story", H1 → "Built by a business owner. For business owners.", subheading → "The story behind TalkMate and why it exists." Story body uses a single 720px-wide column with a 22px lead paragraph followed by 17px body paragraphs at line-height 1.85.
+
+Existing dual-section layout (value props strip + 6 values grid) was removed; brief explicitly said "Replace the entire body copy". Final CTA replaced with the brief's specific card: "Want to know if TalkMate is right for your business?" / "Send Irfan an email and he'll give you a call." / `mailto:hello@talkmate.com.au` button.
+
+Story paragraphs are stored as a `STORY_PARAGRAPHS` string array at the top of the file so they can be edited as plain text without touching JSX. No em dashes, copy is word-for-word from the brief.
+
+No other files changed.
 
 ---
 
