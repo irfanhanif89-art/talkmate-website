@@ -27,7 +27,7 @@ const FALLBACK: StatusPayload = {
   overall: 'operational',
   updatedAt: new Date().toISOString(),
   services: [
-    { name: 'Voice Agent (Vapi)', description: 'Inbound AI voice answering and call handling', status: 'operational', lastCheck: new Date().toISOString() },
+    { name: 'AI Receptionist (Vapi)', description: 'Inbound AI receptionist answering and call handling', status: 'operational', lastCheck: new Date().toISOString() },
     { name: 'Client Portal', description: 'app.talkmate.com.au — dashboard, settings, billing', status: 'operational', lastCheck: new Date().toISOString() },
     { name: 'Billing (Stripe)', description: 'Subscriptions, payments, partner payouts', status: 'operational', lastCheck: new Date().toISOString() },
     { name: 'Command Assistant', description: 'WhatsApp / Telegram natural-language commands', status: 'operational', lastCheck: new Date().toISOString() },

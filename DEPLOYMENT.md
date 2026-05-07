@@ -1,8 +1,97 @@
 # TalkMate Website — Deployment Handoff
 
-**Build:** Master website brief v1.0 + CRM Session 2 updates
+**Build:** Master website brief v1.0 + CRM Session 2 updates + Receptionist Reframe
 **Stack:** Next.js 14 App Router · Tailwind CSS · TypeScript · Lucide icons · Outfit font
 **Target:** Vercel (project name `talkmate-website`, alias to `talkmate.com.au` apex + `www`)
+
+---
+
+## RECEPTIONIST REFRAME — May 2026
+
+The site has been reframed away from "AI voice agent" terminology onto "AI receptionist", with a 13-character receptionist roster, a $65K vs $3,588 cost comparison, and dedicated profile pages.
+
+### Part 1, copy reframe
+
+Site-wide find/replace of "AI voice agent" / "voice agent" / "AI Voice Agent" / "Voice Agent" with "AI receptionist" or "receptionist" (depending on context). The product card title in `TwoProducts` was renamed from "TalkMate Voice Agent" to "TalkMate Receptionist". Targeted copy edits:
+
+- Hero badge: "LIVE NOW IN AUSTRALIA" → "AUSTRALIA'S AI RECEPTIONIST"
+- Hero subhead: now "Your new receptionist answers every call in 2 seconds, takes orders, upsells every customer, and never calls in sick. Live in 24 hours."
+- Live demo button label: "TALK TO TALKMATE" → "TALK TO YOUR RECEPTIONIST"
+- Footer tagline: "Australia's AI receptionist for small business."
+- `<title>` and meta description updated in `src/app/layout.tsx`.
+
+The brief listed "AI voice agent" / "voice agent" / "AI Voice Agent" / "Voice Agent" as the only find/replace targets — references to "AI agent" (without "voice") were left alone per the brief's strict scope.
+
+### Part 2, cost comparison section
+
+`src/components/CostComparison.tsx` — light-treatment section sandwiched between `<TalkButton />` and `<TwoProducts />` on the homepage. Renders the 6-row cost table (annual salary → recruitment → total) and 3 feature comparison rows (24/7 answering, sick days, upselling). Mobile-responsive: feature rows stack on screens under 720px. Disclaimer cites SEEK and Hays Australia 2026 averages. CTA below table links to `/pricing`.
+
+### Part 5, receptionist data
+
+`src/lib/receptionists.ts` is the single source of truth for the 13 receptionist profiles. Each entry holds: slug, name, industry label + slug, tagline, accent colour, 3 teaser bullets, 8-10 knowledge bullets, and a `sampleChat` array of `{ role: 'caller' | 'agent' | 'agent_upsell', text }`. Two helper functions exposed: `getReceptionist(slug)` and `receptionistForIndustry(industrySlug)`.
+
+The 13 receptionists and their industry mappings:
+- Bella → restaurants
+- Troy → towing
+- Charlotte → real-estate
+- Jake → trades
+- Grace → healthcare
+- Sophie → ndis
+- Mia → retail
+- James → professional-services
+- Olivia → hospitality (no `/industries/hospitality` page yet)
+- Mitch → automotive (no industry page yet)
+- Zara → beauty (no industry page yet)
+- Ryan → fitness (no industry page yet)
+- Lily → education (no industry page yet)
+
+Only the first 8 have a matching `/industries/[slug]` page today — those are the ones the Part 6 industry-page avatar card renders on. The remaining 5 still have a full `/receptionist/[slug]` profile page; they just don't show on an industry page yet.
+
+### Part 3, Meet Your Receptionist homepage section
+
+`src/components/MeetYourReceptionist.tsx` — dark-treatment section dropped between `<PricingCards />` and `<FinalCTA />`. Renders a responsive 4/2/1-column grid of all 13 `<AvatarCard />` instances. Section anchor id: `meet-your-receptionist` (matches the nav dropdown link).
+
+### Avatar handling, see-photos-when-they-arrive
+
+`src/components/AvatarImage.tsx` is a single component used by all 3 surfaces (homepage card, industry card, profile hero). It loads `/receptionists/<slug>.png` via a plain `<img>` tag with an `onError` fallback. If the file is missing, it shows a solid circle in the receptionist's accent colour with their first initial in white.
+
+This means the site can ship today with placeholder circles, and the moment the 13 PNGs (`bella.png`, `troy.png`, `charlotte.png`, `jake.png`, `grace.png`, `sophie.png`, `mia.png`, `james.png`, `olivia.png`, `mitch.png`, `zara.png`, `ryan.png`, `lily.png`) drop into `public/receptionists/`, the real photos render automatically with no code change. A README in that folder documents the contract for whoever lands the photos.
+
+### Part 4, individual profile pages
+
+`src/app/receptionist/[slug]/page.tsx` — dynamic route with `generateStaticParams()` so all 13 pages prerender at build time. Layout:
+1. Dark hero with back link, 120px avatar, name, industry pill, headline, tagline, two CTAs ("Hire [Name], $299/mo" → /pricing, "Talk to [Name] now" → /#live-demo).
+2. Light "What [Name] knows" section, 2-column grid of all knowledge bullets (1-column on mobile).
+3. Dark "Live example" sample-call section using `<ReceptionistChat />` to render the chat-bubble UI. Caller bubbles render in muted grey; `agent` lines in blue; `agent_upsell` lines in orange to call out upsell moments.
+4. Final orange CTA section.
+
+### Part 6, industry page avatar card
+
+Added a new "Meet your receptionist" section to `src/app/industries/[slug]/page.tsx`, right after the page hero and before the existing demo section. Uses the same `<AvatarCard />` component as the homepage. Only renders when `receptionistForIndustry(slug)` finds a match — currently 8 of the 13 industries (the others don't have an industry page yet).
+
+### Part 7, nav update
+
+Industries dropdown now ends with a divider and a "Meet your receptionist →" link styled in orange, pointing at `/#meet-your-receptionist`. The `Dropdown` component (and the mobile `<details>` accordion) was extended with a `dividerBefore` flag on link items.
+
+### Other content fixes
+
+- `src/components/TalkButton.tsx`: added an inline `<span id="live-demo">` anchor inside the existing `#hear-it-live` section so the new profile-page CTA "Talk to your receptionist now" links to the correct spot. The original `#hear-it-live` id is preserved so existing Hero CTA still works.
+- `src/components/PricingCards.tsx`: Starter plan feature row "24/7 AI voice agent" → "24/7 AI receptionist".
+- `src/app/features/page.tsx`: core feature title "AI Voice Agent" → "AI Receptionist".
+- `src/app/industries/[slug]/page.tsx`: metadata title "TalkMate AI Voice Agent" → "TalkMate AI Receptionist".
+- `src/app/status/page.tsx`: service name "Voice Agent (Vapi)" → "AI Receptionist (Vapi)".
+- `src/app/terms/page.tsx`: clause 2 references updated to "receptionist services" / "TalkMate Receptionist".
+- `src/app/blog/data/posts.ts`: 5 inline references rewritten without em dashes.
+
+### Build
+
+`npm run build` clean (39 static pages, zero warnings, zero errors). All 13 receptionist profile pages prerender at build time via `generateStaticParams()`.
+
+### What Donna handles
+
+- Drop the 13 PNGs into `public/receptionists/`. Filenames must exactly match the slug (e.g. `bella.png`).
+- Future copy edits to receptionist bullets or sample chats: edit `src/lib/receptionists.ts` directly. No component changes needed.
+- No Supabase / Stripe / Vapi changes required for this build.
 
 ---
 

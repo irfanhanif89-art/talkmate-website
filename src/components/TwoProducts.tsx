@@ -29,7 +29,7 @@ export default function TwoProducts() {
           <div className="section-eyebrow">Two products</div>
           <h2 className="section-h">Two products. <span className="orange">One subscription.</span></h2>
           <p className="section-p" style={{ margin: '12px auto 0' }}>
-            Growth and Pro clients get both, a voice agent that handles every call, plus a business assistant they control from WhatsApp.
+            Growth and Pro clients get both, an AI receptionist that handles every call, plus a business assistant they control from WhatsApp.
           </p>
         </div>
 
@@ -51,7 +51,7 @@ export default function TwoProducts() {
               <span style={{ fontSize: 10, fontWeight: 800, padding: '4px 10px', borderRadius: 100, background: 'rgba(74,159,232,0.15)', color: 'var(--bluel)', letterSpacing: '0.12em' }}>ALL PLANS</span>
             </div>
 
-            <h3 style={{ fontSize: 26, fontWeight: 800, color: 'white', letterSpacing: '-0.5px', marginBottom: 6 }}>TalkMate Voice Agent</h3>
+            <h3 style={{ fontSize: 26, fontWeight: 800, color: 'white', letterSpacing: '-0.5px', marginBottom: 6 }}>TalkMate Receptionist</h3>
             <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.55)', marginBottom: 22 }}>The AI that answers every call.</p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>

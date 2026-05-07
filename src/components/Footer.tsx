@@ -8,7 +8,7 @@ export default function Footer() {
         <div>
           <Logo />
           <p style={{ marginTop: 16, fontSize: 13, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 240 }}>
-            AI voice agent that answers every call in under 2 seconds.
+            Australia&apos;s AI receptionist for small business.
           </p>
           <p style={{ marginTop: 12, fontSize: 12, color: 'rgba(255,255,255,0.3)' }}>
             Gold Coast owned and operated.

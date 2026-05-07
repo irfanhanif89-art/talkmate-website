@@ -5,7 +5,7 @@ import FinalCTA from '@/components/FinalCTA'
 import { Phone, MessageSquare, FileText, Volume2, Zap, ListChecks, Bell, Activity, CreditCard, Database, BarChart, Globe, Sparkles, Upload, Users, ListFilter, GitBranch, Search, Download, MessageCircle } from 'lucide-react'
 
 const CORE = [
-  { icon: Phone, title: 'AI Voice Agent', body: 'Answers every call in under 2 seconds. Trained on your business. Speaks your menu, your prices, your hours.', accent: '#E8622A' },
+  { icon: Phone, title: 'AI Receptionist', body: 'Answers every call in under 2 seconds. Trained on your business. Speaks your menu, your prices, your hours.', accent: '#E8622A' },
   { icon: MessageSquare, title: 'TalkMate Command', body: 'Run your business via WhatsApp or Telegram. Send invoices, update menus, query analytics, all in plain English.', accent: '#1565C0' },
   { icon: Volume2, title: 'Australian voice and accent', body: 'Real Australian voice. Customers hear someone who sounds like a local.', accent: '#22C55E' },
   { icon: ListChecks, title: 'Order & job capture', body: 'Items, quantities, addresses, vehicles, urgency. Captured perfectly every time.', accent: '#8B5CF6' },

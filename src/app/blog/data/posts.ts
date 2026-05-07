@@ -15,7 +15,7 @@ export const posts: BlogPost[] = [
   {
     slug: 'australian-restaurants-losing-money-missed-calls',
     title: 'How Australian Restaurants Are Losing $8,000 a Month to Missed Calls',
-    excerpt: "Australian restaurants are missing hundreds of calls a week — each one a lost order. Here's the real cost and how AI voice agents fix it in 24 hours.",
+    excerpt: "Australian restaurants are missing hundreds of calls a week, each one a lost order. Here's the real cost and how an AI receptionist fixes it in 24 hours.",
     category: 'Restaurants',
     readTime: '6 min read',
     publishedAt: '2026-04-22',
@@ -32,12 +32,12 @@ export const posts: BlogPost[] = [
 <p>Most of those callers do not leave a voicemail. They do not email. Research published in 2025 found that 80% of callers will not leave a message, and 85% will not attempt a second call. They simply order from somewhere else.</p>
 <p>For independent restaurants already navigating thin margins, rising food costs, and ongoing staffing pressure, this is not a minor inconvenience. It is a structural revenue problem.</p>
 <h2>How TalkMate Fixes It</h2>
-<p>TalkMate is an AI voice agent built specifically for Australian businesses. It answers every call in under two seconds, takes orders, responds to FAQs, upsells customers, and logs everything — 24 hours a day, seven days a week, with no hardware required.</p>
+<p>TalkMate is an AI receptionist built specifically for Australian businesses. It answers every call in under two seconds, takes orders, responds to FAQs, upsells customers, and logs everything, 24 hours a day, seven days a week, with no hardware required.</p>
 <p><strong>The process works in three steps:</strong></p>
 <p><strong>1.</strong> A customer calls your restaurant's existing phone number.</p>
 <p><strong>2.</strong> TalkMate answers in under 2 seconds, greets them in a natural Australian voice, and handles the conversation — whether that is placing an order, checking trading hours, asking about allergens, or enquiring about a booking.</p>
 <p><strong>3.</strong> The order is logged automatically and you receive an instant notification. Nothing falls through the cracks.</p>
-<p>TalkMate is not a phone menu or a rigid chatbot. It is a voice agent trained on your specific restaurant — your menu, your trading hours, your upsells, and your policies. It handles real, natural conversation, including Australian accents and colloquial expressions. It is live within 24 hours of onboarding, connects to your existing phone number, and operates on a no lock-in contract basis from $299 per month.</p>
+<p>TalkMate is not a phone menu or a rigid chatbot. It is an AI receptionist trained on your specific restaurant, your menu, your trading hours, your upsells, and your policies. It handles real, natural conversation, including Australian accents and colloquial expressions. It is live within 24 hours of onboarding, connects to your existing phone number, and operates on a no lock-in contract basis from $299 per month.</p>
 <h2>Real Results: The Golden Batter, Brisbane</h2>
 <p>The Golden Batter, a busy takeaway restaurant in Brisbane, implemented TalkMate to handle peak-hour call volumes. The results arrived immediately.</p>
 <p><em>"First month we tracked an extra $4,200 in orders we would have missed. Calls that used to ring out during the dinner rush were being answered and processed automatically. We did not need to hire anyone new."</em></p>
@@ -116,7 +116,7 @@ export const posts: BlogPost[] = [
     content: `<h2>What People Get Wrong About AI Phone Agents</h2>
 <p>Most business owners picture a robot reading from a menu tree when they hear "AI phone agent." Press 1 for hours, press 2 for directions — the kind of experience that makes customers hang up immediately.</p>
 <p>That is not what TalkMate is. Not even close.</p>
-<p>Modern AI voice agents use a combination of speech recognition, large language models, and real-time voice synthesis to hold natural conversations — the kind where the person on the other end genuinely cannot tell they are not speaking to a human.</p>
+<p>A modern AI receptionist uses a combination of speech recognition, large language models, and real-time voice synthesis to hold natural conversations, the kind where the person on the other end genuinely cannot tell they are not speaking to a human.</p>
 <h2>What Happens on a Real Call</h2>
 <p>When a customer rings your number, here is what happens in under two seconds:</p>
 <p><strong>1. The call is answered instantly.</strong> No rings, no hold music, no voicemail prompt. The agent picks up and greets the caller in a natural Australian voice.</p>
@@ -130,7 +130,7 @@ export const posts: BlogPost[] = [
 <p>The technology crossed a quality threshold in 2025 that changed the conversation entirely. Voices became indistinguishable from human. Response latency dropped under half a second. Accuracy on Australian accents reached real-world deployment standard.</p>
 <p>At the same time, the cost dropped dramatically. What used to require enterprise budgets is now available from \$299 per month — less than a single weekly shift.</p>
 <h2>Hear It for Yourself</h2>
-<p>Reading about AI voice agents only gets you so far. Go to talkmate.com.au, enter your business name and phone number, and we will call you within 30 seconds. No demo meeting, no waiting, no commitment.</p>`
+<p>Reading about an AI receptionist only gets you so far. Go to talkmate.com.au, enter your business name and phone number, and we will call you within 30 seconds. No demo meeting, no waiting, no commitment.</p>`
   },
   {
     slug: 'after-hours-calls-gold-coast-businesses',

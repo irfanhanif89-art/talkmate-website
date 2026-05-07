@@ -51,7 +51,7 @@ export default function Hero() {
             marginBottom: 24,
           }}>
             <span className="pulse-dot" style={{ width: 7, height: 7, background: 'var(--green)', borderRadius: '50%' }} />
-            <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--orange)', letterSpacing: '0.05em' }}>LIVE NOW IN AUSTRALIA</span>
+            <span style={{ fontSize: 12, fontWeight: 600, color: 'var(--orange)', letterSpacing: '0.05em' }}>AUSTRALIA&apos;S AI RECEPTIONIST</span>
           </div>
 
           <h1 style={{
@@ -67,7 +67,7 @@ export default function Hero() {
             color: 'rgba(255,255,255,0.55)',
             lineHeight: 1.7, marginBottom: 36, maxWidth: 480,
           }}>
-            TalkMate is the AI voice agent that answers every single call in under 2 seconds, takes orders, books jobs and SMS confirms. Live in 24 hours.
+            Your new receptionist answers every call in 2 seconds, takes orders, upsells every customer, and never calls in sick. Live in 24 hours.
           </p>
 
           <div style={{ display: 'flex', gap: 14, marginBottom: 30, flexWrap: 'wrap' }}>

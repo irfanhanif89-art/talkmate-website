@@ -6,11 +6,11 @@ import StickyBottomBar from '@/components/StickyBottomBar'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://talkmate.com.au'),
-  title: 'TalkMate — AI Voice Agent for Australian Business',
-  description: 'Every missed call is a customer going elsewhere. TalkMate answers every call in under 2 seconds, takes orders, books jobs, and sends SMS confirmations. Live in 24 hours. Gold Coast owned and operated.',
+  title: "TalkMate, Australia's AI Receptionist for Small Business",
+  description: 'TalkMate is your AI receptionist. Answers every call in 2 seconds, takes orders, upsells customers, and never calls in sick. Live in 24 hours. No setup fees.',
   openGraph: {
-    title: 'TalkMate — AI Voice Agent for Australian Business',
-    description: 'Every missed call is a customer going elsewhere. TalkMate fixes that in 24 hours.',
+    title: "TalkMate, Australia's AI Receptionist for Small Business",
+    description: 'TalkMate is your AI receptionist. Answers every call in 2 seconds, takes orders, upsells customers, and never calls in sick. Live in 24 hours. No setup fees.',
     url: 'https://talkmate.com.au',
     siteName: 'TalkMate',
     locale: 'en_AU',

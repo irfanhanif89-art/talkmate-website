@@ -19,7 +19,7 @@ export const PLANS: Plan[] = [
     features: [
       '1 location',
       '300 calls per month',
-      '24/7 AI voice agent',
+      '24/7 AI receptionist',
       'Order taking and FAQs',
       'Upselling on every call',
       'SMS confirmations',

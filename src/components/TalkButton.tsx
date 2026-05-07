@@ -57,7 +57,7 @@ export default function TalkButton() {
     state === 'connecting' ? 'CONNECTING…' :
     state === 'active'     ? 'END CALL' :
     state === 'error'      ? 'TRY AGAIN' :
-    'TALK TO TALKMATE'
+    'TALK TO YOUR RECEPTIONIST'
 
   const btnBg = state === 'active' ? '#E8622A' : 'white'
   const textCol = state === 'active' ? 'white' : 'var(--navy)'
@@ -71,6 +71,7 @@ export default function TalkButton() {
       borderBottom: '1px solid rgba(255,255,255,0.05)',
       textAlign: 'center',
     }}>
+      <span id="live-demo" style={{ position: 'absolute', marginTop: -96 }} aria-hidden="true" />
       <div style={{ maxWidth: 640, margin: '0 auto' }}>
         <div className="section-eyebrow">Live Demo</div>
         <h2 className="section-h">Hear it before you <span className="orange">commit</span>.</h2>

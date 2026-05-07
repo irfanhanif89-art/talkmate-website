@@ -5,7 +5,13 @@ import Link from 'next/link'
 import { ChevronDown, Menu, X } from 'lucide-react'
 import Logo from './Logo'
 
-const INDUSTRY_LINKS = [
+interface NavLinkItem {
+  href: string
+  label: string
+  dividerBefore?: boolean
+}
+
+const INDUSTRY_LINKS: NavLinkItem[] = [
   { href: '/industries/restaurants', label: 'Restaurants & Takeaway' },
   { href: '/industries/towing', label: 'Towing & Transport' },
   { href: '/industries/real-estate', label: 'Real Estate' },
@@ -15,9 +21,10 @@ const INDUSTRY_LINKS = [
   { href: '/industries/retail', label: 'Retail' },
   { href: '/industries/professional-services', label: 'Professional Services' },
   { href: '/industries', label: 'View all industries' },
+  { href: '/#meet-your-receptionist', label: 'Meet your receptionist →', dividerBefore: true },
 ]
 
-const COMPANY_LINKS = [
+const COMPANY_LINKS: NavLinkItem[] = [
   { href: '/about', label: 'About us' },
   { href: '/partners', label: 'Partner program' },
   { href: '/blog', label: 'Blog' },
@@ -121,7 +128,19 @@ export default function Nav() {
               <summary style={{ color: 'white', fontWeight: 600, fontSize: 16, cursor: 'pointer', listStyle: 'none' }}>Industries ›</summary>
               <div style={{ paddingTop: 8, paddingLeft: 16 }}>
                 {INDUSTRY_LINKS.map(l => (
-                  <Link key={l.href} href={l.href} onClick={() => setMobileOpen(false)} style={{ display: 'block', padding: '8px 0', color: 'rgba(255,255,255,0.7)', textDecoration: 'none', fontSize: 14 }}>{l.label}</Link>
+                  <span key={l.href + l.label} style={{ display: 'block' }}>
+                    {l.dividerBefore && <span style={{ display: 'block', height: 1, margin: '6px 0', background: 'rgba(255,255,255,0.08)' }} aria-hidden="true" />}
+                    <Link
+                      href={l.href}
+                      onClick={() => setMobileOpen(false)}
+                      style={{
+                        display: 'block', padding: '8px 0',
+                        color: l.dividerBefore ? 'var(--orange)' : 'rgba(255,255,255,0.7)',
+                        textDecoration: 'none', fontSize: 14,
+                        fontWeight: l.dividerBefore ? 700 : 400,
+                      }}
+                    >{l.label}</Link>
+                  </span>
                 ))}
               </div>
             </details>
@@ -150,7 +169,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   )
 }
 
-function Dropdown({ label, isOpen, onToggle, links }: { label: string; isOpen: boolean; onToggle: () => void; links: { href: string; label: string }[] }) {
+function Dropdown({ label, isOpen, onToggle, links }: { label: string; isOpen: boolean; onToggle: () => void; links: NavLinkItem[] }) {
   return (
     <div style={{ position: 'relative' }}>
       <button
@@ -168,17 +187,27 @@ function Dropdown({ label, isOpen, onToggle, links }: { label: string; isOpen: b
       </button>
       {isOpen && (
         <div className="fade-up" style={{
-          position: 'absolute', top: 'calc(100% + 12px)', left: -8, minWidth: 230,
+          position: 'absolute', top: 'calc(100% + 12px)', left: -8, minWidth: 240,
           background: 'var(--navy2)', border: '1px solid rgba(255,255,255,0.08)',
           borderRadius: 12, padding: 6,
           boxShadow: '0 16px 40px rgba(0,0,0,0.4)',
         }}>
           {links.map(l => (
-            <Link key={l.href} href={l.href} onClick={onToggle} style={{
-              display: 'block', padding: '9px 12px', borderRadius: 8,
-              fontSize: 13, color: 'rgba(255,255,255,0.75)', textDecoration: 'none',
-              fontWeight: 500,
-            }}>{l.label}</Link>
+            <span key={l.href + l.label} style={{ display: 'block' }}>
+              {l.dividerBefore && (
+                <span style={{
+                  display: 'block', height: 1, margin: '6px 8px',
+                  background: 'rgba(255,255,255,0.08)',
+                }} aria-hidden="true" />
+              )}
+              <Link href={l.href} onClick={onToggle} style={{
+                display: 'block', padding: '9px 12px', borderRadius: 8,
+                fontSize: 13,
+                color: l.dividerBefore ? 'var(--orange)' : 'rgba(255,255,255,0.75)',
+                textDecoration: 'none',
+                fontWeight: l.dividerBefore ? 700 : 500,
+              }}>{l.label}</Link>
+            </span>
           ))}
         </div>
       )}

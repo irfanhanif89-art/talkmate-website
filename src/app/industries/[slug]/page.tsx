@@ -1,10 +1,13 @@
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import PageHero from '@/components/PageHero'
 import FinalCTA from '@/components/FinalCTA'
 import IndustryDemo from '@/components/IndustryDemo'
+import AvatarCard from '@/components/AvatarCard'
 import { Check, MessageSquare } from 'lucide-react'
 import { INDUSTRIES, getIndustry, INDUSTRY_CRM } from '@/lib/industries'
 import { Database } from 'lucide-react'
+import { receptionistForIndustry } from '@/lib/receptionists'
 
 export async function generateStaticParams() {
   return INDUSTRIES.map(i => ({ slug: i.slug }))
@@ -14,7 +17,7 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
   const i = getIndustry(params.slug)
   if (!i) return { title: 'Industry · TalkMate' }
   return {
-    title: `${i.name} · TalkMate AI Voice Agent`,
+    title: `${i.name} · TalkMate AI Receptionist`,
     description: `${i.tagline} TalkMate answers, captures, and confirms every call for ${i.name.toLowerCase()} in Australia.`,
   }
 }
@@ -22,6 +25,8 @@ export function generateMetadata({ params }: { params: { slug: string } }) {
 export default function IndustryPage({ params }: { params: { slug: string } }) {
   const ind = getIndustry(params.slug)
   if (!ind) return notFound()
+
+  const receptionist = receptionistForIndustry(params.slug)
 
   return (
     <>
@@ -32,6 +37,33 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
         primary={{ label: 'Book a Free Demo', href: '/demo' }}
         secondary={{ label: 'See pricing', href: '/pricing' }}
       />
+
+      {receptionist && (
+        <section style={{ background: 'var(--navy)', padding: '64px 32px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+          <div style={{ maxWidth: 720, margin: '0 auto', textAlign: 'center' as const }}>
+            <div className="section-eyebrow">Meet your receptionist</div>
+            <h2 style={{
+              fontSize: 'clamp(24px, 3.6vw, 34px)', fontWeight: 800, color: 'white',
+              letterSpacing: '-1px', lineHeight: 1.2, marginTop: 10, marginBottom: 28,
+            }}>
+              Meet <span style={{ color: 'var(--orange)' }}>{receptionist.name}</span>, your {ind.name.toLowerCase()} receptionist.
+            </h2>
+            <div style={{ maxWidth: 420, margin: '0 auto', textAlign: 'left' as const }}>
+              <AvatarCard r={receptionist} avatarSize={84} />
+            </div>
+            <Link
+              href={`/receptionist/${receptionist.slug}`}
+              style={{
+                display: 'inline-block', marginTop: 22,
+                fontSize: 14, fontWeight: 700, color: 'var(--orange)',
+                textDecoration: 'none', letterSpacing: '0.02em',
+              }}
+            >
+              Click to see what {receptionist.name} knows →
+            </Link>
+          </div>
+        </section>
+      )}
 
       {/* Demo + handles */}
       <section style={{ background: 'var(--navy)' }}>
