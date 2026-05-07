@@ -45,8 +45,24 @@ export default function StatusPage() {
         // Pull from the portal's public status endpoint when available.
         const res = await fetch('https://app.talkmate.com.au/api/public/status', { cache: 'no-store' })
         if (!res.ok) throw new Error(String(res.status))
-        const json: StatusPayload = await res.json()
-        if (mounted) setData({ ...json, updatedAt: new Date().toISOString() })
+        const json = await res.json()
+        // API returns { status, checks, timestamp } — map to our internal shape
+        const checkNames: Record<string, string> = {
+          database: 'Database',
+          voice_agent: 'AI Receptionist (Vapi)',
+          billing: 'Billing (Stripe)',
+          portal: 'Client Portal',
+        }
+        const services: Service[] = Object.entries(json.checks ?? {}).map(([key, val]: [string, unknown]) => ({
+          name: checkNames[key] ?? key,
+          description: '',
+          status: (['operational','degraded','down'].includes((val as Record<string,string>).status)
+            ? (val as Record<string,string>).status
+            : 'operational') as Service['status'],
+          lastCheck: json.timestamp ?? new Date().toISOString(),
+        }))
+        const overall = (['operational','degraded','down'].includes(json.status) ? json.status : 'operational') as Service['status']
+        if (mounted) setData({ overall, services, incidents: [], updatedAt: json.timestamp ?? new Date().toISOString() })
       } catch {
         if (mounted) setData({ ...FALLBACK, updatedAt: new Date().toISOString() })
       }
