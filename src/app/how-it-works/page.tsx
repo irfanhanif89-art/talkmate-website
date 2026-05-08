@@ -1,9 +1,10 @@
 import PageHero from '@/components/PageHero'
-import HowItWorks from '@/components/HowItWorks'
+import HowItWorksIndustryPicker from '@/components/HowItWorksIndustryPicker'
+import OnboardingSteps from '@/components/OnboardingSteps'
 import FinalCTA from '@/components/FinalCTA'
 import FeatureRow from '@/components/FeatureRow'
 import DemoCard from '@/components/DemoCard'
-import { CheckCircle2, MessageSquare, Phone, Sparkles, ListChecks, ArrowRight, Clock } from 'lucide-react'
+import { CheckCircle2, MessageSquare, Phone, Sparkles, ListChecks, ArrowRight } from 'lucide-react'
 
 const CALL_FLOW = [
   { icon: Phone, title: 'Answers in under 2 seconds', body: 'No matter the time of day. No hold music, no voicemail loops.' },
@@ -12,14 +13,6 @@ const CALL_FLOW = [
   { icon: ArrowRight, title: 'Transfers when it matters', body: 'High-value caller, complaint, or anything outside its confidence zone goes straight to you.' },
   { icon: MessageSquare, title: 'SMS confirmation in seconds', body: "Customer gets a confirmation text before they've hung up." },
   { icon: CheckCircle2, title: 'Logs to your dashboard', body: 'Transcript, recording, outcome tag, attributed revenue. All searchable.' },
-]
-
-const TIMELINE = [
-  { time: '0 min', title: 'Sign up', body: 'Pick a plan, create your account.' },
-  { time: '15 min', title: '30-min onboarding call', body: "We capture your menu, hours, FAQs, and escalation rules. Live with you on screen-share." },
-  { time: '2 hrs', title: 'Agent trained', body: 'Your AI agent is configured and tested. We call it ourselves before you do.' },
-  { time: '4 hrs', title: 'Call forwarding set up', body: 'Forward your existing number, or use the dedicated TalkMate number we provide.' },
-  { time: '24 hrs', title: 'You go live', body: 'Customer rings, AI answers. You watch the dashboard come alive.' },
 ]
 
 export default function HowItWorksPage() {
@@ -33,7 +26,7 @@ export default function HowItWorksPage() {
         secondary={{ label: 'See pricing', href: '/pricing' }}
       />
 
-      <HowItWorks />
+      <HowItWorksIndustryPicker />
 
       {/* What happens on every call */}
       <section style={{ background: 'var(--navy)' }}>
@@ -57,43 +50,7 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      {/* Live in 24 hours timeline */}
-      <section style={{ background: 'var(--light)' }}>
-        <div className="section-pad" style={{ maxWidth: 880, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: 48 }}>
-            <div className="section-eyebrow">Live in 24 hours</div>
-            <h2 className="section-h dark">Sign up Monday. Live by <span style={{ color: 'var(--orange)' }}>Tuesday</span>.</h2>
-            <p className="section-p dark" style={{ margin: '12px auto 0' }}>
-              We don&apos;t do drawn-out integrations or 6-week kickoffs. You sign up, we onboard, you go live. Same week. Every time.
-            </p>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-            {TIMELINE.map((t, i) => (
-              <div key={t.time} style={{
-                background: 'white', border: '1px solid var(--edge)',
-                borderRadius: 14, padding: '18px 22px',
-                display: 'flex', gap: 18, alignItems: 'center',
-              }}>
-                <div style={{
-                  width: 70, flexShrink: 0,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 5,
-                  background: i === TIMELINE.length - 1 ? 'rgba(34,197,94,0.1)' : 'rgba(232,98,42,0.1)',
-                  borderRadius: 9, padding: '8px 6px',
-                  fontSize: 12, fontWeight: 800,
-                  color: i === TIMELINE.length - 1 ? '#16A34A' : 'var(--orange)',
-                  letterSpacing: '0.04em',
-                }}>
-                  <Clock size={12} /> {t.time}
-                </div>
-                <div>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--navy)' }}>{t.title}</div>
-                  <div style={{ fontSize: 13, color: 'var(--muted)', marginTop: 3 }}>{t.body}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <OnboardingSteps />
 
       <FinalCTA
         heading={<>Book a 30-minute onboarding call and you&apos;ll be <span className="orange">live before the end of the week</span>.</>}

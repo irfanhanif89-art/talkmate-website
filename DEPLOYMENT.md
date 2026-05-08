@@ -1,8 +1,52 @@
 # TalkMate Website — Deployment Handoff
 
-**Build:** Master website brief v1.0 + CRM Session 2 updates + Receptionist Reframe + About Page Rewrite
+**Build:** Master website brief v1.0 + CRM Session 2 updates + Receptionist Reframe + About Page Rewrite + Jade Feedback Patch
 **Stack:** Next.js 14 App Router · Tailwind CSS · TypeScript · Lucide icons · Outfit font
 **Target:** Vercel (project name `talkmate-website`, alias to `talkmate.com.au` apex + `www`)
+
+---
+
+## JADE FEEDBACK PATCH — May 2026
+
+Targeted copy + UI changes from founder feedback. No page restructure, no design system change.
+
+### 1. "Ship fast" / "speed over perfection" / "shipped" sweep
+Already removed in the previous About Page Rewrite (those phrases lived in the old About values grid). Re-verified with grep — zero remaining matches across `src/`.
+
+### 2. "No setup fees" promoted in two places
+- [src/components/Hero.tsx](src/components/Hero.tsx) — added "No setup fees" to the trust strip alongside "No credit card required", "Live in 24 hours", "14-day money back".
+- [src/components/PricingCards.tsx](src/components/PricingCards.tsx) — new green callout pill ("✓ No setup fees on any plan. Ever.") sits above the plan cards. Uses `--green` accent + 35% border.
+
+### 3. /how-it-works gains an industry selector
+New client-side component [src/components/HowItWorksIndustryPicker.tsx](src/components/HowItWorksIndustryPicker.tsx) replaces the page's previous use of `<HowItWorks />` (the homepage one is untouched). Renders:
+- a horizontal pill row: "All industries" + the 8 industries from the brief (Restaurants, Towing, Real Estate, Trades, Healthcare, NDIS, Retail, Professional Services)
+- 3 step cards beneath that swap between the generic copy and industry-specific copy on click. Default state (no industry selected) shows the generic 3 steps from the brief
+
+The 8 industry-specific scripts use the receptionist names from the previous reframe (Bella, Troy, Charlotte, Jake, Grace, Sophie, Mia, James) and are stored in a flat array inside the component for easy editing.
+
+### 4. "Sign up Monday, live Tuesday" replaced
+Removed the old 5-row Timeline list from `/how-it-works`. New [src/components/OnboardingSteps.tsx](src/components/OnboardingSteps.tsx) renders the brief's 3-card layout (orange step number, muted time, bold step title). Also fixed the lingering "Sign-up Monday, live Tuesday." line in [src/app/features/page.tsx](src/app/features/page.tsx) → "From signup to live in a single day."
+
+### 5. Outcome rewrites
+[src/components/TwoProducts.tsx](src/components/TwoProducts.tsx) — 6 feature bullets in the Receptionist card replaced with the brief's outcome-focused versions:
+- "Answers every call under 2 seconds" → "Never miss a customer again"
+- "Takes orders, books jobs, qualifies leads" → "Handles the call so you don't have to"
+- "Upsells on every single call" → "Every call makes you more money"
+- "SMS confirmations to every customer" → "Your customers always know what's happening"
+- "Full call transcripts and dashboard" → "Know exactly what happened on every call"
+- "Australian voice and accent" → "Sounds like someone who actually works for your business"
+
+The CRM bullet at the bottom of the list ("Every caller automatically becomes a contact in your CRM…") was kept as-is — it's a CRM differentiator, not in the brief's mapping.
+
+Pricing feature lists (PricingCards.tsx) and the /features page are intentionally untouched per the brief's "do not replace copy in the pricing feature lists" rule. Receptionist sample chats and how-it-works picker copy are also intentionally untouched (they're not standalone homepage feature bullets).
+
+### 6. /sla page
+New page at [src/app/sla/page.tsx](src/app/sla/page.tsx). Reuses the existing `<PageHero />` for layout consistency. Renders the 4 commitment cards (Uptime / Monitoring / Incident response / Status page) in a responsive 2x2 grid, then the "What happens if we miss our commitment?" card with the orange "View live system status →" CTA linking to status.talkmate.com.au.
+
+Footer Legal column ([src/components/Footer.tsx](src/components/Footer.tsx)) gained "Service Level Agreement" linking to /sla.
+
+### Build
+`npm run build` clean. 41 routes, zero warnings, zero errors. /sla prerendered as static.
 
 ---
 

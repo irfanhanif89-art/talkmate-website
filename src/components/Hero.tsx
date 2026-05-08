@@ -80,7 +80,7 @@ export default function Hero() {
           </div>
 
           <div style={{ display: 'flex', gap: 22, flexWrap: 'wrap', marginBottom: 16 }}>
-            {['No credit card required', 'Live in 24 hours', '14-day money back'].map(t => (
+            {['No credit card required', 'No setup fees', 'Live in 24 hours', '14-day money back'].map(t => (
               <span key={t} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>
                 <Check size={14} color="var(--green)" /> {t}
               </span>

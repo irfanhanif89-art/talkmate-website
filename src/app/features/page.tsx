@@ -14,7 +14,7 @@ const CORE = [
   { icon: BarChart, title: 'Live dashboard', body: 'Real-time call data, ROI counter, attributed revenue, busiest hours. Updated every second.', accent: '#06B6D4' },
   { icon: Sparkles, title: 'Upsells on every call', body: 'Suggests garlic bread, extras, premium options. Adds an average of $6.20 per order.', accent: '#E8622A' },
   { icon: Upload, title: 'AI menu import from URL', body: 'Paste your website, MenuLog, or Uber Eats URL. We scan it and pre-fill your menu in seconds.', accent: '#1565C0' },
-  { icon: Zap, title: 'Live in 24 hours', body: 'Sign-up Monday, live Tuesday. No 6-week integrations. We handle everything.', accent: '#22C55E' },
+  { icon: Zap, title: 'Live in 24 hours', body: 'From signup to live in a single day. No 6-week integrations. We handle everything.', accent: '#22C55E' },
 ]
 
 const CRM = [

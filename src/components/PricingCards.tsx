@@ -107,6 +107,24 @@ export default function PricingCards({ background = 'light' }: { background?: 'l
           ))}
         </div>
 
+        {/* Standalone "no setup fees" callout — Jade feedback patch.
+            Sits above the plan cards in green so it lands as a single line
+            you can't miss before reading the prices. */}
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          gap: 10, marginBottom: 24,
+          padding: '10px 18px', borderRadius: 99,
+          background: isDark ? 'rgba(34,197,94,0.10)' : 'rgba(34,197,94,0.08)',
+          border: '1px solid rgba(34,197,94,0.35)',
+          width: 'fit-content', maxWidth: '100%',
+          marginLeft: 'auto', marginRight: 'auto',
+          color: '#22C55E', fontSize: 14, fontWeight: 700,
+          fontFamily: 'Outfit, sans-serif', textAlign: 'center' as const,
+        }}>
+          <Check size={16} color="#22C55E" />
+          <span>No setup fees on any plan. Ever.</span>
+        </div>
+
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
           {PLANS.map(p => {
             const popular = p.popular

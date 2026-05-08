@@ -1,12 +1,12 @@
 import { Phone, MessageSquare, Check, Sparkles } from 'lucide-react'
 
 const VOICE_FEATURES = [
-  'Answers every call under 2 seconds',
-  'Takes orders, books jobs, qualifies leads',
-  'Upsells on every single call',
-  'SMS confirmations to every customer',
-  'Full call transcripts and dashboard',
-  'Australian voice and accent',
+  'Never miss a customer again',
+  "Handles the call so you don't have to",
+  'Every call makes you more money',
+  "Your customers always know what's happening",
+  'Know exactly what happened on every call',
+  'Sounds like someone who actually works for your business',
   'Every caller automatically becomes a contact in your CRM. No data entry.',
 ]
 

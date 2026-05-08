@@ -34,6 +34,7 @@ export default function Footer() {
         <FooterCol heading="Legal" links={[
           { href: '/privacy', label: 'Privacy Policy' },
           { href: '/terms', label: 'Terms of Service' },
+          { href: '/sla', label: 'Service Level Agreement' },
           { href: '/privacy#act', label: 'Australian Privacy Act' },
         ]} />
       </div>
