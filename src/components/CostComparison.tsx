@@ -169,14 +169,17 @@ export default function CostComparison() {
         </div>
       </div>
 
-      {/* Mobile collapse: stack the comparison rows */}
-      <style>{`
+      {/* Mobile collapse: stack the comparison rows.
+          dangerouslySetInnerHTML avoids the React SSR/CSR mismatch where
+          the `>` child combinator gets entity-encoded on the server but
+          rendered raw on the client (triggers hydration error #425). */}
+      <style dangerouslySetInnerHTML={{ __html: `
         @media (max-width: 720px) {
           .cost-feature-row { grid-template-columns: 1fr !important; }
           .cost-feature-row > div { border-right: none !important; border-bottom: 1px solid rgba(15,23,42,0.06) !important; }
           .cost-feature-row > div:last-child { border-bottom: none !important; }
         }
-      `}</style>
+      ` }} />
     </section>
   )
 }

@@ -12,11 +12,13 @@ Live-audit fixes for production hydration errors and trust-signal cleanup. No la
 
 ### Part 1 — Hydration mismatch root causes (React errors #418, #423, #425)
 
-Two distinct sources of server-vs-client render drift were producing the 4+ hydration warnings the live audit caught.
+Three distinct sources of server-vs-client render drift were producing the hydration warnings the live audit caught. The first two were fixed in the initial pass; **C** was caught only after a headless-browser re-test against `npm run dev` (the dev build prints verbose warnings that name the exact component; production minifies them to error codes only).
 
 **A. `src/app/status/page.tsx`** — the `FALLBACK` constant was constructed at module load with `new Date().toISOString()` for `updatedAt` and for each of the 4 services' `lastCheck`. The server-rendered HTML froze one timestamp, the client recomputed a different one milliseconds later on hydration → 5 mismatches per page load. Fixed by initializing `FALLBACK` with empty strings and stamping the real `now` inside `useEffect` only (where it runs client-side after hydration is complete). The "Updated …" line conditionally renders only when `updatedAt` is non-empty, so the initial server HTML and initial client HTML are byte-identical.
 
 **B. `src/components/RevenueCalculator.tsx`** — the 5 `.toLocaleString()` calls had no locale argument. Node.js on Vercel resolves to its container locale (typically `en-US`); the browser uses the visitor's locale (`en-AU` for Australian visitors). For values like `8000` the formats happen to match, but for some intermediate calculator outputs they differ (different grouping separators, currency-adjacent characters). Fixed by passing the explicit `'en-AU'` locale to all 5 calls. Now both server and client format identically regardless of runtime locale.
+
+**C. `src/components/CostComparison.tsx`** — the inline `<style>{`...`}</style>` block at the bottom of the section uses the CSS child combinator `>` in two selectors (`.cost-feature-row > div` and `.cost-feature-row > div:last-child`). React 18's SSR serializer entity-encodes `>` as `&gt;` inside `<style>` *element children*, but the client-side React renderer does not — so server HTML and client HTML disagree on the literal text content of the `<style>` tag. This is the actual error #425 source on the homepage: 5 distinct text-mismatch warnings per load, cascading into the #418/#423 hydration-failure errors that switch the whole root to client-only rendering. Fixed by switching to `<style dangerouslySetInnerHTML={{ __html: ... }} />`, which bypasses React's child-text serialization entirely and emits the CSS verbatim on both sides. (All other inline `<style>` blocks in the codebase were audited; none of them use `>` or `<` selectors, so they don't trip this issue.)
 
 ### Part 2 — Trust signal cleanup
 
@@ -34,13 +36,16 @@ Two distinct sources of server-vs-client render drift were producing the 4+ hydr
 ### Verification
 
 - `npm run build` — clean. 40 prerendered routes, zero warnings, zero TS errors.
+- `npm run dev` + headless Chrome sweep across 19 routes (homepage, pricing, terms, features, how-it-works, about, privacy, sla, faq, industries, partners, blog, demo, /industries/[restaurants,towing,real-estate], /receptionist/[bella,troy], status) → **0 hydration warnings**.
 - Status page no longer has unstable `new Date()` calls on the SSR path; the empty-string sentinel guarantees server HTML matches initial client HTML.
 - RevenueCalculator's number formatting is now deterministic across server (Vercel Node) and client (any browser locale).
+- CostComparison's inline CSS is now emitted verbatim via `dangerouslySetInnerHTML`, eliminating the `>` vs `&gt;` mismatch.
 
 ### Files changed
 
 - `src/app/status/page.tsx`
 - `src/components/RevenueCalculator.tsx`
+- `src/components/CostComparison.tsx`
 - `src/app/terms/page.tsx`
 - `src/app/features/page.tsx`
 - `src/components/IntegrationsRow.tsx`
