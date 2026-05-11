@@ -35,11 +35,11 @@ export default function StickyBottomBar() {
             border: '1px solid rgba(255,255,255,0.15)',
             borderRadius: 8, textDecoration: 'none',
           }}>Learn more</Link>
-          <Link href="/demo" style={{
+          <a href="https://app.talkmate.com.au/signup" style={{
             padding: '9px 20px', fontSize: 13, fontWeight: 700,
             color: 'white', background: 'var(--orange)',
             border: 'none', borderRadius: 8, textDecoration: 'none',
-          }}>Book a Free Demo</Link>
+          }}>Start free trial →</a>
           <button onClick={() => setClosed(true)} aria-label="Dismiss" style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.4)', cursor: 'pointer', padding: 4, marginLeft: 4 }}>
             <X size={16} />
           </button>

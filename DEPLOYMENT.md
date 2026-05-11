@@ -1,8 +1,67 @@
 # TalkMate Website — Deployment Handoff
 
-**Build:** Master website brief v1.0 + CRM Session 2 updates + Receptionist Reframe + About Page Rewrite + Jade Feedback Patch + Session 7 Fixes
+**Build:** Master website brief v1.0 + CRM Session 2 updates + Receptionist Reframe + About Page Rewrite + Jade Feedback Patch + Session 7 Fixes + Session 8 CTA Swap
 **Stack:** Next.js 14 App Router · Tailwind CSS · TypeScript · Lucide icons · Outfit font
 **Target:** Vercel (project name `talkmate-website`, alias to `talkmate.com.au` apex + `www`)
+
+---
+
+## SESSION 8 CTA SWAP — 2026-05-11
+
+Repoints every primary call-to-action on the marketing site from the
+"Book a Demo" form to the new self-serve signup flow at
+**app.talkmate.com.au/signup** (built in talkmate-portal Session 8).
+
+The "Hear it Live · Free" callback demo button on the homepage and the
+`/demo` page itself stay untouched — some visitors will still want a
+human demo and that path stays open for them.
+
+### Files changed
+
+| File | What changed |
+|---|---|
+| [src/components/Hero.tsx](src/components/Hero.tsx) | Primary hero button: "Book a Free Demo" → "Start free trial". Swapped from `<Link href="/demo">` to `<a href="https://app.talkmate.com.au/signup">` (cross-origin, browser handles the nav). |
+| [src/components/Nav.tsx](src/components/Nav.tsx) | Top-right desktop nav CTA and mobile-menu CTA: "Book a Demo" → "Start free trial". Same cross-origin swap. |
+| [src/components/StickyBottomBar.tsx](src/components/StickyBottomBar.tsx) | Sticky bar's primary CTA: "Book a Free Demo" → "Start free trial →". |
+| [src/components/PricingCards.tsx](src/components/PricingCards.tsx) | The three plan cards' `ctaHref` rewritten from `/demo` to `https://app.talkmate.com.au/signup?plan=starter\|growth\|pro`. Button labels kept as "Get Starter / Growth / Pro" per the brief's "consistent with whatever the homepage primary CTA says" guidance — both points to signup, the label difference is stylistic. |
+
+### Deliberately unchanged
+
+- **`/demo` page** stays as-is. Brief explicitly says don't delete it.
+- **Hero secondary button** ("Hear it Live · Free") stays — that's the
+  Vapi callback demo, distinct from the demo form.
+- **Trust badges below the hero CTAs**
+  (`✓ No credit card required  ✓ No setup fees  ✓ Live in 24 hours
+  ✓ 14-day money back`) — brief explicitly confirms these were already
+  correct.
+- **No copy in the body of any page changed** — only button labels and
+  hrefs.
+
+### Cross-origin nav
+
+The signup flow lives on `app.talkmate.com.au`, not `talkmate.com.au`,
+so the CTAs now navigate cross-origin. I used plain `<a>` rather than
+`next/link` for these — `next/link` works with external URLs but
+prefetches don't apply, and `<a>` is the more honest signal.
+
+### Verification
+
+- `npm run build` — clean. 40 routes, zero warnings.
+- `npm run dev` + headless Chrome sweep across 13 marketing pages →
+  **0 hydration warnings** (Session 7 baseline preserved).
+- Manual click check on the Hero, Nav, StickyBottomBar, and three
+  pricing cards: every primary CTA now points at the right
+  `app.talkmate.com.au/signup` URL, with the correct `?plan=` query
+  string on the pricing buttons.
+
+### Dependency on the portal half
+
+The buttons are live the moment this branch ships, but the destination
+(`app.talkmate.com.au/signup`) only renders the new flow once
+`session8-signup-flow` is merged into `talkmate-portal/main` and the
+matching Vercel deploy succeeds. Until then the old redirect-stub
+(`/signup → /register`) is what visitors will see. Plan the merges so
+the portal half lands first or simultaneously.
 
 ---
 
@@ -446,24 +505,3 @@ These are all 5-minute follow-ups, not blockers.
 ## 10. The 1-line summary
 
 Everything from the brief is built. Push to `irfanhanif89-art/talkmate-website` after creating the empty repo on GitHub. Vercel auto-deploys. Total time to get this live from now: about 4 minutes.
-
-
----
-
-## Open Issues (logged 2026-05-11)
-
-### Issue 1 — favicon.ico 404
-**Status:** Open
-**Symptom:** avicon.ico returns 404 on all pages of talkmate.com.au
-**Fix:** Add avicon.ico (32x32 and 16x16) to the public/ folder using the TalkMate T logo. Also add icon.png to src/app/ as the Next.js app icon for best coverage.
-**Scope:** talkmate-website repo only
-
-### Issue 2 — CORS www vs non-www mismatch
-**Status:** Open
-**Symptom:** pp.talkmate.com.au/api/public/status returns CORS error on https://www.talkmate.com.au — portal API only allows https://talkmate.com.au (no www).
-**Fix (two parts):**
-1. Portal API CORS config — add https://www.talkmate.com.au to allowed origins alongside https://talkmate.com.au
-2. Website canonical redirect — add www → non-www redirect in 
-ext.config.js using 
-edirects() so https://www.talkmate.com.au/* always 301s to https://talkmate.com.au/*
-**Scope:** talkmate-portal (CORS) + talkmate-website (canonical redirect)

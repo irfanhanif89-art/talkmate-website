@@ -27,7 +27,7 @@ export const PLANS: Plan[] = [
       'Email support',
     ],
     cta: 'Get Starter',
-    ctaHref: '/demo',
+    ctaHref: 'https://app.talkmate.com.au/signup?plan=starter',
   },
   {
     name: 'Growth',
@@ -44,7 +44,7 @@ export const PLANS: Plan[] = [
       'Priority support',
     ],
     cta: 'Get Growth',
-    ctaHref: '/demo',
+    ctaHref: 'https://app.talkmate.com.au/signup?plan=growth',
   },
   {
     name: 'Pro',
@@ -59,7 +59,7 @@ export const PLANS: Plan[] = [
       'Priority phone support',
     ],
     cta: 'Get Pro',
-    ctaHref: '/demo',
+    ctaHref: 'https://app.talkmate.com.au/signup?plan=pro',
   },
 ]
 
