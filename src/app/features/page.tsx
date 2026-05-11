@@ -27,7 +27,7 @@ const CRM = [
 ]
 
 const RELIABILITY = [
-  { icon: Activity, title: 'Vapi health monitoring', body: '60-second health checks against the voice infrastructure. Auto-failover SMS to clients on any degradation.', accent: '#E8622A' },
+  { icon: Activity, title: 'Voice infrastructure health monitoring', body: '60-second health checks against the voice infrastructure. Auto-failover SMS to clients on any degradation.', accent: '#E8622A' },
   { icon: Phone, title: 'Daily call forwarding verification', body: 'A silent test call to your TalkMate number every morning at 9am AEST. Broken forwarding raises an alert before customers notice.', accent: '#4A9FE8' },
   { icon: CreditCard, title: 'Stripe billing redundancy', body: '15-minute Stripe sync ensures no account is ever deactivated by a webhook failure. Automatic recovery, no manual support tickets.', accent: '#22C55E' },
   { icon: Database, title: 'Daily database backups', body: 'Encrypted backups every day at 2am AEST. 30 days of point-in-time recovery on Australian servers.', accent: '#8B5CF6' },

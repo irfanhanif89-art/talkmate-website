@@ -1,8 +1,49 @@
 # TalkMate Website — Deployment Handoff
 
-**Build:** Master website brief v1.0 + CRM Session 2 updates + Receptionist Reframe + About Page Rewrite + Jade Feedback Patch
+**Build:** Master website brief v1.0 + CRM Session 2 updates + Receptionist Reframe + About Page Rewrite + Jade Feedback Patch + Session 7 Fixes
 **Stack:** Next.js 14 App Router · Tailwind CSS · TypeScript · Lucide icons · Outfit font
 **Target:** Vercel (project name `talkmate-website`, alias to `talkmate.com.au` apex + `www`)
+
+---
+
+## SESSION 7 FIXES — 2026-05-11
+
+Live-audit fixes for production hydration errors and trust-signal cleanup. No layout, page, or pricing changes.
+
+### Part 1 — Hydration mismatch root causes (React errors #418, #423, #425)
+
+Two distinct sources of server-vs-client render drift were producing the 4+ hydration warnings the live audit caught.
+
+**A. `src/app/status/page.tsx`** — the `FALLBACK` constant was constructed at module load with `new Date().toISOString()` for `updatedAt` and for each of the 4 services' `lastCheck`. The server-rendered HTML froze one timestamp, the client recomputed a different one milliseconds later on hydration → 5 mismatches per page load. Fixed by initializing `FALLBACK` with empty strings and stamping the real `now` inside `useEffect` only (where it runs client-side after hydration is complete). The "Updated …" line conditionally renders only when `updatedAt` is non-empty, so the initial server HTML and initial client HTML are byte-identical.
+
+**B. `src/components/RevenueCalculator.tsx`** — the 5 `.toLocaleString()` calls had no locale argument. Node.js on Vercel resolves to its container locale (typically `en-US`); the browser uses the visitor's locale (`en-AU` for Australian visitors). For values like `8000` the formats happen to match, but for some intermediate calculator outputs they differ (different grouping separators, currency-adjacent characters). Fixed by passing the explicit `'en-AU'` locale to all 5 calls. Now both server and client format identically regardless of runtime locale.
+
+### Part 2 — Trust signal cleanup
+
+- **`src/app/terms/page.tsx`** — section 1 introduction: removed the `(ABN TBC)` placeholder. New text: "operated by TalkMate Pty Ltd, a company registered in Queensland, Australia." Nothing else in Terms changed.
+- **`src/app/status/page.tsx`** — service label "AI Receptionist (Vapi)" → "AI Receptionist" (both the FALLBACK and the `checkNames` mapping used by the live API response).
+- **`src/app/features/page.tsx`** — RELIABILITY card title "Vapi health monitoring" → "Voice infrastructure health monitoring". The body copy already referenced "the voice infrastructure" generically, so no further edits needed.
+- **`src/components/IntegrationsRow.tsx`** — removed the Make.com and Twilio logos from the public integrations marquee. Twilio is internal-only infra; Make.com is an internal workflow tool. Neither is a customer-facing integration. The marquee now shows: Google Calendar, Xero, MYOB, Microsoft 365, Slack, Zapier, WhatsApp, Stripe.
+
+### What was deliberately left alone
+
+- **`src/app/privacy/page.tsx` section 8** (third-party services disclosure) still names Vapi, ElevenLabs, Make.com, etc. This is a **required legal disclosure** under the Australian Privacy Act 1988 — listing subprocessors that handle personal information. Removing it would create a compliance gap. Marketing copy is fair game; subprocessor disclosure is not.
+- **`src/components/TalkButton.tsx`** still imports `@vapi-ai/web` and has internal `VapiState` type names. These are internal code identifiers, not visible to users. The button label says "TALK TO YOUR RECEPTIONIST".
+- **`src/app/api/callback/route.ts` and `src/app/api/demo/route.ts`** still reference Make.com webhook env vars and Vapi in comments. Server-only, never reaches the client bundle.
+
+### Verification
+
+- `npm run build` — clean. 40 prerendered routes, zero warnings, zero TS errors.
+- Status page no longer has unstable `new Date()` calls on the SSR path; the empty-string sentinel guarantees server HTML matches initial client HTML.
+- RevenueCalculator's number formatting is now deterministic across server (Vercel Node) and client (any browser locale).
+
+### Files changed
+
+- `src/app/status/page.tsx`
+- `src/components/RevenueCalculator.tsx`
+- `src/app/terms/page.tsx`
+- `src/app/features/page.tsx`
+- `src/components/IntegrationsRow.tsx`
 
 ---
 
