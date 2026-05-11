@@ -446,3 +446,24 @@ These are all 5-minute follow-ups, not blockers.
 ## 10. The 1-line summary
 
 Everything from the brief is built. Push to `irfanhanif89-art/talkmate-website` after creating the empty repo on GitHub. Vercel auto-deploys. Total time to get this live from now: about 4 minutes.
+
+
+---
+
+## Open Issues (logged 2026-05-11)
+
+### Issue 1 — favicon.ico 404
+**Status:** Open
+**Symptom:** avicon.ico returns 404 on all pages of talkmate.com.au
+**Fix:** Add avicon.ico (32x32 and 16x16) to the public/ folder using the TalkMate T logo. Also add icon.png to src/app/ as the Next.js app icon for best coverage.
+**Scope:** talkmate-website repo only
+
+### Issue 2 — CORS www vs non-www mismatch
+**Status:** Open
+**Symptom:** pp.talkmate.com.au/api/public/status returns CORS error on https://www.talkmate.com.au — portal API only allows https://talkmate.com.au (no www).
+**Fix (two parts):**
+1. Portal API CORS config — add https://www.talkmate.com.au to allowed origins alongside https://talkmate.com.au
+2. Website canonical redirect — add www → non-www redirect in 
+ext.config.js using 
+edirects() so https://www.talkmate.com.au/* always 301s to https://talkmate.com.au/*
+**Scope:** talkmate-portal (CORS) + talkmate-website (canonical redirect)
