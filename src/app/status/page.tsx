@@ -23,14 +23,17 @@ const STATUS_LABEL: Record<Service['status'], { bg: string; color: string; label
   down: { bg: 'rgba(239,68,68,0.12)', color: '#EF4444', label: 'DOWN' },
 }
 
+// Fallback uses an empty timestamp so server-rendered HTML matches the
+// initial client render (any new Date() at module load would differ
+// between server and client and trip a hydration mismatch).
 const FALLBACK: StatusPayload = {
   overall: 'operational',
-  updatedAt: new Date().toISOString(),
+  updatedAt: '',
   services: [
-    { name: 'AI Receptionist (Vapi)', description: 'Inbound AI receptionist answering and call handling', status: 'operational', lastCheck: new Date().toISOString() },
-    { name: 'Client Portal', description: 'app.talkmate.com.au — dashboard, settings, billing', status: 'operational', lastCheck: new Date().toISOString() },
-    { name: 'Billing (Stripe)', description: 'Subscriptions, payments, partner payouts', status: 'operational', lastCheck: new Date().toISOString() },
-    { name: 'Command Assistant', description: 'WhatsApp / Telegram natural-language commands', status: 'operational', lastCheck: new Date().toISOString() },
+    { name: 'AI Receptionist', description: 'Inbound AI receptionist answering and call handling', status: 'operational', lastCheck: '' },
+    { name: 'Client Portal', description: 'app.talkmate.com.au — dashboard, settings, billing', status: 'operational', lastCheck: '' },
+    { name: 'Billing (Stripe)', description: 'Subscriptions, payments, partner payouts', status: 'operational', lastCheck: '' },
+    { name: 'Command Assistant', description: 'WhatsApp / Telegram natural-language commands', status: 'operational', lastCheck: '' },
   ],
   incidents: [],
 }
@@ -41,6 +44,7 @@ export default function StatusPage() {
   useEffect(() => {
     let mounted = true
     async function pull() {
+      const now = new Date().toISOString()
       try {
         // Pull from the portal's public status endpoint when available.
         const res = await fetch('https://app.talkmate.com.au/api/public/status', { cache: 'no-store' })
@@ -49,7 +53,7 @@ export default function StatusPage() {
         // API returns { status, checks, timestamp } — map to our internal shape
         const checkNames: Record<string, string> = {
           database: 'Database',
-          voice_agent: 'AI Receptionist (Vapi)',
+          voice_agent: 'AI Receptionist',
           billing: 'Billing (Stripe)',
           portal: 'Client Portal',
         }
@@ -59,12 +63,16 @@ export default function StatusPage() {
           status: (['operational','degraded','down'].includes((val as Record<string,string>).status)
             ? (val as Record<string,string>).status
             : 'operational') as Service['status'],
-          lastCheck: json.timestamp ?? new Date().toISOString(),
+          lastCheck: json.timestamp ?? now,
         }))
         const overall = (['operational','degraded','down'].includes(json.status) ? json.status : 'operational') as Service['status']
-        if (mounted) setData({ overall, services, incidents: [], updatedAt: json.timestamp ?? new Date().toISOString() })
+        if (mounted) setData({ overall, services, incidents: [], updatedAt: json.timestamp ?? now })
       } catch {
-        if (mounted) setData({ ...FALLBACK, updatedAt: new Date().toISOString() })
+        if (mounted) setData({
+          ...FALLBACK,
+          updatedAt: now,
+          services: FALLBACK.services.map(s => ({ ...s, lastCheck: now })),
+        })
       }
     }
     pull()
@@ -94,7 +102,7 @@ export default function StatusPage() {
               {data.overall === 'operational' ? 'All systems operational' : data.overall === 'degraded' ? 'Degraded performance' : 'Service disruption'}
             </div>
             <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginTop: 4 }}>
-              Updated {new Date(data.updatedAt).toLocaleString('en-AU')} · refreshes every 60 seconds
+              {data.updatedAt ? <>Updated {new Date(data.updatedAt).toLocaleString('en-AU')} · </> : null}refreshes every 60 seconds
             </div>
           </div>
         </div>

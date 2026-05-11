@@ -54,13 +54,13 @@ export default function RevenueCalculator() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
             <Output
               label="Revenue captured each month"
-              value={`$${Math.round(result.totalRecovered).toLocaleString()}`}
-              hint={`From missed calls: $${Math.round(result.lostPerMonth).toLocaleString()} · upsell: $${Math.round(result.upsellPerMonth).toLocaleString()}`}
+              value={`$${Math.round(result.totalRecovered).toLocaleString('en-AU')}`}
+              hint={`From missed calls: $${Math.round(result.lostPerMonth).toLocaleString('en-AU')} · upsell: $${Math.round(result.upsellPerMonth).toLocaleString('en-AU')}`}
               accent="var(--orange)"
             />
             <Output
               label="Annual recovery"
-              value={`$${Math.round(result.totalRecovered * 12).toLocaleString()}`}
+              value={`$${Math.round(result.totalRecovered * 12).toLocaleString('en-AU')}`}
               hint="Compounds every month"
               accent="var(--bluel)"
             />

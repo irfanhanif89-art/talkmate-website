@@ -54,17 +54,6 @@ const LOGOS: { name: string; colour: string; svg: string }[] = [
     </svg>`,
   },
   {
-    name: 'Make.com',
-    colour: '#6D00CC',
-    svg: `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="24" cy="24" r="18" stroke="currentColor" stroke-width="2.5" fill="none"/>
-      <circle cx="24" cy="14" r="4" fill="currentColor"/>
-      <circle cx="34" cy="29" r="4" fill="currentColor"/>
-      <circle cx="14" cy="29" r="4" fill="currentColor"/>
-      <path d="M24 18 L34 25M24 18 L14 25" stroke="currentColor" stroke-width="2" opacity="0.5"/>
-    </svg>`,
-  },
-  {
     name: 'Zapier',
     colour: '#FF4A00',
     svg: `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -89,18 +78,6 @@ const LOGOS: { name: string; colour: string; svg: string }[] = [
       <rect x="6" y="6" width="36" height="36" rx="8" fill="currentColor" opacity="0.12"/>
       <rect x="6" y="6" width="36" height="36" rx="8" stroke="currentColor" stroke-width="2.5" fill="none"/>
       <path d="M21 22 C21 20 22.5 19 24.5 19 C27 19 29 20.5 30 22 L33 20 C31.5 17.5 28.5 16 24.5 16 C20 16 17 18.5 17 22.5 C17 29 27 27.5 27 30.5 C27 32.5 25.5 33.5 23 33.5 C20 33.5 18 32 17 30 L14 32 C15.5 34.5 18.5 36 23 36 C27.5 36 31 33.5 31 29.5 C31 23 21 24.5 21 22Z" fill="currentColor"/>
-    </svg>`,
-  },
-  {
-    name: 'Twilio',
-    colour: '#F22F46',
-    svg: `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="24" cy="24" r="20" fill="currentColor" opacity="0.12"/>
-      <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2.5" fill="none"/>
-      <circle cx="18" cy="18" r="3.5" fill="currentColor"/>
-      <circle cx="30" cy="18" r="3.5" fill="currentColor"/>
-      <circle cx="18" cy="30" r="3.5" fill="currentColor"/>
-      <circle cx="30" cy="30" r="3.5" fill="currentColor"/>
     </svg>`,
   },
 ]
