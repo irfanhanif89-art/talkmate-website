@@ -72,7 +72,7 @@ export default function PortalPreview() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
             <div style={{ background: 'linear-gradient(135deg, rgba(74,159,232,0.06), rgba(232,98,42,0.04))', border: '1px solid rgba(74,159,232,0.2)', borderRadius: 14, padding: 18 }}>
               <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--bluel)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>Command Centre</div>
-              <div style={{ fontSize: 14, fontWeight: 700, color: 'white', marginBottom: 4 }}>WhatsApp connected</div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: 'white', marginBottom: 4 }}>Telegram connected</div>
               <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.55)' }}>3 commands today · 47 left</div>
             </div>
 

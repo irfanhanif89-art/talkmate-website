@@ -33,7 +33,7 @@ const FALLBACK: StatusPayload = {
     { name: 'AI Receptionist', description: 'Inbound AI receptionist answering and call handling', status: 'operational', lastCheck: '' },
     { name: 'Client Portal', description: 'app.talkmate.com.au — dashboard, settings, billing', status: 'operational', lastCheck: '' },
     { name: 'Billing (Stripe)', description: 'Subscriptions, payments, partner payouts', status: 'operational', lastCheck: '' },
-    { name: 'Command Assistant', description: 'WhatsApp / Telegram natural-language commands', status: 'operational', lastCheck: '' },
+    { name: 'Command Assistant', description: 'Telegram natural-language commands', status: 'operational', lastCheck: '' },
   ],
   incidents: [],
 }

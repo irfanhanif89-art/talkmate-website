@@ -6,7 +6,7 @@ import { Phone, MessageSquare, FileText, Volume2, Zap, ListChecks, Bell, Activit
 
 const CORE = [
   { icon: Phone, title: 'AI Receptionist', body: 'Answers every call in under 2 seconds. Trained on your business. Speaks your menu, your prices, your hours.', accent: '#E8622A' },
-  { icon: MessageSquare, title: 'TalkMate Command', body: 'Run your business via WhatsApp or Telegram. Send invoices, update menus, query analytics, all in plain English.', accent: '#1565C0' },
+  { icon: MessageSquare, title: 'TalkMate Command', body: 'Run your business via Telegram. Send invoices, update menus, query analytics, all in plain English.', accent: '#1565C0' },
   { icon: Volume2, title: 'Australian voice and accent', body: 'Real Australian voice. Customers hear someone who sounds like a local.', accent: '#22C55E' },
   { icon: ListChecks, title: 'Order & job capture', body: 'Items, quantities, addresses, vehicles, urgency. Captured perfectly every time.', accent: '#8B5CF6' },
   { icon: Bell, title: 'SMS confirmations', body: 'Customer gets a confirmation text before they hang up. Reduces no-shows by 40%.', accent: '#F59E0B' },
@@ -23,7 +23,7 @@ const CRM = [
   { icon: GitBranch, title: 'Pipeline view (real estate, trades, professional services)', body: 'Kanban board with default stages per industry. Drag cards between stages, or let calls auto-move them based on outcome (e.g. booking made → Inspection Booked).', accent: '#E8622A' },
   { icon: Search, title: 'Contact search and merge', body: 'Search by name or phone. Merge duplicates with one click — call history combines automatically.', accent: '#8B5CF6' },
   { icon: Download, title: 'CSV import and export', body: 'Bring an existing customer list across in 4 steps. Export everything anytime — name, phone, tags, call counts, industry data.', accent: '#06B6D4' },
-  { icon: MessageCircle, title: 'Command queries against contact database', body: '"Find Christina from Melbourne", "Show me lapsed regulars", "Who called about pricing this week?" — answered from WhatsApp or Telegram.', accent: '#F59E0B' },
+  { icon: MessageCircle, title: 'Command queries against contact database', body: '"Find Christina from Melbourne", "Show me lapsed regulars", "Who called about pricing this week?" — answered from Telegram.', accent: '#F59E0B' },
 ]
 
 const RELIABILITY = [

@@ -17,7 +17,7 @@ const CARDS = [
   {
     icon: MessageCircle,
     title: 'Query from anywhere',
-    body: 'Ask TalkMate Command "Who are my top callers?" or "Find Christina" from WhatsApp while you\'re driving. Your CRM in your pocket.',
+    body: 'Ask TalkMate Command "Who are my top callers?" or "Find Christina" from Telegram while you\'re driving. Your CRM in your pocket.',
   },
 ]
 
