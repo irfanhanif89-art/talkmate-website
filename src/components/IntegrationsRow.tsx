@@ -63,15 +63,6 @@ const LOGOS: { name: string; colour: string; svg: string }[] = [
     </svg>`,
   },
   {
-    name: 'WhatsApp',
-    colour: '#25D366',
-    svg: `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="24" cy="24" r="20" fill="currentColor" opacity="0.12"/>
-      <circle cx="24" cy="24" r="20" stroke="currentColor" stroke-width="2.5" fill="none"/>
-      <path d="M17 30 C16 33 15 35 14 36 C17 35 19 34 20 33 C21.2 33.6 22.6 34 24 34 C29.5 34 34 29.5 34 24 C34 18.5 29.5 14 24 14 C18.5 14 14 18.5 14 24 C14 26.3 14.8 28.4 17 30Z" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
-    </svg>`,
-  },
-  {
     name: 'Stripe',
     colour: '#635BFF',
     svg: `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">

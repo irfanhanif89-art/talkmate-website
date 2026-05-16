@@ -1,8 +1,34 @@
 # TalkMate Website — Deployment Handoff
 
-**Build:** Master website brief v1.0 + CRM Session 2 updates + Receptionist Reframe + About Page Rewrite + Jade Feedback Patch + Session 7 Fixes + Session 8 CTA Swap
+**Build:** Master website brief v1.0 + CRM Session 2 updates + Receptionist Reframe + About Page Rewrite + Jade Feedback Patch + Session 7 Fixes + Session 8 CTA Swap + Session 15 Scheduler / SMS / Quoting marketing
 **Stack:** Next.js 14 App Router · Tailwind CSS · TypeScript · Lucide icons · Outfit font
 **Target:** Vercel (project name `talkmate-website`, alias to `talkmate.com.au` apex + `www`)
+
+---
+
+## SESSION 15 — Scheduler, SMS, Distance Quoting marketing (2026-05-16)
+
+Mirrors the Session 15 portal launch on the marketing site. Talkmate-portal Session 15 ships native scheduling, direct Twilio SMS confirmations and reminders, waitlist management, account client handling, and live distance quoting. The website needs to surface these features in pricing and on the features page.
+
+### Files changed
+
+| File | What changed |
+|---|---|
+| [src/components/PricingCards.tsx](src/components/PricingCards.tsx) | Starter plan: removed "SMS confirmations" (booking SMS is now Growth/Pro only). Growth plan: added Job scheduler with driver availability, 200 booking SMS/month, Automated waitlist management, Live distance quoting on calls, Account client management, plus the existing TalkMate Command items relocated. Pro plan: gained 500 booking SMS/month. |
+| [src/app/features/page.tsx](src/app/features/page.tsx) | Inserted four new tiles at the top of the Core Features grid: Job scheduler with driver availability (CalendarDays icon, blue), Live distance quoting on calls (MapPin icon, green), SMS confirmations and reminders (Bell icon, amber — replaces the legacy "SMS confirmations" tile), Automated waitlist management (Tag icon, purple), Account client management (Users icon, cyan). |
+| [src/components/IntegrationsRow.tsx](src/components/IntegrationsRow.tsx) | Removed the WhatsApp integration tile per the brief. TalkMate's notification stack is Telegram + SMS only. |
+
+### Deliberately unchanged
+
+- `/demo` page and Hero CTAs (Session 8 work — out of scope here).
+- `/partners` page mentions of WhatsApp as a referral-share medium — that's a generic "send via WhatsApp" reference, not a TalkMate integration claim, and is fine to keep.
+
+### Testing checklist
+
+- `npm run build` compiles successfully. (The `/icon` route prerender error on Windows local builds is pre-existing and Vercel handles it cleanly.)
+- `/pricing` shows the new feature rows on Growth and Pro; Starter no longer lists "SMS confirmations".
+- `/features` shows the four new tiles at the top of the Core features grid.
+- Homepage IntegrationsRow renders without WhatsApp.
 
 ---
 

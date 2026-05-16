@@ -2,14 +2,18 @@ import PageHero from '@/components/PageHero'
 import TwoProducts from '@/components/TwoProducts'
 import FeatureRow from '@/components/FeatureRow'
 import FinalCTA from '@/components/FinalCTA'
-import { Phone, MessageSquare, FileText, Volume2, Zap, ListChecks, Bell, Activity, CreditCard, Database, BarChart, Globe, Sparkles, Upload, Users, ListFilter, GitBranch, Search, Download, MessageCircle } from 'lucide-react'
+import { Phone, MessageSquare, FileText, Volume2, Zap, ListChecks, Bell, Activity, CreditCard, Database, BarChart, Globe, Sparkles, Upload, Users, ListFilter, GitBranch, Search, Download, MessageCircle, CalendarDays, MapPin, Tag } from 'lucide-react'
 
 const CORE = [
   { icon: Phone, title: 'AI Receptionist', body: 'Answers every call in under 2 seconds. Trained on your business. Speaks your menu, your prices, your hours.', accent: '#E8622A' },
+  { icon: CalendarDays, title: 'Job scheduler with driver availability', body: 'Your agent checks availability, books jobs, and sends confirmation SMS automatically. Day and week calendar views built into the portal.', accent: '#4A9FE8' },
+  { icon: MapPin, title: 'Live distance quoting on calls', body: 'Get exact job prices and ETAs on every call. The agent reads pickup and dropoff addresses, runs the distance, and quotes from your price list.', accent: '#22C55E' },
+  { icon: Bell, title: 'SMS confirmations and reminders', body: 'Automatic confirmations and 24-hour and 2-hour reminders keep customers informed and slash no-shows.', accent: '#F59E0B' },
+  { icon: Tag, title: 'Automated waitlist management', body: 'When a booking cancels, the next caller on the waitlist is texted immediately with a 30-minute claim window. Slots refill themselves.', accent: '#8B5CF6' },
+  { icon: Users, title: 'Account client management', body: 'Trade accounts with multiple linked phone numbers. Account rates auto-apply when any linked number calls.', accent: '#06B6D4' },
   { icon: MessageSquare, title: 'TalkMate Command', body: 'Run your business via Telegram. Send invoices, update menus, query analytics, all in plain English.', accent: '#1565C0' },
   { icon: Volume2, title: 'Australian voice and accent', body: 'Real Australian voice. Customers hear someone who sounds like a local.', accent: '#22C55E' },
   { icon: ListChecks, title: 'Order & job capture', body: 'Items, quantities, addresses, vehicles, urgency. Captured perfectly every time.', accent: '#8B5CF6' },
-  { icon: Bell, title: 'SMS confirmations', body: 'Customer gets a confirmation text before they hang up. Reduces no-shows by 40%.', accent: '#F59E0B' },
   { icon: FileText, title: 'Full transcripts and recordings', body: 'Every call logged with searchable transcript and audio. Flag wrong responses to retrain.', accent: '#EC4899' },
   { icon: BarChart, title: 'Live dashboard', body: 'Real-time call data, ROI counter, attributed revenue, busiest hours. Updated every second.', accent: '#06B6D4' },
   { icon: Sparkles, title: 'Upsells on every call', body: 'Suggests garlic bread, extras, premium options. Adds an average of $6.20 per order.', accent: '#E8622A' },
