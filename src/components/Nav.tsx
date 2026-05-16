@@ -87,15 +87,15 @@ export default function Nav() {
             borderRadius: 9, cursor: 'pointer', textDecoration: 'none',
           }}
         >Log in</a>
-        <a
-          href="https://app.talkmate.com.au/signup"
+        <Link
+          href="/#contact"
           style={{
             padding: '9px 22px', fontFamily: 'Outfit, sans-serif',
             fontSize: 14, fontWeight: 700, color: 'white',
             background: 'var(--orange)', border: 'none',
             borderRadius: 9, cursor: 'pointer', textDecoration: 'none',
           }}
-        >Start free trial</a>
+        >Book a Demo</Link>
       </div>
 
       <button
@@ -155,7 +155,7 @@ export default function Nav() {
           </nav>
           <div style={{ marginTop: 28, display: 'flex', flexDirection: 'column', gap: 10 }}>
             <a href="https://app.talkmate.com.au/login" style={{ padding: '14px 18px', borderRadius: 10, border: '1px solid rgba(255,255,255,0.15)', color: 'white', textDecoration: 'none', fontWeight: 600, textAlign: 'center', fontSize: 15 }}>Log in</a>
-            <a href="https://app.talkmate.com.au/signup" onClick={() => setMobileOpen(false)} style={{ padding: '14px 18px', borderRadius: 10, background: 'var(--orange)', color: 'white', textDecoration: 'none', fontWeight: 700, textAlign: 'center', fontSize: 15 }}>Start free trial</a>
+            <Link href="/#contact" onClick={() => setMobileOpen(false)} style={{ padding: '14px 18px', borderRadius: 10, background: 'var(--orange)', color: 'white', textDecoration: 'none', fontWeight: 700, textAlign: 'center', fontSize: 15 }}>Book a Demo</Link>
           </div>
         </div>
       )}

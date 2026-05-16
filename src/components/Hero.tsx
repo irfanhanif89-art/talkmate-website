@@ -71,16 +71,16 @@ export default function Hero() {
           </p>
 
           <div style={{ display: 'flex', gap: 14, marginBottom: 30, flexWrap: 'wrap' }}>
-            <a href="https://app.talkmate.com.au/signup" className="btn-orange" style={{ fontSize: 17, padding: '17px 30px' }}>
-              Start free trial <ArrowRight size={18} />
-            </a>
+            <Link href="/#contact" className="btn-orange" style={{ fontSize: 17, padding: '17px 30px' }}>
+              Book a Demo <ArrowRight size={18} />
+            </Link>
             <Link href="#hear-it-live" className="btn-ghost" style={{ fontSize: 16 }}>
               <Phone size={16} /> Hear it Live · Free
             </Link>
           </div>
 
           <div style={{ display: 'flex', gap: 22, flexWrap: 'wrap', marginBottom: 16 }}>
-            {['No credit card required', 'No setup fees', 'Live in 24 hours', '14-day money back'].map(t => (
+            {['No setup fees', 'Live in 24 hours', '14-day money back'].map(t => (
               <span key={t} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>
                 <Check size={14} color="var(--green)" /> {t}
               </span>

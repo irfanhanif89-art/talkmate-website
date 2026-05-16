@@ -1,8 +1,95 @@
 # TalkMate Website — Deployment Handoff
 
-**Build:** Master website brief v1.0 + CRM Session 2 updates + Receptionist Reframe + About Page Rewrite + Jade Feedback Patch + Session 7 Fixes + Session 8 CTA Swap + Session 15 Scheduler / SMS / Quoting marketing
+**Build:** Master website brief v1.0 + CRM Session 2 updates + Receptionist Reframe + About Page Rewrite + Jade Feedback Patch + Session 7 Fixes + Session 8 CTA Swap + Session 15 Scheduler / SMS / Quoting marketing + Free Trial Removal
 **Stack:** Next.js 14 App Router · Tailwind CSS · TypeScript · Lucide icons · Outfit font
 **Target:** Vercel (project name `talkmate-website`, alias to `talkmate.com.au` apex + `www`)
+
+---
+
+## FREE TRIAL REMOVAL — 2026-05-16
+
+Pulls every "free trial" reference off the public marketing site. The 7-day
+trial in the portal stays — it's now only mentioned verbally on cold calls
+as a last-resort close. Every primary CTA that previously said "Start free
+trial" now says "Book a Demo" and points to a new `#contact` anchor on the
+homepage CallbackForm. The pricing plan CTAs already said "Get Starter /
+Growth / Pro" (they were never trial-flavoured) so they were left as-is.
+
+### Files changed
+
+| File | What changed |
+|---|---|
+| [src/components/Hero.tsx](src/components/Hero.tsx) | Primary hero button: "Start free trial" → "Book a Demo", href swapped from `https://app.talkmate.com.au/signup` to `/#contact`, switched from `<a>` to `<Link>` (same-origin anchor now). Trust pills array: removed "No credit card required"; kept "No setup fees", "Live in 24 hours", "14-day money back". |
+| [src/components/Nav.tsx](src/components/Nav.tsx) | Desktop top-right CTA and mobile menu CTA: "Start free trial" → "Book a Demo", `https://app.talkmate.com.au/signup` → `/#contact`, `<a>` → `<Link>`. |
+| [src/components/StickyBottomBar.tsx](src/components/StickyBottomBar.tsx) | Sticky bar CTA: "Start free trial →" → "Book a Demo →", `https://app.talkmate.com.au/signup` → `/#contact`, `<a>` → `<Link>`. |
+| [src/components/FinalCTA.tsx](src/components/FinalCTA.tsx) | Trust strip below CTAs: "No credit card required · Live in 24 hours · 14-day money-back guarantee" → "Live in 24 hours · 14-day money-back guarantee". |
+| [src/components/CallbackForm.tsx](src/components/CallbackForm.tsx) | Added `id="contact"` plus `scrollMarginTop: 80` to the wrapping `<section>` so `/#contact` lands on the callback form below the fixed nav. |
+| [src/app/demo/page.tsx](src/app/demo/page.tsx) | Form footer microcopy: "We'll be in touch within 1 business day. No credit card required." → "We'll be in touch within 1 business day." |
+
+### Brief deviation — "14-day money-back guarantee" preserved
+
+The brief's Part 3 final-search asked for **zero** results on `14-day` and
+`14 day`. Following that literally would have wiped the 14-day money-back
+guarantee — which is a separate product feature, codified in Terms section 4
+("4.1 If TalkMate is not working for your business within the first 14 days
+of your agent going live, contact us at hello@talkmate.com.au for a full
+refund...") and surfaced in the FAQ, pricing page, blog posts, receptionist
+slug pages, and the homepage trust pills.
+
+User explicitly confirmed mid-session: **keep money-back, remove free trial
+only**. So the strict Part 3 search rule was relaxed for `14-day` /
+`14 day`; the strict rule still applies to `free trial`, `freeTrial`,
+`free-trial`, `try free`, `start free`, and (per Part 2.5) `no credit card`.
+
+### Deliberately unchanged
+
+- **`/demo` page hero, form, and "Why Book a Demo" panels** — none of them
+  referenced free trial. The form CTA still reads "Book my free demo"
+  (the word "free" here qualifies the demo, not a trial offer).
+- **PricingCards plan CTAs** — already "Get Starter / Growth / Pro" with
+  `?plan=` hrefs going to `app.talkmate.com.au/signup`. Brief 2.3 only
+  applied to buttons that referenced trial; these don't.
+- **Industry slug pages** (`/industries/[slug]`) — already use "Book a Free
+  Demo" via the shared `PageHero` and `FinalCTA`. No trial references to
+  remove.
+- **Receptionist slug pages** (`/receptionist/[slug]`) — final CTA already
+  reads "Get started for $299/mo" → `/pricing`. No trial references.
+- **`Lily` (tutoring receptionist) — "trial lessons"** in
+  `src/lib/receptionists.ts` are industry knowledge bullets describing what
+  the tutoring agent handles (trial lessons are a tutoring industry term).
+  Not TalkMate's trial offer.
+- **Layout/SEO metadata** — `src/app/layout.tsx` title/description/OG copy
+  never referenced free trial.
+- **Footer** — no trial copy. Untouched.
+
+### Anchor target
+
+The new `/#contact` href resolves to the CallbackForm section on the
+homepage. CallbackForm is rendered by [src/app/page.tsx](src/app/page.tsx)
+right after Hero and ProofBar, so the scroll target is high on the page.
+`scrollMarginTop: 80` accounts for the fixed-position 68px nav. The Nav
+component's `/#contact` link uses `next/link`, which on the homepage
+falls back to a same-page anchor scroll (no full nav).
+
+### Final search
+
+Strict-pass strings — all return **zero** results across `src/`:
+- `free trial`, `free-trial`, `freeTrial`
+- `try free`, `start free`
+- `no credit card`
+
+Money-back strings (intentionally preserved): Hero trust pill,
+FinalCTA strip, PricingCards GUARANTEES, FAQ, pricing FAQ, Terms §4,
+blog posts, demo page, receptionist slug page.
+
+### Verification
+
+- `npm run build` — TypeScript and 41 static pages compile cleanly. The
+  `/icon` prerender error on Windows local builds is the pre-existing
+  `@vercel/og` + path-with-space issue (Vercel's Linux runner handles it
+  cleanly — same behaviour as Session 15).
+- No new dependencies, no new env vars, no portal changes, no Make.com
+  or Vapi changes required.
 
 ---
 

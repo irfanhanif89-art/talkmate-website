@@ -27,7 +27,7 @@ export default function FinalCTA({ heading, sub, primary = 'Book a Free Demo', p
           </Link>
         </div>
         <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>
-          No credit card required · Live in 24 hours · 14-day money-back guarantee
+          Live in 24 hours · 14-day money-back guarantee
         </p>
       </div>
     </section>
