@@ -34,7 +34,7 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
         eyebrow={ind.hero.eyebrow}
         title={<><span>{ind.emoji}</span> {ind.hero.title}</>}
         sub={ind.hero.sub}
-        primary={{ label: 'Book a Free Demo', href: '/demo' }}
+        primary={{ label: 'Book a Free Demo', href: '/#contact' }}
         secondary={{ label: 'See pricing', href: '/pricing' }}
       />
 
@@ -184,6 +184,7 @@ export default function IndustryPage({ params }: { params: { slug: string } }) {
         heading={<>{ind.name}, ready to <span className="orange">stop missing calls</span>?</>}
         sub={`Book a 30-minute demo. We'll show you exactly how TalkMate handles ${ind.name.toLowerCase()} calls and what it'd recover for your business.`}
         primary="Book a Free Demo"
+        primaryHref="/#contact"
       />
     </>
   )

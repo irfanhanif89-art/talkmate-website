@@ -1,8 +1,79 @@
 # TalkMate Website — Deployment Handoff
 
-**Build:** Master website brief v1.0 + CRM Session 2 updates + Receptionist Reframe + About Page Rewrite + Jade Feedback Patch + Session 7 Fixes + Session 8 CTA Swap + Session 15 Scheduler / SMS / Quoting marketing + Free Trial Removal
+**Build:** Master website brief v1.0 + CRM Session 2 updates + Receptionist Reframe + About Page Rewrite + Jade Feedback Patch + Session 7 Fixes + Session 8 CTA Swap + Session 15 Scheduler / SMS / Quoting marketing + Free Trial Removal + Session 17B (Sign Up CTAs)
 **Stack:** Next.js 14 App Router · Tailwind CSS · TypeScript · Lucide icons · Outfit font
 **Target:** Vercel (project name `talkmate-website`, alias to `talkmate.com.au` apex + `www`)
+
+---
+
+## SESSION 17B -- Sign Up CTAs + industries kept on demo path (2026-05-19)
+
+The post-free-trial reframe pointed every primary CTA at `/#contact`.
+This pass takes the primary CTAs back onto a direct **signup** action
+for the hot-traffic surfaces (Nav, Hero, Sticky bar, FinalCTA default)
+while preserving the warm-traffic "Book a Free Demo" -> `/#contact`
+route on industry pages where the visitor needs to speak to someone
+first.
+
+### Files changed
+
+| File | What changed |
+|---|---|
+| [src/components/Nav.tsx](src/components/Nav.tsx) | Desktop top-right CTA: `Book a Demo` -> `Sign Up` -> `https://app.talkmate.com.au/signup`. Mobile drawer CTA: same. Switched `<Link>` -> `<a>` since destination is cross-origin. |
+| [src/components/Hero.tsx](src/components/Hero.tsx) | Primary hero button: `Book a Demo` -> `Start Now` -> `https://app.talkmate.com.au/signup`. `<Link>` -> `<a>` for cross-origin. Secondary `Hear it Live · Free` unchanged. |
+| [src/components/StickyBottomBar.tsx](src/components/StickyBottomBar.tsx) | Sticky bar CTA: `Book a Demo ->` -> `Sign Up Free ->` -> `https://app.talkmate.com.au/signup`. `<Link>` -> `<a>`. |
+| [src/components/FinalCTA.tsx](src/components/FinalCTA.tsx) | Defaults rewritten: `primary = 'Sign Up'`, `primaryHref = 'https://app.talkmate.com.au/signup'`, `secondary = 'See pricing'`. Added an `external URL` branch so the primary button renders as `<a>` for cross-origin Stripe / signup destinations, `<Link>` for in-site anchors. Industry-page invocations override `primary` + `primaryHref` to keep `Book a Free Demo` -> `/#contact`. |
+| [src/app/industries/[slug]/page.tsx](src/app/industries/%5Bslug%5D/page.tsx) | PageHero primary -> `Book a Free Demo` / `/#contact` (was `/demo`). FinalCTA invocation now passes `primaryHref="/#contact"` so the label and link match. |
+| [src/app/industries/page.tsx](src/app/industries/page.tsx) | FinalCTA invocation now passes `primaryHref="/#contact"` alongside the existing `primary="Book a Free Demo"`. |
+| [src/app/features/page.tsx](src/app/features/page.tsx) | FinalCTA invocation gets `primaryHref="/#contact"` so the explicit `Book a Free Demo` label points at the callback anchor. |
+| [src/app/how-it-works/page.tsx](src/app/how-it-works/page.tsx) | FinalCTA `primaryHref` changed from `/demo` to `/#contact`. Same label. |
+
+### CTA matrix after this change
+
+| Surface | Label | Link |
+|---|---|---|
+| Nav desktop / mobile | Sign Up | app.talkmate.com.au/signup |
+| Hero primary | Start Now | app.talkmate.com.au/signup |
+| Hero secondary | Hear it Live · Free | #hear-it-live |
+| Sticky bottom bar | Sign Up Free -> | app.talkmate.com.au/signup |
+| Homepage `<FinalCTA />` | Sign Up | app.talkmate.com.au/signup |
+| Pricing `<FinalCTA />` | Sign Up | app.talkmate.com.au/signup |
+| Pricing plan cards (Get Starter / Growth / Pro) | unchanged | app.talkmate.com.au/signup?plan=... |
+| Industries `[slug]` PageHero | Book a Free Demo | /#contact |
+| Industries `[slug]` FinalCTA | Book a Free Demo | /#contact |
+| Industries listing FinalCTA | Book a Free Demo | /#contact |
+| Features FinalCTA | Book a Free Demo | /#contact |
+| How-it-works FinalCTA | Book a Free Demo | /#contact |
+| Partners FinalCTA | Join the Partner Program | app.talkmate.com.au/refer-and-earn |
+| Receptionist `[slug]` page CTA | Hire <Name>, $299/mo | /pricing |
+
+### FIX 7 -- `/receptionist/*` 404 investigation
+
+Brief said all 13 receptionist slug pages 404 in production. **Code is
+correct:** `src/app/receptionist/[slug]/page.tsx` exports
+`generateStaticParams` returning all 13 slugs, and a local
+`npm run build` produces all 13 HTML files at
+`.next/server/app/receptionist/<slug>.html`.
+
+If the pages still 404 in production after this deploy, the cause is
+not in code -- it's one of:
+
+- Stale Vercel deploy missing the routes (forced a redeploy by pushing
+  this commit).
+- DNS / proxy on `talkmate.com.au/receptionist/*` routing somewhere
+  else (verify `dig talkmate.com.au` resolves to a Vercel CNAME).
+- A platform-side host rewrite.
+- A browser cache hit on a previous 404 (test in incognito).
+
+No code change applied for FIX 7 per brief.
+
+### Verification
+
+- `npm run build` -- compiles clean, 41 static pages including all 13
+  `/receptionist/<slug>` HTML files. The `/icon` prerender error on
+  Windows local builds is the pre-existing `@vercel/og` path-with-spaces
+  quirk (Vercel's Linux runner ships clean).
+- No new dependencies, no env vars, no portal changes.
 
 ---
 

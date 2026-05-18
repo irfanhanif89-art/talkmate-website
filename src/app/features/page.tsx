@@ -104,6 +104,7 @@ export default function FeaturesPage() {
         heading={<>See every feature <span className="orange">in action</span>. Book a 30-minute demo.</>}
         sub="A real person, a real walk-through, an honest answer to whether TalkMate fits your business."
         primary="Book a Free Demo"
+        primaryHref="/#contact"
       />
     </>
   )

@@ -56,7 +56,7 @@ export default function HowItWorksPage() {
         heading={<>Book a 30-minute onboarding call and you&apos;ll be <span className="orange">live before the end of the week</span>.</>}
         sub="No salesperson reading from a script. A real person who'll listen to your business and have your AI live before Friday."
         primary="Book a Free Demo"
-        primaryHref="/demo"
+        primaryHref="/#contact"
       />
     </>
   )

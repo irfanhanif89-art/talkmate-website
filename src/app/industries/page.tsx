@@ -40,6 +40,7 @@ export default function IndustriesPage() {
         heading={<>Don&apos;t see your industry? <span className="orange">We probably handle it anyway.</span></>}
         sub="The agent learns your specific workflow during onboarding. Book a 30-minute call and we'll show you exactly how it'd work for your business."
         primary="Book a Free Demo"
+        primaryHref="/#contact"
       />
     </>
   )

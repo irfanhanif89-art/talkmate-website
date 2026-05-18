@@ -71,9 +71,9 @@ export default function Hero() {
           </p>
 
           <div style={{ display: 'flex', gap: 14, marginBottom: 30, flexWrap: 'wrap' }}>
-            <Link href="/#contact" className="btn-orange" style={{ fontSize: 17, padding: '17px 30px' }}>
-              Book a Demo <ArrowRight size={18} />
-            </Link>
+            <a href="https://app.talkmate.com.au/signup" className="btn-orange" style={{ fontSize: 17, padding: '17px 30px' }}>
+              Start Now <ArrowRight size={18} />
+            </a>
             <Link href="#hear-it-live" className="btn-ghost" style={{ fontSize: 16 }}>
               <Phone size={16} /> Hear it Live · Free
             </Link>
