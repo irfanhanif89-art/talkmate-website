@@ -93,7 +93,10 @@ export default function PricingCards({ background = 'light' }: { background?: 'l
           border: `1px solid ${isDark ? 'rgba(255,255,255,0.06)' : 'var(--edge)'}`,
           borderRadius: 100,
           padding: '10px 18px',
-          display: 'inline-flex',
+          // display: 'flex' (not inline-flex) so `margin: 0 auto` actually
+          // centres the pill horizontally. inline-flex leaves it inline-
+          // positioned and the pill ends up left-aligned under the title.
+          display: 'flex',
           flexWrap: 'wrap',
           gap: 16,
           margin: '0 auto 36px',
@@ -101,6 +104,7 @@ export default function PricingCards({ background = 'light' }: { background?: 'l
           color: isDark ? 'rgba(255,255,255,0.6)' : 'var(--muted)',
           alignItems: 'center', justifyContent: 'center',
           width: 'fit-content',
+          maxWidth: '100%',
         }}>
           {GUARANTEES.map((g, i) => (
             <span key={g} style={{ display: 'flex', alignItems: 'center', gap: 6, fontWeight: 500 }}>
