@@ -155,6 +155,6 @@ export const posts: BlogPost[] = [
 <p>A fish and chip shop in Burleigh Heads implemented TalkMate to handle their after-hours call volume. In the first month, the agent answered 94 calls that would previously have gone unanswered after 8:30pm. Of those, 71 resulted in orders — \$4,402 in recovered revenue from calls that had been silently lost every week.</p>
 <p><em>"I had no idea how much I was losing. I thought after-hours calls were just people calling at the wrong time. Turns out they're the customers most likely to order."</em></p>
 <h2>Getting Started</h2>
-<p>TalkMate goes live within 24 hours. No setup fees, no hardware, no lock-in. From \$299 per month — typically recovered within the first few days of captured after-hours orders. Visit talkmate.com.au to hear a live demo in 30 seconds.</p>`
+<p>TalkMate goes live within 24 hours. No hardware, no lock-in. From \$299 per month plus a one-off setup fee. Typically recovered within the first few days of captured after-hours orders. Visit talkmate.com.au to hear a live demo in 30 seconds.</p>`
   }
 ];

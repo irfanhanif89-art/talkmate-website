@@ -25,7 +25,7 @@ const SECTIONS: Array<{ heading: string; faqs: Array<{ q: string; a: string }> }
   {
     heading: 'Pricing and Billing',
     faqs: [
-      { q: 'Is there a setup fee?', a: 'No. There is never a setup fee. Every plan is monthly subscription only.' },
+      { q: 'Is there a setup fee?', a: 'Yes, there is a one-off setup fee that covers configuring your dedicated AI receptionist, voice tuning, business knowledge setup, and go-live support. Starter is $299, Growth is $349, Pro is $399. After that you just pay your monthly or annual subscription.' },
       { q: 'What happens if I exceed my call limit?', a: 'Overage is $0.45 per call. We send alerts at 80% and 95% so you can upgrade or accept the overage. No surprise bills.' },
       { q: 'Can I cancel anytime?', a: 'Yes. Cancel anytime from your portal. You keep service through the end of your current billing period.' },
       { q: 'What does the 14-day money-back guarantee cover?', a: 'Full refund, no questions asked, within 14 days of going live. If TalkMate isn\'t recovering revenue for you, we don\'t want to keep your money.' },
