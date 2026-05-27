@@ -1,7 +1,12 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import Logo from './Logo'
 
 export default function Footer() {
+  const pathname = usePathname()
+  if (pathname === '/') return null
   return (
     <footer style={{ background: '#020A14', borderTop: '1px solid rgba(255,255,255,0.05)', paddingBottom: 90 }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '64px 32px 32px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 40 }}>

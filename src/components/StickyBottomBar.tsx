@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { X } from 'lucide-react'
 
-const HIDE_ON = ['/demo', '/status']
+const HIDE_ON = ['/', '/demo', '/status']
 
 export default function StickyBottomBar() {
   const pathname = usePathname()

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { ChevronDown, Menu, X } from 'lucide-react'
 import Logo from './Logo'
 
@@ -32,9 +33,12 @@ const COMPANY_LINKS: NavLinkItem[] = [
 ]
 
 export default function Nav() {
+  const pathname = usePathname()
   const [openDropdown, setOpenDropdown] = useState<'industries' | 'company' | null>(null)
   const [mobileOpen, setMobileOpen] = useState(false)
   const ref = useRef<HTMLDivElement | null>(null)
+
+  if (pathname === '/') return null
 
   useEffect(() => {
     function onDoc(e: MouseEvent) {
