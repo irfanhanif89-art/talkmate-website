@@ -352,7 +352,7 @@ export default function HomePage() {
     <div className="tm-home">
       <header className="wrap" data-screen-label="Header">
         <nav className="nav">
-          <a href="#" className="brand" aria-label="TalkMate home" onClick={handleAnchor}>
+          <a href="/" className="brand" aria-label="TalkMate home">
             <span className="brand-mark" aria-hidden="true"></span>
             <span>TalkMate</span>
           </a>
@@ -478,6 +478,7 @@ export default function HomePage() {
 
         {/* 02 LIVE DEMO */}
         <section className="section section--demo" id="demo" data-screen-label="02 Live Demo">
+          <span id="live-demo" aria-hidden="true" />
           <div className="wrap">
             <p className="section-eyebrow">Live Demo</p>
             <h2 className="section-title">Hear any of your team <span className="accent">before you hire them.</span></h2>
@@ -650,6 +651,7 @@ export default function HomePage() {
 
         {/* 05 MEET THE TEAM */}
         <section className="section" id="team" data-screen-label="05 Meet the team">
+          <span id="meet-your-receptionist" aria-hidden="true" />
           <div className="wrap">
             <p className="section-eyebrow">Meet the team</p>
             <h2 className="section-title">Your AI <span className="accent">team.</span> Hire one, hire all.</h2>
@@ -1001,6 +1003,7 @@ export default function HomePage() {
 
         {/* 11 FINAL CTA */}
         <section className="section section--final" id="final" data-screen-label="11 Final CTA">
+          <span id="contact" aria-hidden="true" />
           <div className="wrap">
             <h2 className="section-title">Every day you wait is <span className="accent">revenue left behind.</span></h2>
             <p className="section-sub">The average TalkMate client recovers $4,200 in missed orders in their first month. Setup takes 24 hours. We handle everything.</p>
@@ -1018,7 +1021,7 @@ export default function HomePage() {
         <div className="wrap">
           <div className="footer-inner">
             <div className="footer-brand">
-              <a href="#" className="brand" aria-label="TalkMate home" onClick={handleAnchor}>
+              <a href="/" className="brand" aria-label="TalkMate home">
                 <span className="brand-mark" aria-hidden="true"></span>
                 <span>TalkMate</span>
               </a>

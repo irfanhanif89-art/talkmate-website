@@ -60,7 +60,9 @@ export default function FeaturesPage() {
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 14 }}>
             {CORE.map(f => (
-              <FeatureRow key={f.title} icon={f.icon} title={f.title} body={f.body} accent={f.accent} />
+              <div key={f.title} id={f.title === 'TalkMate Command' ? 'command' : undefined} style={{ scrollMarginTop: 80 }}>
+                <FeatureRow icon={f.icon} title={f.title} body={f.body} accent={f.accent} />
+              </div>
             ))}
           </div>
         </div>

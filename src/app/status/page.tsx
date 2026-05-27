@@ -46,8 +46,9 @@ export default function StatusPage() {
     async function pull() {
       const now = new Date().toISOString()
       try {
-        // Pull from the portal's public status endpoint when available.
-        const res = await fetch('https://app.talkmate.com.au/api/public/status', { cache: 'no-store' })
+        // Pull from our same-origin proxy, which fetches the portal
+        // server-side and avoids the cross-origin CORS dependency.
+        const res = await fetch('/api/status', { cache: 'no-store' })
         if (!res.ok) throw new Error(String(res.status))
         const json = await res.json()
         // API returns { status, checks, timestamp } — map to our internal shape
