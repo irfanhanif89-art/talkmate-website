@@ -1045,7 +1045,7 @@ export default function HomePage() {
               <a href="/privacy">Privacy Policy</a>
               <a href="/terms">Terms of Service</a>
               <a href="/sla">Service Level Agreement</a>
-              <a href="/privacy#privacy-act">Australian Privacy Act</a>
+              <a href="/privacy">Australian Privacy Act</a>
             </div>
           </div>
           <div className="footer-bottom">
