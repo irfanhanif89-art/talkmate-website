@@ -8,6 +8,13 @@ const nextConfig = {
         destination: 'https://talkmate.com.au/:path*',
         permanent: true,
       },
+      {
+        // Bare /receptionist has no content of its own (only /receptionist/[slug]).
+        // Send anyone who lands here to the homepage's team section.
+        source: '/receptionist',
+        destination: '/#team',
+        permanent: false,
+      },
     ]
   },
   reactStrictMode: true,
