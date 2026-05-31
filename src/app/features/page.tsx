@@ -2,10 +2,14 @@ import PageHero from '@/components/PageHero'
 import TwoProducts from '@/components/TwoProducts'
 import FeatureRow from '@/components/FeatureRow'
 import FinalCTA from '@/components/FinalCTA'
-import { Phone, MessageSquare, FileText, Volume2, Zap, ListChecks, Bell, Activity, CreditCard, Database, BarChart, Globe, Sparkles, Upload, Users, ListFilter, GitBranch, Search, Download, MessageCircle, CalendarDays, MapPin, Tag } from 'lucide-react'
+import { Phone, MessageSquare, FileText, Volume2, Zap, ListChecks, Bell, Activity, CreditCard, Database, BarChart, Globe, Sparkles, Upload, Users, ListFilter, GitBranch, Search, Download, MessageCircle, CalendarDays, MapPin, Tag, Inbox as InboxIcon, Star, PhoneMissed } from 'lucide-react'
 
 const CORE = [
   { icon: Phone, title: 'AI Receptionist', body: 'Answers every call in under 2 seconds. Trained on your business. Speaks your menu, your prices, your hours.', accent: '#E8622A' },
+  { icon: InboxIcon, title: 'Two-way SMS Inbox', body: 'Manage every customer text from one place. Reply instantly, let AI suggest responses, and never lose a lead in a text thread.', accent: '#E8622A' },
+  { icon: Sparkles, title: 'Train TalkMate', body: 'Teach TalkMate exactly how to represent your business. Add FAQs, services, pricing, and team info. Changes go live in seconds.', accent: '#7C3AED' },
+  { icon: PhoneMissed, title: 'Missed Call Win-back', body: 'When a caller hangs up before TalkMate answers, it automatically texts them back within 90 seconds. No lead left behind.', accent: '#F59E0B' },
+  { icon: Star, title: 'Google Review Requests', body: 'After every job, TalkMate automatically asks for a Google review. More 5-star reviews on autopilot.', accent: '#22C55E' },
   { icon: CalendarDays, title: 'Job scheduler with driver availability', body: 'Your agent checks availability, books jobs, and sends confirmation SMS automatically. Day and week calendar views built into the portal.', accent: '#4A9FE8' },
   { icon: MapPin, title: 'Live distance quoting on calls', body: 'Get exact job prices and ETAs on every call. The agent reads pickup and dropoff addresses, runs the distance, and quotes from your price list.', accent: '#22C55E' },
   { icon: Bell, title: 'SMS confirmations and reminders', body: 'Automatic confirmations and 24-hour and 2-hour reminders keep customers informed and slash no-shows.', accent: '#F59E0B' },
