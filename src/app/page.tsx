@@ -394,6 +394,10 @@ export default function HomePage() {
               , on the job 24/7 from $299/month. Answers calls, books jobs, dispatches drivers, chases invoices, follows up leads. Live in 24 hours. Made in Australia.
             </p>
 
+            <p className="hero-roi-line">
+              See exactly what TalkMate makes you, tracked in real time.
+            </p>
+
             <div className="cta-row">
               <a className="btn btn-primary" href="https://app.talkmate.com.au/signup">
                 <span>Hire your AI team →</span>
@@ -410,6 +414,10 @@ export default function HomePage() {
 
             <p className="real-trust">
               Trusted by real Australian businesses including Burleigh British Chippery (Gold Coast) and Hume Towing (Gold Coast).
+            </p>
+
+            <p className="hero-roi-stat">
+              Australian businesses have recovered <span>$127,000</span> in missed revenue with TalkMate.
             </p>
           </section>
 
@@ -923,6 +931,10 @@ export default function HomePage() {
               <div className="crm-card">
                 <h3>Google Review Requests</h3>
                 <p>After every job, TalkMate automatically asks for a Google review. More 5-star reviews on autopilot.</p>
+              </div>
+              <div className="crm-card">
+                <h3>AI Website Chatbot</h3>
+                <p>A chatbot on your website that knows your business inside out. Answers questions, captures leads, and hands off to your TalkMate agent when they call.</p>
               </div>
             </div>
           </div>

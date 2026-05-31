@@ -221,6 +221,13 @@
 .tm-home .real-trust {
   margin-top: 22px; font-size: 13.5px; color: var(--vmuted); max-width: 560px; line-height: 1.6;
 }
+.tm-home .hero-roi-line {
+  margin-top: 14px; font-size: 15px; font-weight: 600; color: #fff; max-width: 480px; line-height: 1.5;
+}
+.tm-home .hero-roi-stat {
+  margin-top: 14px; font-size: 13px; color: var(--vmuted); max-width: 560px; line-height: 1.6;
+}
+.tm-home .hero-roi-stat span { color: var(--orange); font-weight: 700; }
 
 /* ---------- Phone visual ---------- */
 .tm-home .hero-right {

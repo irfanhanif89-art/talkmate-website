@@ -1,5 +1,6 @@
 import PageHero from '@/components/PageHero'
 import PricingCards from '@/components/PricingCards'
+import PricingComparison from '@/components/PricingComparison'
 import FinalCTA from '@/components/FinalCTA'
 
 const FAQS = [
@@ -19,6 +20,8 @@ export default function PricingPage() {
       />
 
       <PricingCards />
+
+      <PricingComparison />
 
       <section style={{ background: 'var(--navy)' }}>
         <div className="section-pad" style={{ maxWidth: 880, margin: '0 auto', textAlign: 'center' }}>
