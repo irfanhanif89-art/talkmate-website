@@ -35,6 +35,9 @@ export const PLANS: Plan[] = [
       '24/7 AI receptionist',
       'Order taking and FAQs',
       'Upselling on every call',
+      'Train TalkMate self-service knowledge base',
+      'Missed call win-back SMS',
+      'Google review requests',
       'Live dashboard',
       'Email support',
     ],
@@ -53,6 +56,7 @@ export const PLANS: Plan[] = [
     features: [
       'Everything in Starter',
       '800 calls per month',
+      'Two-way SMS inbox with AI suggested replies',
       'Job scheduler with driver availability',
       '200 booking SMS confirmations and reminders per month',
       'Automated waitlist management',

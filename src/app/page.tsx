@@ -900,6 +900,34 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* 09b NEW FEATURES — Sprint Session 1 */}
+        <section className="section" id="customer-care" data-screen-label="09b Customer care">
+          <div className="wrap">
+            <p className="section-eyebrow">Customer care, automated</p>
+            <h2 className="section-title">Catch every lead. <span className="accent">Earn every review.</span></h2>
+            <p className="section-sub">Four features that make sure no caller falls through the cracks, and every happy customer becomes a 5-star review.</p>
+
+            <div className="crm-grid">
+              <div className="crm-card">
+                <h3>Two-way SMS Inbox</h3>
+                <p>Manage every customer text from one place. Reply instantly, let AI suggest responses, and never lose a lead in a text thread.</p>
+              </div>
+              <div className="crm-card">
+                <h3>Train TalkMate</h3>
+                <p>Teach TalkMate exactly how to represent your business. Add FAQs, services, pricing, and team info. Changes go live in seconds.</p>
+              </div>
+              <div className="crm-card">
+                <h3>Missed Call Win-back</h3>
+                <p>When a caller hangs up before TalkMate answers, it automatically texts them back within 90 seconds. No lead left behind.</p>
+              </div>
+              <div className="crm-card">
+                <h3>Google Review Requests</h3>
+                <p>After every job, TalkMate automatically asks for a Google review. More 5-star reviews on autopilot.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* 10 INDUSTRY PERSONA GRID */}
         <section className="section" id="industries" data-screen-label="10 Industries">
           <div className="wrap">
