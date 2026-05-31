@@ -3,6 +3,7 @@ import './globals.css'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import StickyBottomBar from '@/components/StickyBottomBar'
+import ChatbotWidget from '@/components/ChatbotWidget'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://talkmate.com.au'),
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main>{children}</main>
         <Footer />
         <StickyBottomBar />
+        <ChatbotWidget />
       </body>
     </html>
   )
