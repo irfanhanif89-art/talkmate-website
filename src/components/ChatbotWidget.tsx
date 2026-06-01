@@ -14,7 +14,10 @@ export default function ChatbotWidget() {
 
   return (
     <Script
-      src="https://app.talkmate.com.au/widget/talkmate-chat.js"
+      // ?v bumped to bust the browser/CDN cache when the widget script
+      // changes (it's a static file with no content hash). v2 = Firefox
+      // caret/typing hardening.
+      src="https://app.talkmate.com.au/widget/talkmate-chat.js?v=2"
       data-business-id={chatbotId}
       strategy="afterInteractive"
     />
