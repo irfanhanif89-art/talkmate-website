@@ -908,3 +908,45 @@
   .tm-home .footer-inner { grid-template-columns: 1fr; }
   .tm-home .sticky-cta p { font-size: 11.5px; line-height: 1.4; }
 }
+
+/* ---------- Mobile menu overlay (homepage) ---------- */
+.tm-home .tm-mobile-menu {
+  position: fixed; inset: 0; z-index: 300;
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bot) 100%);
+  padding: 20px 24px 32px;
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+  animation: tmMenuFade .15s ease;
+}
+@keyframes tmMenuFade { from { opacity: 0; } to { opacity: 1; } }
+.tm-home .tm-mobile-menu-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 28px;
+}
+.tm-home .tm-mobile-menu-close {
+  width: 40px; height: 40px; border-radius: 10px;
+  border: 1px solid var(--border); background: rgba(255, 255, 255, 0.03);
+  color: #fff; font-size: 26px; line-height: 1; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.tm-home .tm-mobile-menu-links { display: flex; flex-direction: column; }
+.tm-home .tm-mobile-menu-links a {
+  padding: 16px 2px; font-size: 17px; font-weight: 600; color: #fff;
+  border-bottom: 1px solid var(--border); text-decoration: none;
+}
+.tm-home .tm-mobile-menu-links a:active { color: var(--orange); }
+.tm-home .tm-mobile-menu-cta {
+  margin-top: 28px; display: flex; flex-direction: column; gap: 12px;
+}
+.tm-home .tm-mobile-menu-cta .login,
+.tm-home .tm-mobile-menu-cta .signup {
+  display: block; text-align: center; padding: 15px 18px;
+  border-radius: var(--radius-pill); font-size: 15px; font-weight: 600;
+  text-decoration: none;
+}
+.tm-home .tm-mobile-menu-cta .login {
+  border: 1px solid var(--border); color: #fff; background: rgba(255, 255, 255, 0.03);
+}
+.tm-home .tm-mobile-menu-cta .signup {
+  background: linear-gradient(180deg, var(--orange) 0%, #E85A26 100%); color: #fff;
+}

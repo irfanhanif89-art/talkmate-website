@@ -228,6 +228,7 @@ export default function HomePage() {
   // ----- sticky CTA -----
   const [stickyShow, setStickyShow] = useState(false)
   const [stickyDismissed, setStickyDismissed] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -369,10 +370,62 @@ export default function HomePage() {
           <div className="nav-right">
             <a className="login" href="https://app.talkmate.com.au/login">Log in</a>
             <a className="signup" href="https://app.talkmate.com.au/signup">Sign Up</a>
-            <button className="hamburger" aria-label="Menu"><i></i><i></i><i></i></button>
+            <button
+              className="hamburger"
+              aria-label="Menu"
+              aria-expanded={mobileOpen}
+              aria-controls="tm-mobile-menu"
+              onClick={() => setMobileOpen(true)}
+            ><i></i><i></i><i></i></button>
           </div>
         </nav>
       </header>
+
+      {mobileOpen && (
+        <div
+          id="tm-mobile-menu"
+          className="tm-mobile-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu"
+        >
+          <div className="tm-mobile-menu-head">
+            <a href="/" className="brand" aria-label="TalkMate home">
+              <span className="brand-mark" aria-hidden="true"></span>
+              <span>TalkMate</span>
+            </a>
+            <button
+              className="tm-mobile-menu-close"
+              aria-label="Close menu"
+              onClick={() => setMobileOpen(false)}
+            >×</button>
+          </div>
+          <nav className="tm-mobile-menu-links" role="navigation">
+            {[
+              ['#how', 'How it works'],
+              ['#team', 'The team'],
+              ['#pricing', 'Pricing'],
+              ['#calc', 'ROI'],
+              ['#industries', 'Industries'],
+              ['#crm', 'CRM'],
+            ].map(([href, label]) => (
+              <a
+                key={href}
+                href={href}
+                onClick={(e) => { handleAnchor(e); setMobileOpen(false) }}
+              >{label}</a>
+            ))}
+          </nav>
+          <div className="tm-mobile-menu-cta">
+            <a className="login" href="https://app.talkmate.com.au/login">Log in</a>
+            <a
+              className="signup"
+              href="https://app.talkmate.com.au/signup"
+              onClick={() => setMobileOpen(false)}
+            >Sign Up</a>
+          </div>
+        </div>
+      )}
 
       <main>
         <section className="wrap hero" id="hero" data-screen-label="01 Hero">
