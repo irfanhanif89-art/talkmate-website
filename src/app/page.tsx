@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { EofyWas, EofyBadge } from '@/components/EofySale'
 import './talkmate-home.css'
 
 const VAPI_PUBLIC_KEY = '829a1868-99e0-4365-a86d-528752f4bbaa'
@@ -1025,6 +1026,7 @@ export default function HomePage() {
         <section className="section section--pricing" id="pricing" data-screen-label="10b Pricing">
           <div className="wrap">
             <p className="section-eyebrow">One subscription</p>
+            <div style={{ marginBottom: 12 }}><EofyBadge /></div>
             <h2 className="section-title">Simple, monthly. <span className="accent">No lock-in.</span></h2>
             <p className="section-sub">Most clients break even within their first week. Pick a tier, swap up or down anytime.</p>
 
@@ -1038,7 +1040,7 @@ export default function HomePage() {
             <div className="price-grid">
               <div className="price-card">
                 <p className="price-name">Starter</p>
-                <div className="price-amount"><strong>$299</strong><span>/month</span></div>
+                <div className="price-amount"><EofyWas net={299} /><strong>$299</strong><span>/month</span></div>
                 <p className="price-setup">One-off setup fee: $299</p>
                 <p className="price-desc">For single-location businesses that want to stop missing calls and start capturing every order.</p>
                 <ul className="price-bullets">
@@ -1056,7 +1058,7 @@ export default function HomePage() {
               <div className="price-card popular">
                 <span className="price-popular-pill">Most popular</span>
                 <p className="price-name">Growth</p>
-                <div className="price-amount"><strong>$499</strong><span>/month</span></div>
+                <div className="price-amount"><EofyWas net={499} /><strong>$499</strong><span>/month</span></div>
                 <p className="price-setup">One-off setup fee: $349</p>
                 <p className="price-desc">For businesses ready to go further. All calls answered plus job scheduling and Telegram commands.</p>
                 <ul className="price-bullets">
@@ -1074,7 +1076,7 @@ export default function HomePage() {
 
               <div className="price-card">
                 <p className="price-name">Pro</p>
-                <div className="price-amount"><strong>$799</strong><span>/month</span></div>
+                <div className="price-amount"><EofyWas net={799} /><strong>$799</strong><span>/month</span></div>
                 <p className="price-setup">One-off setup fee: $399</p>
                 <p className="price-desc">Built for multi-location businesses and high-volume operators who need the lot.</p>
                 <ul className="price-bullets">
