@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Check, Sparkles } from 'lucide-react'
+import { EofyWas, EofyBadge } from '@/components/EofySale'
 
 export type BillingCycle = 'monthly' | 'annual'
 
@@ -112,6 +113,7 @@ export default function PricingCards({ background = 'light' }: { background?: 'l
     <section style={{ background: isDark ? 'var(--navy)' : 'var(--light)', color: isDark ? 'white' : 'var(--navy)' }}>
       <div className="section-pad" style={{ maxWidth: 1280, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 24 }}>
+          <div style={{ marginBottom: 14 }}><EofyBadge /></div>
           <h2 className={isDark ? 'section-h' : 'section-h dark'}>
             One subscription. <span style={{ color: 'var(--orange)' }}>Save 2 months with annual.</span>
           </h2>
@@ -228,6 +230,7 @@ export default function PricingCards({ background = 'light' }: { background?: 'l
                   {isAnnual && (
                     <Sparkles size={20} color="var(--orange)" style={{ marginRight: 2, marginBottom: -2 }} />
                   )}
+                  <EofyWas net={price} style={{ fontSize: 22 }} />
                   <span style={{ fontSize: 44, fontWeight: 800, color: isDark ? 'white' : 'var(--navy)', letterSpacing: '-1px' }}>
                     ${formatAud(price)}
                   </span>
