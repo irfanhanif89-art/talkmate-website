@@ -15,6 +15,7 @@ export function EofyWas({ net, style }: { net: number; style?: React.CSSProperti
   if (!active) return null
   return (
     <span
+      className="eofy-was"
       style={{
         textDecoration: 'line-through',
         opacity: 0.55,

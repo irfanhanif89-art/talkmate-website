@@ -950,3 +950,6 @@
 .tm-home .tm-mobile-menu-cta .signup {
   background: linear-gradient(180deg, var(--orange) 0%, #E85A26 100%); color: #fff;
 }
+
+/* EOFY sale display — struck-through regular price + badge spacing */
+.price-amount .eofy-was { font-size: 0.6em; }
