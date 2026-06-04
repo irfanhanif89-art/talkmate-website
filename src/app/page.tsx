@@ -967,7 +967,7 @@ export default function HomePage() {
           <div className="wrap">
             <p className="section-eyebrow">Customer care, automated</p>
             <h2 className="section-title">Catch every lead. <span className="accent">Earn every review.</span></h2>
-            <p className="section-sub">Four features that make sure no caller falls through the cracks, and every happy customer becomes a 5-star review.</p>
+            <p className="section-sub">Everything that makes sure no caller falls through the cracks, every enquiry gets a fast professional response, and every happy customer becomes a 5-star review.</p>
 
             <div className="crm-grid">
               <div className="crm-card">
@@ -989,6 +989,18 @@ export default function HomePage() {
               <div className="crm-card">
                 <h3>AI Website Chatbot</h3>
                 <p>A chatbot on your website that knows your business inside out. Answers questions, captures leads, and hands off to your TalkMate agent when they call.</p>
+              </div>
+              <div className="crm-card">
+                <h3>AI Email Responder <span className="accent-blue">Growth and Pro</span></h3>
+                <p>Customers email and TalkMate reads it, drafts a reply using your business knowledge, and either sends it automatically or queues it for your approval. No inbox overwhelm.</p>
+              </div>
+              <div className="crm-card">
+                <h3>ServiceM8 Integration</h3>
+                <p>When TalkMate books a job, it automatically creates the job in ServiceM8. No double entry, no missed bookings, no admin.</p>
+              </div>
+              <div className="crm-card">
+                <h3>Industry Templates</h3>
+                <p>New to TalkMate? Pick your industry and your knowledge base is pre-loaded with the right FAQs, services, and pricing language. Live in minutes.</p>
               </div>
             </div>
           </div>
