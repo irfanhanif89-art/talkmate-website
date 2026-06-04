@@ -14,6 +14,10 @@ const ROWS: Row[] = [
   { feature: 'Google Review Requests', starter: true, growth: true, pro: true },
   { feature: 'Two-way SMS Inbox', starter: false, growth: true, pro: true },
   { feature: 'Train TalkMate', starter: true, growth: true, pro: true },
+  { feature: 'Smart Setup (auto-populate from Google)', starter: true, growth: true, pro: true },
+  { feature: 'Agent naming and voice selection', starter: true, growth: true, pro: true },
+  { feature: 'Overflow and after-hours modes', starter: true, growth: true, pro: true },
+  { feature: 'Call flow intake questions', starter: true, growth: true, pro: true },
 ]
 
 const PLAN_HEADS = ['Starter', 'Growth', 'Pro'] as const

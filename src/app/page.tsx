@@ -994,6 +994,34 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* 09c SETUP & CONTROL — Session 4A */}
+        <section className="section section--light" id="setup-control" data-screen-label="09c Setup and control">
+          <div className="wrap">
+            <p className="section-eyebrow">Set up in minutes, in full control</p>
+            <h2 className="section-title">Live before lunch. <span className="accent">On your terms.</span></h2>
+            <p className="section-sub">Get your AI assistant up and running fast, give her your name and voice, and hand over the calls at the pace that suits you.</p>
+
+            <div className="crm-grid">
+              <div className="crm-card">
+                <h3>Smart Setup</h3>
+                <p>Paste your Google Business Profile link. TalkMate finds your business, reads your website, and pre-fills your entire knowledge base automatically. Live in under 5 minutes.</p>
+              </div>
+              <div className="crm-card">
+                <h3>Overflow Mode</h3>
+                <p>Not ready to hand over all your calls? Start with overflow mode. Your phone rings as normal. TalkMate only answers when you can&apos;t.</p>
+              </div>
+              <div className="crm-card">
+                <h3>Your Agent, Your Name</h3>
+                <p>Name your AI assistant and choose her voice. She introduces herself as your assistant, not a generic bot. Your regulars won&apos;t be confused.</p>
+              </div>
+              <div className="crm-card">
+                <h3>Always Ready to Transfer</h3>
+                <p>When callers ask for you personally, your agent says your name and makes sure they feel looked after, even when you&apos;re on another job.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* 10 INDUSTRY PERSONA GRID */}
         <section className="section" id="industries" data-screen-label="10 Industries">
           <div className="wrap">
