@@ -17,7 +17,24 @@ export default function TalkButton() {
       vapi = new Vapi(VAPI_PUBLIC_KEY)
       vapiRef.current = vapi
 
-      vapi.on('call-start', () => setState('active'))
+      vapi.on('call-start', () => {
+        setState('active')
+        // Session 77 — fire DemoCallStarted for marketing attribution when the
+        // demo call actually begins. Safe no-ops if the pixel / GTM dataLayer
+        // are not loaded (e.g. before GTM is configured).
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+          (window as any).fbq('trackCustom', 'DemoCallStarted', {
+            content_name: 'TalkMate Demo',
+            content_category: 'demo_interaction',
+          })
+        }
+        if (typeof window !== 'undefined' && (window as any).dataLayer) {
+          (window as any).dataLayer.push({
+            event: 'DemoCallStarted',
+            category: 'demo_interaction',
+          })
+        }
+      })
       vapi.on('call-end', () => setState('idle'))
       vapi.on('error', (e: any) => {
         console.error('Vapi error', e)
