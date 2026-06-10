@@ -66,13 +66,10 @@
 .tm-home .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .tm-home .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -0.01em; font-size: 19px; }
 .tm-home .brand-mark {
-  width: 26px; height: 26px; border-radius: 8px;
-  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-hi) 100%);
-  position: relative;
-  box-shadow: 0 6px 18px rgba(255, 107, 53, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+  width: 26px; height: 26px; flex-shrink: 0;
+  /* Canonical refreshed logo (squircle + gradient + sheen + wifi) — baked into the SVG */
+  background: url("/logo-mark.svg") center / contain no-repeat;
 }
-.tm-home .brand-mark::before { content: ""; position: absolute; left: 6px; top: 7px; width: 14px; height: 3px; border-radius: 2px; background: #fff; }
-.tm-home .brand-mark::after { content: ""; position: absolute; left: 11px; top: 7px; width: 3px; height: 13px; border-radius: 2px; background: #fff; }
 
 .tm-home .nav-links { display: flex; align-items: center; gap: 28px; font-size: 14px; color: var(--muted); }
 .tm-home .nav-links a:hover { color: #fff; transition: color .15s ease; }
