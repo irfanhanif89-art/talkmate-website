@@ -16,6 +16,13 @@ export const metadata: Metadata = {
     siteName: 'TalkMate',
     locale: 'en_AU',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'TalkMate, Australia\'s AI Receptionist' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "TalkMate, Australia's AI Receptionist for Small Business",
+    description: 'TalkMate is your AI receptionist. Answers every call in 2 seconds, takes orders, upsells customers, and never calls in sick. Live in 24 hours.',
+    images: ['/og-image.png'],
   },
 }
 
