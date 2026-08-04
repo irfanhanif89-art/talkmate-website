@@ -48,16 +48,23 @@ subscriptions** — filterable by territory and device.
 
 ### Token scheme
 
-**One `ct` per concept**, so the App Store tells you which *idea* drove downloads:
+**One `ct` per concept, shared across both platforms:**
 
 ```
-ct=TT_C1_reelsaver     ct=IG_C1_reelsaver
-ct=TT_C2_overrated     ct=IG_C2_overrated
-ct=TT_C3_newhere       …
+ct=C1_graveyard   ct=C2_queue   ct=C3_newhere   ct=C4_argument   ct=C5_foodfirst
 ```
 
-Platform prefix + concept + persona. Keep it identical to the asset naming so a filename maps
-to a row in Analytics with no translation step.
+⚠️ **Do not split tokens by platform at low budget.** It is tempting to run `TT_C1` and `IG_C1`
+separately, but Apple hides any campaign with fewer than five first-time downloads. On a
+~AU$200 round, ten tokens risks every single one landing under the floor and reporting nothing
+at all — you would spend the whole budget and learn zero. Concentrate downloads per *concept*
+so each token can clear the threshold, and read the platform split from TikTok's and Meta's own
+click data, which has no such floor.
+
+Revisit this once a concept is scaling and download volume per platform comfortably clears five.
+
+Asset names still carry the platform, so a filename maps to a row with one obvious grouping:
+`FF_TT_C1_reelsaver_h1_15s_v1`.
 
 **TikTok:** App Store links are only allowed from **business accounts**, not personal creator
 accounts. Confirm the account type before launch.

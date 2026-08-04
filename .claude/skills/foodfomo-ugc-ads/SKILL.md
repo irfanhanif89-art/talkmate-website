@@ -109,6 +109,12 @@ Rules for a first round:
 
 ## STEP 3 — Production
 
+**Read `references/higgsfield-prompt-language.md` before writing a single prompt.** Higgsfield
+has a strict prompt grammar — a two-stage board→clip build, banned phrasings, an anti-morph
+cadence, and an accent rule that defaults to **American** unless explicitly overridden. Briefs
+written in plain English ("a 26-year-old Australian woman talking about the app") violate four
+rules at once and produce unusable output.
+
 Routing table, model choices, aspect ratios, safe zones, caption rules and the exact
 Higgsfield call sequence live in **`references/higgsfield-production.md`**.
 

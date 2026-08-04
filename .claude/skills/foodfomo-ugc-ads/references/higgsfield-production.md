@@ -44,11 +44,18 @@ hook that didn't run.
 
 ---
 
-## 3. Build the hook as a separate shot
+## 3. Hook iteration — what's actually cheap
 
-Per Barry Hott's hook-first principle: generate the first three seconds as its **own** clip,
-with the body as a second clip. Swapping a losing hook then costs one generation instead of a
-full rebuild. Name them so the pairing is obvious:
+Barry Hott's hook-first principle says to make the hook swappable. **The Higgsfield pipeline
+does not allow that at 15 seconds**: a ≤15s ad is ONE board and ONE Seedance clip with eight
+internal hard cuts, so changing the hook means re-rolling the whole clip. There is no cheap
+hook swap at this length — see `higgsfield-prompt-language.md` §8.
+
+What *is* cheap: **the written monologue and the storyboard board**. Both are settled before any
+video call, and the board is an image generation, not a video one. Get the hook right on paper,
+confirm the staging in the board, and only then spend the video credit.
+
+Name assets so the pairing is still obvious when you do re-roll:
 
 ```
 FF_TT_C1_reelsaver_h1_15s_v1   ← hook 1 + body
