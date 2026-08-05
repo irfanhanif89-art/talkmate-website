@@ -269,10 +269,18 @@ character reference · no baked text. A motion pass misses frozen-frame defects.
 
 Every UGC workflow is built around a product in a hand. Ours is an app. That changes routing:
 
-- **`ugc-saas-flow` is the right home for app-on-screen concepts.** It uses **real captured
-  screenshots** as overlay cards — never a screen recording, never AI-generated UI. Load its
-  SKILL.md separately before building; its rules differ from `ugc-flow` and the two contradict
-  each other in places. Do not mix reference files between flows.
+- **`ugc-saas-flow` is the right home for app-on-screen concepts — and it is a completely
+  different architecture.** No storyboards, no slots, no internal hard cuts: the creator image
+  seeds Seedance directly and each clip is **ONE continuous talking-head take**. The app is
+  **composited afterwards** as real screenshot cards floating over the face — never rendered
+  inside the generation. Everything in §3–§4 above (the 8-slot board, the anti-morph cadence,
+  the seven `Hard cut to.` markers) **does not apply there**, and its pre-submit check actively
+  rejects a prompt containing `Hard cut`, `Cut 1`, `slot` or `board`. Its other hard rules:
+  the visual description of a body clip must never name the product (or Seedance invents a fake
+  one), every clip carries an explicit *no website / no app UI / no rendered screen* ban, and
+  captions are **on by default** rather than opt-in. Word density is capped at **~40 words per
+  15s**. Worked example: `../c1-build-sheet.md`.
+  Do not mix reference files between flows — they contradict each other.
 - **For `ugc-flow` concepts with no product on camera** (C3, C4), run the no-product path: the
   `@ImageN` numbering shifts up and the product entries drop out of `medias`.
 - **A phone is never visible in frame.** Selfie POV means the camera *is* the phone. So "she
