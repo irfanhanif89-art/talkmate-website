@@ -252,7 +252,7 @@ export default function PricingCards({ background = 'light' }: { background?: 'l
                   fontSize: 12, color: isDark ? 'rgba(255,255,255,0.45)' : 'var(--muted)',
                   marginBottom: 12,
                 }}>
-                  One-off setup fee: ${p.setup_fee}
+                  No setup fee
                 </div>
 
                 {isAnnual && (
@@ -296,24 +296,6 @@ export default function PricingCards({ background = 'light' }: { background?: 'l
           })}
         </div>
 
-        {/* Setup fee explainer — sits below cards, low-key */}
-        <div style={{
-          marginTop: 28, maxWidth: 720, marginLeft: 'auto', marginRight: 'auto',
-          padding: '18px 22px', borderRadius: 14,
-          background: isDark ? 'rgba(255,255,255,0.03)' : '#F4F6F9',
-          border: `1px solid ${isDark ? 'rgba(255,255,255,0.05)' : 'var(--edge)'}`,
-        }}>
-          <div style={{
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-            color: isDark ? 'rgba(255,255,255,0.45)' : 'var(--muted)', marginBottom: 6,
-          }}>About the setup fee</div>
-          <p style={{
-            fontSize: 13, lineHeight: 1.65, margin: 0,
-            color: isDark ? 'rgba(255,255,255,0.65)' : 'var(--muted)',
-          }}>
-            The one-off setup fee covers your dedicated AI receptionist configuration, voice tuning, business knowledge setup, and go-live support. Once you're live, it's just your monthly (or annual) subscription.
-          </p>
-        </div>
       </div>
 
       <style>{`

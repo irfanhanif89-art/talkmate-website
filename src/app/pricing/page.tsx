@@ -5,7 +5,7 @@ import FinalCTA from '@/components/FinalCTA'
 
 const FAQS = [
   { q: 'What happens if I go over my call limit?', a: 'Calls above your plan limit are billed at $0.45 each. We send you alerts at 80% and 95% so you can upgrade if needed. No silent overages, ever.' },
-  { q: 'Is there a setup fee?', a: 'Yes, there is a one-off setup fee that covers configuring your dedicated AI receptionist, voice tuning, business knowledge setup, and go-live support. Starter is $299, Growth is $349, Pro is $399. After that you just pay your monthly or annual subscription.' },
+  { q: 'Is there a setup fee?', a: 'No. There is no setup fee on any plan. We configure your AI receptionist, tune the voice, load your business knowledge and support you through go-live at no extra cost. You just pay your monthly or annual subscription.' },
   { q: 'What does the 14-day money-back guarantee cover?', a: 'Full refund within 14 days of going live. No questions asked. If TalkMate isn\'t recovering revenue for you, we don\'t want to keep your money.' },
   { q: 'Can I change plans?', a: 'Yes. Anytime, from the portal. Changes apply immediately and prorate fairly.' },
 ]
