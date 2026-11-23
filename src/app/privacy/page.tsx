@@ -18,7 +18,7 @@ const SECTIONS: Array<{ heading: string; body: string }> = [
   },
   {
     heading: '2. Information we collect about you (the business owner)',
-    body: '2.1 Account information: your name, business name, email address, phone number, and billing details when you create an account.\n2.2 Usage data: how you use the TalkMate portal and mobile app, which features you access, and when.\n2.3 Payment information: processed and stored by Stripe. TalkMate does not store credit card numbers.\n2.4 Mobile application data: when you use the TalkMate mobile app and grant notification permission, we collect a push notification token so we can alert you about calls, messages, and bookings, and basic device type information (for example, whether your device is iOS or Android) so notifications are delivered correctly. The TalkMate app does not collect advertising identifiers, does not track you across other apps or websites, and contains no third-party advertising or analytics software. You can turn notifications off at any time in your device settings.',
+    body: '2.1 Account information: your name, business name, email address, phone number, and billing details when you create an account.\n2.2 Usage data: how you use the TalkMate portal and mobile app, which features you access, and when.\n2.3 Payment information: processed and stored by Stripe. TalkMate does not store credit card numbers.\n2.4 Mobile application data: when you use the TalkMate mobile app and grant notification permission, we collect a push notification token so we can alert you about calls, messages, and bookings, and basic device type information (for example, whether your device is iOS or Android) so notifications are delivered correctly. The TalkMate app does not collect advertising identifiers, does not track you across other apps or websites, and contains no third-party advertising or analytics software. You can turn notifications off at any time in your device settings.\n2.5 Website visits: when you visit talkmate.com.au we record how you arrived, for example the website or advertisement that referred you and any campaign tags in the link, in a first-party cookie. If you then sign up, we save this with your account so we know which of our marketing brought you. We may also use Google Analytics and Microsoft Clarity to understand how visitors use our website and sign-up pages, which involves cookies and records of the pages you view, clicks and scrolling. These tools are not used inside the TalkMate portal dashboard or mobile apps. You can block or delete cookies in your browser settings at any time.',
   },
   {
     heading: '3. Information we process on your behalf (caller data)',
@@ -77,7 +77,7 @@ export default function PrivacyPage() {
                 <p style={{ fontSize: 14, color: 'var(--muted)', lineHeight: 1.8, whiteSpace: 'pre-wrap' as const, margin: 0 }}>{s.body}</p>
               </div>
             ))}
-            <p id="act" style={{ fontSize: 12, color: 'var(--muted)', marginTop: 30 }}>Last updated: 7 June 2026</p>
+            <p id="act" style={{ fontSize: 12, color: 'var(--muted)', marginTop: 30 }}>Last updated: 23 November 2026</p>
           </article>
         </div>
       </section>

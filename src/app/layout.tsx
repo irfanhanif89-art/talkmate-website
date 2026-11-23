@@ -4,6 +4,7 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import StickyBottomBar from '@/components/StickyBottomBar'
 import ChatbotWidget from '@/components/ChatbotWidget'
+import AttributionCapture from '@/components/AttributionCapture'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://talkmate.com.au'),
@@ -31,6 +32,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   // is blank nothing renders, so this is a safe no-op until Irfan sets the IDs.
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID
   const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID
+  // Google Analytics 4 measurement ID (G-XXXXXXX). Loaded directly with gtag.
+  // If GA4 is ever added inside GTM instead, leave this blank to avoid double counting.
+  const gaId = process.env.NEXT_PUBLIC_GA_ID
   return (
     <html lang="en-AU">
       <head>
@@ -40,6 +44,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`,
             }}
           />
+        )}
+        {gaId && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config','${gaId}');`,
+              }}
+            />
+          </>
         )}
         {clarityId && (
           <script
@@ -60,6 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             />
           </noscript>
         )}
+        <AttributionCapture />
         <Nav />
         <main>{children}</main>
         <Footer />

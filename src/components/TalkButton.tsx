@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
+import { track } from '@/lib/track'
 
 const VAPI_PUBLIC_KEY = '829a1868-99e0-4365-a86d-528752f4bbaa'
 const ASSISTANT_ID = 'ca0752a1-b87b-49eb-93d7-b83ea864494c'
@@ -28,12 +29,8 @@ export default function TalkButton() {
             content_category: 'demo_interaction',
           })
         }
-        if (typeof window !== 'undefined' && (window as any).dataLayer) {
-          (window as any).dataLayer.push({
-            event: 'DemoCallStarted',
-            category: 'demo_interaction',
-          })
-        }
+        // GA4 (gtag) when loaded, otherwise GTM's dataLayer.
+        track('demo_call_started', { category: 'demo_interaction' })
       })
       vapi.on('call-end', () => setState('idle'))
       vapi.on('error', (e: any) => {
