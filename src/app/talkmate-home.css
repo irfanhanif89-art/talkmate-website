@@ -955,3 +955,50 @@
 
 /* EOFY sale display — struck-through regular price + badge spacing */
 .price-amount .eofy-was { font-size: 0.6em; }
+
+/* ---------- Hero price line (free trial, 2026-11) ---------- */
+.tm-home .hero-price-line { margin: 14px 0 0; color: var(--muted); font-size: 14.5px; }
+
+/* ---------- Value stack ---------- */
+.tm-home .vs-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 1180px; margin: 0 auto; }
+.tm-home .vs-card { background: #fff; padding: 24px 22px; border-radius: 18px; border: 1px solid rgba(11, 18, 38, 0.06); box-shadow: 0 16px 40px -28px rgba(11, 18, 38, 0.22); color: #0B1226; }
+.tm-home .vs-icon { width: 42px; height: 42px; border-radius: 11px; background: rgba(255, 107, 53, 0.12); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 14px; }
+.tm-home .vs-card h3 { margin: 0 0 8px; font-size: 18px; font-weight: 700; letter-spacing: -.01em; line-height: 1.25; }
+.tm-home .vs-card p { margin: 0; color: #4A5168; font-size: 14.5px; line-height: 1.55; }
+
+/* ---------- Comparison table ---------- */
+.tm-home .cmp-scroll { max-width: 1000px; margin: 0 auto; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 18px; box-shadow: 0 16px 40px -28px rgba(11, 18, 38, 0.22); }
+.tm-home .cmp-table { width: 100%; border-collapse: collapse; background: #fff; color: #0B1226; font-size: 15px; min-width: 640px; }
+.tm-home .cmp-table th, .tm-home .cmp-table td { padding: 14px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid rgba(11, 18, 38, 0.07); line-height: 1.45; }
+.tm-home .cmp-table thead th { font-size: 15px; font-weight: 700; color: #4A5168; background: #F4F6FA; }
+.tm-home .cmp-table tbody th { font-weight: 600; color: #0B1226; width: 22%; }
+.tm-home .cmp-table td { color: #4A5168; }
+.tm-home .cmp-table .cmp-us { background: rgba(255, 107, 53, 0.08); color: #0B1226; font-weight: 600; }
+.tm-home .cmp-table thead .cmp-us { background: var(--orange); color: #fff; }
+.tm-home .cmp-table tbody tr:last-child th, .tm-home .cmp-table tbody tr:last-child td { border-bottom: 0; }
+.tm-home .vs-cta { text-align: center; margin-top: 32px; }
+.tm-home .vs-cta p { margin: 12px 0 0; color: #4A5168; font-size: 14.5px; }
+.tm-home .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 1100px) {
+  .tm-home .vs-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .tm-home .vs-grid { grid-template-columns: 1fr; gap: 12px; }
+  .tm-home .vs-card { padding: 18px 18px; }
+  .tm-home .cmp-table { font-size: 14px; min-width: 560px; }
+  .tm-home .cmp-table th, .tm-home .cmp-table td { padding: 12px 12px; }
+  .tm-home .cmp-table tbody th { position: sticky; left: 0; background: #fff; z-index: 1; }
+}
+
+/* Phones: words before the phone graphic, compact value cards (2026-11) */
+@media (max-width: 900px) {
+  .tm-home .hero-left { order: 1; }
+  .tm-home .hero-right { order: 2; }
+}
+@media (max-width: 600px) {
+  .tm-home .vs-card { display: grid; grid-template-columns: 40px 1fr; column-gap: 14px; align-items: start; padding: 16px; }
+  .tm-home .vs-icon { width: 40px; height: 40px; margin: 0; grid-row: span 2; }
+  .tm-home .vs-card h3 { font-size: 16.5px; margin: 0 0 4px; }
+  .tm-home .vs-card p { font-size: 14px; }
+}

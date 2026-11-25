@@ -6,7 +6,7 @@ import FinalCTA from '@/components/FinalCTA'
 const FAQS = [
   { q: 'What happens if I go over my call limit?', a: 'Calls above your plan limit are billed at $0.45 each. We send you alerts at 80% and 95% so you can upgrade if needed. No silent overages, ever.' },
   { q: 'Is there a setup fee?', a: 'No. There is no setup fee on any plan. We configure your AI receptionist, tune the voice, load your business knowledge and support you through go-live at no extra cost. You just pay your monthly or annual subscription.' },
-  { q: 'What does the 14-day money-back guarantee cover?', a: 'Full refund within 14 days of going live. No questions asked. If TalkMate isn\'t recovering revenue for you, we don\'t want to keep your money.' },
+  { q: 'How does the free trial work?', a: 'We set up your agent for free, then you use it on your real calls for 7 days. No card needed. At the end, keep it on the plan that suits you, or walk away and pay nothing.' },
   { q: 'Can I change plans?', a: 'Yes. Anytime, from the portal. Changes apply immediately and prorate fairly.' },
 ]
 
@@ -16,7 +16,7 @@ export default function PricingPage() {
       <PageHero
         eyebrow="Pricing"
         title={<>Simple, honest pricing. <span style={{ color: 'var(--orange)' }}>2 months free on annual plans.</span></>}
-        sub="Cancel anytime. Most clients break even within the first week. The Starter plan pays for itself with one missed order recovered per day."
+        sub="Try any plan free for 7 days. We set it up for you. Cancel anytime."
       />
 
       <PricingCards />

@@ -44,8 +44,8 @@ export const PLANS: Plan[] = [
       'Live dashboard',
       'Email support',
     ],
-    cta: 'Get Starter',
-    ctaHref: 'https://app.talkmate.com.au/signup?plan=starter',
+    cta: 'Start free trial',
+    ctaHref: '/trial?plan=starter',
   },
   {
     key: 'growth',
@@ -55,7 +55,7 @@ export const PLANS: Plan[] = [
     annual_savings: 998,
     setup_fee: 349,
     popular: true,
-    pitch: 'For businesses ready to go further. All calls answered plus TalkMate Command via Telegram.',
+    pitch: 'For businesses ready to go further. All calls answered plus job scheduling, all run from the TalkMate app.',
     features: [
       'Everything in Starter',
       '800 calls per month',
@@ -66,13 +66,13 @@ export const PLANS: Plan[] = [
       'Automated waitlist management',
       'Live distance quoting on calls',
       'Account client management',
-      'TalkMate Command via Telegram',
+      'Ask TalkMate anything in the app',
       '50 commands per day',
       'Advanced analytics',
       'Priority support',
     ],
-    cta: 'Get Growth',
-    ctaHref: 'https://app.talkmate.com.au/signup?plan=growth',
+    cta: 'Start free trial',
+    ctaHref: '/trial?plan=growth',
   },
   {
     key: 'pro',
@@ -91,14 +91,14 @@ export const PLANS: Plan[] = [
       'Dedicated onboarding specialist',
       'Priority phone support',
     ],
-    cta: 'Get Pro',
-    ctaHref: 'https://app.talkmate.com.au/signup?plan=pro',
+    cta: 'Start free trial',
+    ctaHref: '/trial?plan=pro',
   },
 ]
 
 const GUARANTEES = [
   'Setup included',
-  '14-day money-back guarantee',
+  'Free 7-day trial, set up for you',
   'No lock-in contracts',
   'Cancel anytime',
 ]

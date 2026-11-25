@@ -17,14 +17,14 @@ const CORE = [
   { icon: Bell, title: 'SMS confirmations and reminders', body: 'Automatic confirmations and 24-hour and 2-hour reminders keep customers informed and slash no-shows.', accent: '#F59E0B' },
   { icon: Tag, title: 'Automated waitlist management', body: 'When a booking cancels, the next caller on the waitlist is texted immediately with a 30-minute claim window. Slots refill themselves.', accent: '#8B5CF6' },
   { icon: Users, title: 'Account client management', body: 'Trade accounts with multiple linked phone numbers. Account rates auto-apply when any linked number calls.', accent: '#06B6D4' },
-  { icon: MessageSquare, title: 'TalkMate Command', body: 'Run your business via Telegram. Send invoices, update menus, query analytics, all in plain English.', accent: '#1565C0' },
+  { icon: MessageSquare, title: 'TalkMate Command', body: 'Run your business from the TalkMate app. Ask about calls, update your services or check results, in plain English, by typing or talking.', accent: '#1565C0' },
   { icon: Volume2, title: 'Australian voice and accent', body: 'Real Australian voice. Customers hear someone who sounds like a local.', accent: '#22C55E' },
   { icon: ListChecks, title: 'Order & job capture', body: 'Items, quantities, addresses, vehicles, urgency. Captured perfectly every time.', accent: '#8B5CF6' },
   { icon: FileText, title: 'Full transcripts and recordings', body: 'Every call logged with searchable transcript and audio. Flag wrong responses to retrain.', accent: '#EC4899' },
   { icon: BarChart, title: 'Live dashboard', body: 'Real-time call data, ROI counter, attributed revenue, busiest hours. Updated every second.', accent: '#06B6D4' },
   { icon: Sparkles, title: 'Upsells on every call', body: 'Suggests garlic bread, extras, premium options. Adds an average of $6.20 per order.', accent: '#E8622A' },
   { icon: Upload, title: 'AI menu import from URL', body: 'Paste your website, MenuLog, or Uber Eats URL. We scan it and pre-fill your menu in seconds.', accent: '#1565C0' },
-  { icon: Zap, title: 'Live in 24 hours', body: 'From signup to live in a single day. No 6-week integrations. We handle everything.', accent: '#22C55E' },
+  { icon: Zap, title: 'Set up for you', body: 'We build, train and test your agent with you, usually within 48 hours. No 6-week integrations. We handle everything.', accent: '#22C55E' },
 ]
 
 const CRM = [
@@ -33,7 +33,7 @@ const CRM = [
   { icon: GitBranch, title: 'Pipeline view (real estate, trades, professional services)', body: 'Kanban board with default stages per industry. Drag cards between stages, or let calls auto-move them based on outcome (e.g. booking made → Inspection Booked).', accent: '#E8622A' },
   { icon: Search, title: 'Contact search and merge', body: 'Search by name or phone. Merge duplicates with one click — call history combines automatically.', accent: '#8B5CF6' },
   { icon: Download, title: 'CSV import and export', body: 'Bring an existing customer list across in 4 steps. Export everything anytime — name, phone, tags, call counts, industry data.', accent: '#06B6D4' },
-  { icon: MessageCircle, title: 'Command queries against contact database', body: '"Find Christina from Melbourne", "Show me lapsed regulars", "Who called about pricing this week?" — answered from Telegram.', accent: '#F59E0B' },
+  { icon: MessageCircle, title: 'Command queries against contact database', body: '"Find Christina from Melbourne", "Show me lapsed regulars", "Who called about pricing this week?" All answered in the TalkMate app.', accent: '#F59E0B' },
 ]
 
 const RELIABILITY = [
@@ -52,7 +52,7 @@ export default function FeaturesPage() {
         eyebrow="Features"
         title={<>Built for every business that <span style={{ color: 'var(--orange)' }}>takes calls</span>.</>}
         sub="Every feature exists for one reason: capture more revenue from every inbound call. No fluff, no features for features' sake."
-        primary={{ label: 'Book a Free Demo', href: '/demo' }}
+        primary={{ label: 'Book your free 7-day trial', href: '/trial' }}
         secondary={{ label: 'See pricing', href: '/pricing' }}
       />
 
@@ -111,8 +111,8 @@ export default function FeaturesPage() {
       <FinalCTA
         heading={<>See every feature <span className="orange">in action</span>. Book a 30-minute demo.</>}
         sub="A real person, a real walk-through, an honest answer to whether TalkMate fits your business."
-        primary="Book a Free Demo"
-        primaryHref="/#contact"
+        primary="Book your free 7-day trial"
+        primaryHref="/trial"
       />
     </>
   )

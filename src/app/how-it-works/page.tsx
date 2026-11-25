@@ -22,7 +22,7 @@ export default function HowItWorksPage() {
         eyebrow="How it works"
         title={<>From missed call to <span style={{ color: 'var(--orange)' }}>captured revenue</span> in 4 seconds.</>}
         sub="TalkMate answers, captures, confirms, and logs every single inbound call. Here's exactly what happens when your phone rings."
-        primary={{ label: 'Book a Free Demo', href: '/demo' }}
+        primary={{ label: 'Book your free 7-day trial', href: '/trial' }}
         secondary={{ label: 'See pricing', href: '/pricing' }}
       />
 
@@ -55,8 +55,8 @@ export default function HowItWorksPage() {
       <FinalCTA
         heading={<>Book a 30-minute onboarding call and you&apos;ll be <span className="orange">live before the end of the week</span>.</>}
         sub="No salesperson reading from a script. A real person who'll listen to your business and have your AI live before Friday."
-        primary="Book a Free Demo"
-        primaryHref="/#contact"
+        primary="Book your free 7-day trial"
+        primaryHref="/trial"
       />
     </>
   )

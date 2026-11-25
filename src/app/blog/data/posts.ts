@@ -39,15 +39,15 @@ export const posts: BlogPost[] = [
 <p><strong>3.</strong> The order is logged automatically and you receive an instant notification. Nothing falls through the cracks.</p>
 <p>TalkMate is not a phone menu or a rigid chatbot. It is an AI receptionist trained on your specific restaurant, your menu, your trading hours, your upsells, and your policies. It handles real, natural conversation, including Australian accents and colloquial expressions. It is live within 24 hours of onboarding, connects to your existing phone number, and operates on a no lock-in contract basis from $299 per month.</p>
 <h2>How to Get Started</h2>
-<p><strong>1. Book a free demo</strong> at talkmate.com.au — no commitment required. It is a 20-minute call to understand your restaurant's needs.</p>
-<p><strong>2. Go live in 24 hours</strong> — TalkMate trains your AI agent on your menu, trading hours, and FAQs. There is nothing to install and no hardware to buy.</p>
+<p><strong>1. Book a free trial</strong> at talkmate.com.au/trial, no commitment required. It starts with a 20-minute call to understand your restaurant's needs.</p>
+<p><strong>2. Go live, usually within 48 hours.</strong> TalkMate trains your AI agent on your menu, trading hours, and FAQs. There is nothing to install and no hardware to buy.</p>
 <p><strong>3. Start capturing every call</strong> — your calls are answered from day one, around the clock, with instant order logging.</p>
-<p>TalkMate starts from $299 per month. There are no lock-in contracts and a 14-day money-back guarantee, so there is no risk in trying it.</p>
+<p>TalkMate starts from $299 per month. There are no lock-in contracts, and you can try it free for 7 days, set up for you, so there is no risk in trying it.</p>
 <h2>Frequently Asked Questions</h2>
 <p><strong>Does AI phone answering work with Australian accents?</strong><br/>Yes. TalkMate is built specifically for the Australian market and trained across a wide range of Australian accents, regional expressions, and informal speech patterns.</p>
 <p><strong>How much does an AI phone answering service cost in Australia?</strong><br/>TalkMate starts from $299 per month — significantly less than the ongoing revenue lost to missed calls, and a fraction of the cost of a part-time receptionist.</p>
 <p><strong>Can TalkMate work with my existing restaurant phone number?</strong><br/>Yes. TalkMate connects directly to your current phone number with no hardware changes. Customers call the same number they always have.</p>
-<p><strong>How quickly can TalkMate be set up for my restaurant?</strong><br/>TalkMate goes live within 24 hours of onboarding. Visit talkmate.com.au to book your free demo and get started today.</p>`
+<p><strong>How quickly can TalkMate be set up for my restaurant?</strong><br/>TalkMate is usually live within 48 hours of your setup call. Visit talkmate.com.au to book your free demo and get started today.</p>`
   }
 ,
   {
@@ -93,8 +93,8 @@ export const posts: BlogPost[] = [
 <h2>The Bottom Line</h2>
 <p>Hiring a receptionist is not the wrong decision. It is just an expensive, limited solution to a 24/7 problem.</p>
 <p>If your business is losing calls — and most Australian businesses are — the most cost-effective way to fix it is an AI phone agent. At \$299 per month, TalkMate pays for itself the first time it captures a booking you would otherwise have missed.</p>
-<p>There are no lock-in contracts. There is a 14-day money-back guarantee. And it goes live within 24 hours.</p>
-<p>Book a free demo at talkmate.com.au to hear it answer as your business — live, in 20 minutes.</p>`
+<p>There are no lock-in contracts. You can try it free for 7 days, and we set it up for you.</p>
+<p>Book a free 7-day trial at talkmate.com.au/trial and we will set it up for your business.</p>`
   },
   {
     slug: 'how-ai-phone-agents-work-australia',
@@ -145,6 +145,6 @@ export const posts: BlogPost[] = [
 <p>A typical Gold Coast restaurant receiving 180 calls per week will see approximately 60 to 70 arrive outside fully-staffed windows. At an average order value of \$75, assuming half represent genuine order intent, that is \$2,250 to \$2,625 in weekly revenue sitting in unanswered voicemails.</p>
 <p>Annualised: over \$100,000 in recoverable revenue that walked out the door because nobody picked up. And 85 per cent of those callers will not call back.</p>
 <h2>Getting Started</h2>
-<p>TalkMate goes live within 24 hours. No hardware, no lock-in. From \$299 per month with no setup fee. Typically recovered within the first few days of captured after-hours orders. Visit talkmate.com.au to hear a live demo in 30 seconds.</p>`
+<p>TalkMate is set up for you and usually live within 48 hours. No hardware, no lock-in. From \$299 per month with no setup fee. Typically recovered within the first few days of captured after-hours orders. Visit talkmate.com.au to hear a live demo in 30 seconds.</p>`
   }
 ];

@@ -31,7 +31,7 @@ export default function PartnersPage() {
         title={<>Earn <span style={{ color: 'var(--green)' }}>monthly income</span> sharing TalkMate.</>}
         sub="Refer once. Earn every month. 15% of every subscription, paid into your bank on the 1st. No caps, no expiry."
         primary={{ label: 'Join the Partner Program', href: 'https://app.talkmate.com.au/refer-and-earn' }}
-        secondary={{ label: 'Book a Demo', href: '/demo' }}
+        secondary={{ label: 'Book a free trial', href: '/trial' }}
       />
 
       <section style={{ background: 'var(--navy)' }}>

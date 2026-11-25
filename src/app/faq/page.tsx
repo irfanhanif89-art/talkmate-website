@@ -16,7 +16,7 @@ const SECTIONS: Array<{ heading: string; faqs: Array<{ q: string; a: string }> }
   {
     heading: 'Setup and Onboarding',
     faqs: [
-      { q: 'How long does setup take?', a: '24 hours from signup to live. We onboard you on a 30-minute call, train the agent on your specifics, set up call forwarding, and you\'re live the next business day.' },
+      { q: 'How long does setup take?', a: 'Usually within 48 hours. We do it for you: a 20-minute setup call, then we train the agent on your business, test it with you and help you set up call forwarding.' },
       { q: 'Do I need to change my phone number?', a: 'No. Forward your existing business number to the TalkMate number we provision. Customers keep calling the same number you\'ve always advertised.' },
       { q: 'What if my menu or services change?', a: 'Update them from the portal. Changes sync to your AI agent within seconds. Or, on Growth and Pro plans, just text TalkMate Command: "Add prawn cutlets $18.50 to specials" and it updates instantly.' },
       { q: 'Can I review what TalkMate sounds like before going live?', a: 'Yes. Once we\'ve trained your agent, you call the preview number and listen. We don\'t go live until you approve it.' },
@@ -28,7 +28,7 @@ const SECTIONS: Array<{ heading: string; faqs: Array<{ q: string; a: string }> }
       { q: 'Is there a setup fee?', a: 'No. There is no setup fee on any plan. We configure your AI receptionist, tune the voice, load your business knowledge and support you through go-live at no extra cost. You just pay your monthly or annual subscription.' },
       { q: 'What happens if I exceed my call limit?', a: 'Overage is $0.45 per call. We send alerts at 80% and 95% so you can upgrade or accept the overage. No surprise bills.' },
       { q: 'Can I cancel anytime?', a: 'Yes. Cancel anytime from your portal. You keep service through the end of your current billing period.' },
-      { q: 'What does the 14-day money-back guarantee cover?', a: 'Full refund, no questions asked, within 14 days of going live. If TalkMate isn\'t recovering revenue for you, we don\'t want to keep your money.' },
+      { q: 'How does the free trial work?', a: 'We set up your agent for free, then you use it on your real calls for 7 days. No card needed. At the end, keep it on the plan that suits you, or walk away and pay nothing.' },
     ],
   },
 ]
@@ -69,7 +69,7 @@ export default function FAQPage() {
               Talk to a real person on the Gold Coast. We&apos;ll answer honestly. No sales scripts.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}>
-              <Link href="/demo" className="btn-orange">Book a Demo</Link>
+              <Link href="/trial" className="btn-orange">Book your free trial</Link>
               <a href="mailto:hello@talkmate.com.au" className="btn-ghost-light"><Phone size={16} /> Email us</a>
             </div>
           </div>

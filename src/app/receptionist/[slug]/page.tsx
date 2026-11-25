@@ -168,7 +168,7 @@ export default function ReceptionistPage({ params }: { params: { slug: string } 
             Ready to <span style={{ color: 'var(--orange)' }}>hire {r.name}</span>?
           </h2>
           <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, marginBottom: 30 }}>
-            Your receptionist is live in 24 hours. Setup included. 14-day money-back guarantee.
+            We set up your receptionist for you. Try it free for 7 days, no card needed.
           </p>
           <Link href="/pricing" className="btn-orange" style={{ fontSize: 17, padding: '16px 30px', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
             Get started for $299/mo <ArrowRight size={16} />
