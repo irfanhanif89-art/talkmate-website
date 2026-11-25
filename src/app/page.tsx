@@ -470,9 +470,6 @@ export default function HomePage() {
               Trusted by real Australian businesses including Hume Towing (Gold Coast).
             </p>
 
-            <p className="hero-roi-stat">
-              Australian businesses have recovered <span>$127,000</span> in missed revenue with TalkMate.
-            </p>
           </section>
 
           <section className="hero-right" aria-hidden="false">
