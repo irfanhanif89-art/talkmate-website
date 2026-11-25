@@ -38,10 +38,6 @@ export const posts: BlogPost[] = [
 <p><strong>2.</strong> TalkMate answers in under 2 seconds, greets them in a natural Australian voice, and handles the conversation — whether that is placing an order, checking trading hours, asking about allergens, or enquiring about a booking.</p>
 <p><strong>3.</strong> The order is logged automatically and you receive an instant notification. Nothing falls through the cracks.</p>
 <p>TalkMate is not a phone menu or a rigid chatbot. It is an AI receptionist trained on your specific restaurant, your menu, your trading hours, your upsells, and your policies. It handles real, natural conversation, including Australian accents and colloquial expressions. It is live within 24 hours of onboarding, connects to your existing phone number, and operates on a no lock-in contract basis from $299 per month.</p>
-<h2>Real Results: The Golden Batter, Brisbane</h2>
-<p>The Golden Batter, a busy takeaway restaurant in Brisbane, implemented TalkMate to handle peak-hour call volumes. The results arrived immediately.</p>
-<p><em>"First month we tracked an extra $4,200 in orders we would have missed. Calls that used to ring out during the dinner rush were being answered and processed automatically. We did not need to hire anyone new."</em></p>
-<p>At $4,200 in recovered revenue in the first month alone, TalkMate paid for itself many times over. The team no longer splits attention between the kitchen and the phone during service — and customers receive a faster, more consistent experience every time they call.</p>
 <h2>How to Get Started</h2>
 <p><strong>1. Book a free demo</strong> at talkmate.com.au — no commitment required. It is a 20-minute call to understand your restaurant's needs.</p>
 <p><strong>2. Go live in 24 hours</strong> — TalkMate trains your AI agent on your menu, trading hours, and FAQs. There is nothing to install and no hardware to buy.</p>
@@ -94,9 +90,6 @@ export const posts: BlogPost[] = [
 <p>The most effective setup for many businesses is not either/or — it is both.</p>
 <p>Use an AI phone agent to handle the volume: the routine bookings, the FAQ calls, the after-hours enquiries. Let your team — and where relevant, a part-time receptionist — handle the complex or high-value interactions that genuinely benefit from a human touch.</p>
 <p>This approach captures the best of both worlds. You answer every call. You keep costs under control. And your team's time is spent on work that actually requires them.</p>
-<h2>What TalkMate Customers Are Saying</h2>
-<p><em>"We were paying a part-time receptionist \$28,000 a year to answer calls three days a week. TalkMate answered every call, every day, for less than the cost of one week of her salary per month. It wasn't even a difficult decision."</em><br/>— <strong>Brad K., Coastal Plumbing, Brisbane</strong></p>
-<p><em>"I was missing 20 to 30 calls a week while I was on the tools. My receptionist was only in two days a week and the rest just rang out. TalkMate changed that overnight. My quote pipeline doubled in the first month."</em><br/>— <strong>Marcus T., Precision Electrical, Gold Coast</strong></p>
 <h2>The Bottom Line</h2>
 <p>Hiring a receptionist is not the wrong decision. It is just an expensive, limited solution to a 24/7 problem.</p>
 <p>If your business is losing calls — and most Australian businesses are — the most cost-effective way to fix it is an AI phone agent. At \$299 per month, TalkMate pays for itself the first time it captures a booking you would otherwise have missed.</p>
@@ -151,9 +144,6 @@ export const posts: BlogPost[] = [
 <h2>What the Numbers Say</h2>
 <p>A typical Gold Coast restaurant receiving 180 calls per week will see approximately 60 to 70 arrive outside fully-staffed windows. At an average order value of \$75, assuming half represent genuine order intent, that is \$2,250 to \$2,625 in weekly revenue sitting in unanswered voicemails.</p>
 <p>Annualised: over \$100,000 in recoverable revenue that walked out the door because nobody picked up. And 85 per cent of those callers will not call back.</p>
-<h2>Real Example: Burleigh Beach Takeaway</h2>
-<p>A fish and chip shop in Burleigh Heads implemented TalkMate to handle their after-hours call volume. In the first month, the agent answered 94 calls that would previously have gone unanswered after 8:30pm. Of those, 71 resulted in orders — \$4,402 in recovered revenue from calls that had been silently lost every week.</p>
-<p><em>"I had no idea how much I was losing. I thought after-hours calls were just people calling at the wrong time. Turns out they're the customers most likely to order."</em></p>
 <h2>Getting Started</h2>
 <p>TalkMate goes live within 24 hours. No hardware, no lock-in. From \$299 per month with no setup fee. Typically recovered within the first few days of captured after-hours orders. Visit talkmate.com.au to hear a live demo in 30 seconds.</p>`
   }

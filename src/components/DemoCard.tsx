@@ -13,7 +13,7 @@ interface Conversation {
 
 const CONVERSATIONS: Record<IndustryKey, Conversation> = {
   food: {
-    business: '🐟 Burleigh British Chippey',
+    business: '🐟 Example: fish & chip shop',
     bubbles: [
       { from: 'caller', text: "G'day, can I get one large fish and chips please?" },
       { from: 'agent', text: 'No worries — large fish and chips. Would you like to add our garlic bread for $4? It pairs beautifully.' },
@@ -28,9 +28,9 @@ const CONVERSATIONS: Record<IndustryKey, Conversation> = {
       total: ['Total · ETA 18 min', '$26.00'],
     },
     stats: [
-      { n: '187', l: 'calls last month' },
-      { n: '$6.2K', l: 'revenue recovered' },
-      { n: '4 days', l: 'paid for itself' },
+      { n: '<2s', l: 'answer time' },
+      { n: '24/7', l: 'orders taken' },
+      { n: 'SMS', l: 'order confirmation' },
     ],
   },
   towing: {
@@ -48,7 +48,7 @@ const CONVERSATIONS: Record<IndustryKey, Conversation> = {
     ],
   },
   realestate: {
-    business: '🏡 Coastal Realty',
+    business: '🏡 Example: real estate agency',
     bubbles: [
       { from: 'caller', text: 'Hi, I saw the listing on Norfolk Avenue, can I book an inspection?' },
       { from: 'agent', text: 'Sure. Are you pre-approved, and what budget range are you working with?' },
@@ -56,13 +56,13 @@ const CONVERSATIONS: Record<IndustryKey, Conversation> = {
       { from: 'agent', text: "Inspection booked Saturday 11am. Confirmation SMS coming through now.", orange: true },
     ],
     stats: [
-      { n: '4×', l: 'qualified leads' },
-      { n: '92%', l: 'inspection show rate' },
+      { n: '<2s', l: 'answer time' },
+      { n: 'Auto', l: 'inspection booking' },
       { n: '24/7', l: 'enquiries captured' },
     ],
   },
   trades: {
-    business: '🔧 Reliable Plumbing',
+    business: '🔧 Example: plumbing business',
     bubbles: [
       { from: 'caller', text: "There's water leaking out of my hot water system, it's spreading." },
       { from: 'agent', text: "Sounds urgent. I'll get someone out today. Can I take your address and best contact number?" },
@@ -71,8 +71,8 @@ const CONVERSATIONS: Record<IndustryKey, Conversation> = {
     ],
     stats: [
       { n: 'same-day', l: 'job booking' },
-      { n: '$320', l: 'avg job value' },
-      { n: '3.4×', l: 'lead conversion' },
+      { n: '<2s', l: 'answer time' },
+      { n: 'SMS', l: 'arrival alerts' },
     ],
   },
 }
