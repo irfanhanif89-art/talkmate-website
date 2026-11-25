@@ -23,20 +23,32 @@ const VALUE_STACK: { icon: string; title: string; body: string }[] = [
   { icon: '🔌', title: 'Works with your tools', body: 'ServiceM8, Google Calendar, a chat assistant for your website, and Zapier for everything else.' },
 ]
 
-const COMPARE_ROWS: [string, string, string, string][] = [
-  ['Who sets it up', 'We build and train it for you', 'You do it yourself', 'They follow a script'],
-  ['Books the job', 'Yes, and texts a confirmation', 'Yes, once you set it up', 'No, they take a message'],
-  ['Urgent jobs', 'Put through or texted to your on-call person', 'Transfers, if you set them up', 'They pass on a message'],
-  ['Several calls at once', 'Yes', 'Yes', 'Depends who is on shift'],
-  ['A real person when needed', 'Always', 'Varies', 'Yes'],
-  ['Price', 'From $299 a month, calls included', '$0 to $149 a month, plus your time', 'About $1 to $5 a call'],
-  ['Try it first', 'Free 7 days, set up for you', 'Free plan, you set it up', 'Varies'],
+type Mark = 'yes' | 'no' | 'partly'
+
+// TalkMate vs DIY AI apps vs answering services. Keep every mark defensible:
+// use 'partly' where a rival can do it with extra setup or only sometimes.
+const COMPARE_ROWS: [string, Mark, Mark, Mark][] = [
+  ['Set up and trained for you', 'yes', 'no', 'partly'],
+  ['Books the job, not just a message', 'yes', 'yes', 'no'],
+  ['Emergencies put through to your on-call team', 'yes', 'partly', 'partly'],
+  ['Answers several calls at once', 'yes', 'yes', 'partly'],
+  ['Flat monthly price, calls included', 'yes', 'yes', 'no'],
+  ['Free trial, set up for you', 'yes', 'no', 'no'],
 ]
 
-export default function HomePage() {
-  // ----- live demo role picker -----
-  const [activeRole, setActiveRole] = useState('receptionist')
+const MARK_LABEL: Record<Mark, string> = { yes: 'Yes', no: 'No', partly: 'Partly' }
 
+function MarkCell({ mark, us = false }: { mark: Mark; us?: boolean }) {
+  return (
+    <td className={`cmp-mark${us ? ' cmp-us' : ''}`}>
+      {mark === 'partly'
+        ? <span className="cmp-partly">Partly</span>
+        : <span className={`cmp-icon cmp-${mark}`} role="img" aria-label={MARK_LABEL[mark]}>{mark === 'yes' ? '✓' : '✕'}</span>}
+    </td>
+  )
+}
+
+export default function HomePage() {
   // ----- Vapi live demo -----
   const vapiRef = useRef<{ start: (id: string) => Promise<unknown>; stop: () => void; on: (evt: string, fn: (...args: unknown[]) => void) => void } | null>(null)
   const [vapiState, setVapiState] = useState<VapiState>('idle')
@@ -53,7 +65,7 @@ export default function HomePage() {
       vapi!.on('call-end', () => setVapiState('idle'))
       vapi!.on('error', (e: unknown) => {
         console.error('Vapi error', e)
-        setVapiErr('Could not connect — check mic permissions and try again.')
+        setVapiErr('Could not connect. Please allow microphone access and try again.')
         setVapiState('error')
         setTimeout(() => { setVapiState('idle'); setVapiErr('') }, 4000)
       })
@@ -74,27 +86,30 @@ export default function HomePage() {
       return
     }
     if (vapiState === 'connecting') return
-    const assistantId = VAPI_ASSISTANTS[activeRole]
+    const assistantId = VAPI_ASSISTANTS.receptionist
     if (!assistantId) return
     setVapiState('connecting')
+    // If the microphone prompt is ignored or blocked, don't sit on "Connecting…" forever.
+    setTimeout(() => {
+      setVapiState((s) => {
+        if (s !== 'connecting') return s
+        vapiRef.current?.stop()
+        setVapiErr('Could not start the call. Please allow microphone access and tap the green button again.')
+        setTimeout(() => setVapiErr(''), 6000)
+        return 'idle'
+      })
+    }, 20000)
     try {
       await vapiRef.current.start(assistantId)
     } catch (e) {
       console.error(e)
-      setVapiErr('Could not connect — check mic permissions and try again.')
+      setVapiErr('Could not connect. Please allow microphone access and try again.')
       setVapiState('error')
       setTimeout(() => { setVapiState('idle'); setVapiErr('') }, 4000)
     }
   }
 
-  // stop call if user switches role mid-call
-  useEffect(() => {
-    if (vapiState === 'active') {
-      vapiRef.current?.stop()
-      setVapiState('idle')
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeRole])
+  const demoLive = vapiState === 'active' || vapiState === 'connecting'
 
   // ----- sticky CTA -----
   const [stickyShow, setStickyShow] = useState(false)
@@ -314,7 +329,9 @@ export default function HomePage() {
               <a className="btn btn-primary" href="/trial">
                 <span>Book your free 7-day trial →</span>
               </a>
-              <a className="btn btn-secondary" href="#demo" onClick={handleAnchor}>Hear it answer a call</a>
+              <button type="button" className="btn btn-secondary" onClick={handleDemoClick} disabled={vapiState === 'connecting'}>
+                {vapiState === 'active' ? 'End the demo call' : vapiState === 'connecting' ? 'Connecting…' : 'Hear it answer a call'}
+              </button>
             </div>
 
             <p className="hero-price-line">Free for 7 days, then from $299 a month. No card needed, no lock-in.</p>
@@ -332,8 +349,18 @@ export default function HomePage() {
 
           </section>
 
-          <section className="hero-right" aria-hidden="false">
+          <section className="hero-right" id="try-it" aria-hidden="false">
             <div className="glow" aria-hidden="true"></div>
+
+            <div className={`try-it try-it-${vapiState}`} aria-live="polite">
+              {vapiState === 'active' ? (
+                <><span className="try-it-dot" aria-hidden="true"></span> Live. Speak like a customer would.</>
+              ) : vapiState === 'connecting' ? (
+                <>Connecting you to TalkMate…</>
+              ) : (
+                <>Try it now: tap the green button <span className="try-it-arrow" aria-hidden="true">↓</span></>
+              )}
+            </div>
 
             <div className={`chip-float chip-1${chip1Visible ? ' visible' : ''}`}>
               <span className="chip-dot-orange"></span>
@@ -344,7 +371,7 @@ export default function HomePage() {
               SMS sent · 0.8s
             </div>
 
-            <div className="phone" role="img" aria-label="Stylised handset showing TalkMate answering an incoming call">
+            <div className={`phone phone-demo-${vapiState}`} role="group" aria-label="Live demo: tap the green button to talk to TalkMate">
               <span className="side-btn left side-action" aria-hidden="true"></span>
               <span className="side-btn left side-vol-up" aria-hidden="true"></span>
               <span className="side-btn left side-vol-down" aria-hidden="true"></span>
@@ -362,9 +389,9 @@ export default function HomePage() {
 
                 <div className="island" aria-hidden="true"></div>
 
-                <p className={`incoming${swapLabel ? ' swap' : ''}`}><span>{callerLabel}</span></p>
-                <p className={`caller-name${swapName ? ' swap' : ''}`}><span>{callerName}</span></p>
-                <p className={`caller-sub${swapSub ? ' swap' : ''}`}><span>{callerSub}</span></p>
+                <p className={`incoming${swapLabel ? ' swap' : ''}`}><span>{demoLive ? 'live demo' : callerLabel}</span></p>
+                <p className={`caller-name${swapName ? ' swap' : ''}`}><span>{demoLive ? 'TalkMate' : callerName}</span></p>
+                <p className={`caller-sub${swapSub ? ' swap' : ''}`}><span>{demoLive ? 'Your AI front desk' : callerSub}</span></p>
 
                 <div className="avatar" aria-hidden="true">
                   <svg viewBox="0 0 64 64" fill="none">
@@ -375,7 +402,7 @@ export default function HomePage() {
 
                 <div className="status-chip">
                   <span className="d"></span>
-                  <span className={`status-chip-text${swapStatus ? ' swap' : ''}`}>{callStatus}</span>
+                  <span className={`status-chip-text${swapStatus ? ' swap' : ''}`}>{vapiState === 'connecting' ? 'Connecting…' : vapiState === 'active' ? 'Live call · say hello' : vapiState === 'error' ? 'Mic blocked? Tap to retry' : callStatus}</span>
                 </div>
 
                 <div className="wave" aria-hidden="true">
@@ -383,15 +410,23 @@ export default function HomePage() {
                 </div>
 
                 <div className="call-actions">
-                  <button className="call-btn decline" aria-label="Decline">
+                  <button type="button" className="call-btn decline" aria-label="End demo call" onClick={() => { if (vapiState === 'active') handleDemoClick() }}>
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1 1 0 0 0-1.02.24l-2.2 2.2a15.05 15.05 0 0 1-6.59-6.58l2.2-2.21a1 1 0 0 0 .25-1.02A11.36 11.36 0 0 1 8.5 4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1 17 17 0 0 0 17 17 1 1 0 0 0 1-1v-3.5a1 1 0 0 0-1-1z" /></svg>
                   </button>
-                  <button className="call-btn answer" aria-label="TalkMate is answering">
+                  <button
+                    type="button"
+                    className={`call-btn answer demo-answer demo-answer-${vapiState}`}
+                    aria-label={vapiState === 'active' ? 'End demo call' : 'Start a live demo call with TalkMate'}
+                    onClick={handleDemoClick}
+                    disabled={vapiState === 'connecting'}
+                  >
                     <span className="answer-mark" aria-hidden="true"></span>
                   </button>
                 </div>
               </div>
             </div>
+            {vapiErr && <p className="demo-err hero-demo-err" role="alert">{vapiErr}</p>}
+            <p className="try-it-note">Uses your microphone. No signup, nothing to install.</p>
           </section>
         </section>
 
@@ -419,7 +454,7 @@ export default function HomePage() {
           <div className="wrap">
             <p className="section-eyebrow">Compare</p>
             <h2 className="section-title">Why not a cheap AI app, <span className="accent">or an answering service?</span></h2>
-            <p className="section-sub">Here is what you actually get with each.</p>
+            <p className="section-sub">What you get with each, at a glance.</p>
 
             <div className="cmp-scroll">
               <table className="cmp-table">
@@ -435,82 +470,24 @@ export default function HomePage() {
                   {COMPARE_ROWS.map(([label, us, diy, human]) => (
                     <tr key={label}>
                       <th scope="row">{label}</th>
-                      <td className="cmp-us">{us}</td>
-                      <td>{diy}</td>
-                      <td>{human}</td>
+                      <MarkCell mark={us} us />
+                      <MarkCell mark={diy} />
+                      <MarkCell mark={human} />
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
 
+            <p className="cmp-legend">
+              <span><span className="cmp-icon cmp-yes" aria-hidden="true">✓</span> Included</span>
+              <span><span className="cmp-icon cmp-no" aria-hidden="true">✕</span> Not included</span>
+              <span><span className="cmp-partly">Partly</span> Only with extra setup, or sometimes</span>
+            </p>
+
             <div className="vs-cta">
               <a className="btn btn-primary" href="/trial"><span>Book your free 7-day trial →</span></a>
               <p>We set it up. You try it free for 7 days. Keep it only if it works for you.</p>
-            </div>
-          </div>
-        </section>
-
-        {/* 02 LIVE DEMO */}
-        <section className="section section--demo" id="demo" data-screen-label="02 Live Demo">
-          <span id="live-demo" aria-hidden="true" />
-          <div className="wrap">
-            <p className="section-eyebrow">Live Demo</p>
-            <h2 className="section-title">Hear it answer a call. <span className="accent">Right now.</span></h2>
-            <p className="section-sub">Press the button and talk to TalkMate the way your customers would. No signup, nothing to install.</p>
-
-            <div className="role-picker">
-              <button
-                className={`role-chip${activeRole === 'receptionist' ? ' active' : ''}`}
-                onClick={() => setActiveRole('receptionist')}
-              >
-                <span>Receptionist</span>
-                <span className="role-chip-pill live">Live</span>
-              </button>
-              <button
-                className={`role-chip${activeRole === 'dispatcher' ? ' active' : ''}`}
-                onClick={() => setActiveRole('dispatcher')}
-              >
-                <span>Dispatcher</span>
-                <span className="role-chip-pill live">Live</span>
-              </button>
-              <a className="role-chip role-chip-more" href="#team" onClick={handleAnchor}>More roles coming →</a>
-            </div>
-
-            <div className="demo-cta-wrap">
-              <button
-                className={`demo-cta demo-cta-state-${vapiState}`}
-                onClick={handleDemoClick}
-                disabled={vapiState === 'connecting'}
-                aria-live="polite"
-              >
-                <span className="demo-cta-ico">
-                  {vapiState === 'active' ? (
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
-                  ) : (
-                    '📞'
-                  )}
-                </span>
-                <span>
-                  {vapiState === 'connecting' ? 'Connecting…'
-                    : vapiState === 'active' ? 'End call'
-                    : vapiState === 'error' ? 'Try again'
-                    : <>Talk to your <span className="demo-role-name">{activeRole}</span></>}
-                </span>
-                {vapiState !== 'active' && (
-                  <span className="demo-wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                )}
-              </button>
-            </div>
-
-            {vapiErr && (
-              <p className="demo-err" role="alert">{vapiErr}</p>
-            )}
-
-            <div className="demo-meta">
-              <span><span className="tk">✓</span> Real Australian voice</span>
-              <span><span className="tk">✓</span> Real-time conversation</span>
-              <span><span className="tk">✓</span> Try ordering, asking, transferring</span>
             </div>
           </div>
         </section>
@@ -671,7 +648,7 @@ export default function HomePage() {
             <p className="section-sub">Book a 20-minute setup call. We build your agent, you try it free for 7 days.</p>
             <div className="final-cta-row">
               <a className="btn btn-primary" href="/trial">Book your free 7-day trial →</a>
-              <a className="btn btn-secondary" href="#demo" onClick={handleAnchor}>Hear it answer a call</a>
+              <a className="btn btn-secondary" href="#hero" onClick={handleAnchor}>Hear it answer a call</a>
             </div>
             <p className="final-fineprint">Set up for you · Free for 7 days · No card needed</p>
           </div>
