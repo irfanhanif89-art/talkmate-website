@@ -467,12 +467,9 @@ export default function HomePage() {
             </div>
 
             <p className="real-trust">
-              Trusted by real Australian businesses including Burleigh British Chippery (Gold Coast) and Hume Towing (Gold Coast).
+              Trusted by real Australian businesses including Hume Towing (Gold Coast).
             </p>
 
-            <p className="hero-roi-stat">
-              Australian businesses have recovered <span>$127,000</span> in missed revenue with TalkMate.
-            </p>
           </section>
 
           <section className="hero-right" aria-hidden="false">

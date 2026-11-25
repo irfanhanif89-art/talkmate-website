@@ -126,7 +126,7 @@ export const INDUSTRIES: IndustryDef[] = [
       'Transfers complaints or special requests immediately',
     ],
     demo: {
-      business: '🐟 Burleigh British Chippey',
+      business: '🐟 Example: fish & chip shop',
       bubbles: [
         { from: 'caller', text: "G'day, can I get one large fish and chips?" },
         { from: 'agent', text: "No worries. Would you like garlic bread for $4 to go with that?" },
@@ -142,12 +142,6 @@ export const INDUSTRIES: IndustryDef[] = [
         "Pause agent — closing early",
         "Yesterday's revenue?",
       ],
-    },
-    testimonial: {
-      quote: "TalkMate answered 187 calls last month while we were flat out during the dinner rush. We didn't miss a single order. It paid for itself in 4 days.",
-      name: 'Anita & Ian, Burleigh British Chippey',
-      location: 'Gold Coast',
-      badge: '+$6,240 month 1',
     },
   },
   {
@@ -212,7 +206,7 @@ export const INDUSTRIES: IndustryDef[] = [
       'Logs lead source, urgency, and notes for follow-up',
     ],
     demo: {
-      business: '🏡 Coastal Realty',
+      business: '🏡 Example: real estate agency',
       bubbles: [
         { from: 'caller', text: 'Hi, I saw the listing on Norfolk Avenue, can I book an inspection?' },
         { from: 'agent', text: 'Sure. Are you pre-approved, and what budget range?' },
@@ -249,7 +243,7 @@ export const INDUSTRIES: IndustryDef[] = [
       'Logs photos and notes when customer texts them in',
     ],
     demo: {
-      business: '🔧 Reliable Plumbing',
+      business: '🔧 Example: plumbing business',
       bubbles: [
         { from: 'caller', text: "There's water leaking out of my hot water system, it's spreading." },
         { from: 'agent', text: "Sounds urgent. I'll get someone out today. Address and best contact number?" },
@@ -286,7 +280,7 @@ export const INDUSTRIES: IndustryDef[] = [
       'Handles cancellations and reschedules respectfully',
     ],
     demo: {
-      business: '🏥 Coastal Medical',
+      business: '🏥 Example: medical clinic',
       bubbles: [
         { from: 'caller', text: "Hi, I'd like to book an appointment with Dr Patel." },
         { from: 'agent', text: 'Sure. Is this for a routine review or something specific?' },
@@ -323,7 +317,7 @@ export const INDUSTRIES: IndustryDef[] = [
       'Transfers any complex or sensitive matter to a coordinator',
     ],
     demo: {
-      business: '💚 Coastal Support Services',
+      business: '💚 Example: NDIS provider',
       bubbles: [
         { from: 'caller', text: "Hi, I'd like to ask about getting some support hours for my son." },
         { from: 'agent', text: 'Of course. I\'ll arrange a coordinator to call you back. Can I take your name and best contact number?' },
@@ -360,7 +354,7 @@ export const INDUSTRIES: IndustryDef[] = [
       'Transfers price-match or special-order requests',
     ],
     demo: {
-      business: '🛍️ Beach Lane Boutique',
+      business: '🛍️ Example: retail store',
       bubbles: [
         { from: 'caller', text: 'Do you have the linen blazer in size 12?' },
         { from: 'agent', text: "Yes, we've got two in stock. Want me to put one on hold for you?" },
@@ -397,7 +391,7 @@ export const INDUSTRIES: IndustryDef[] = [
       'Logs every enquiry for compliance and follow-up',
     ],
     demo: {
-      business: '⚖️ Coastal Legal',
+      business: '⚖️ Example: law firm',
       bubbles: [
         { from: 'caller', text: "I'm looking at buying a property and need help with conveyancing." },
         { from: 'agent', text: 'Sure. Are you the buyer, and have you signed any contracts yet?' },
