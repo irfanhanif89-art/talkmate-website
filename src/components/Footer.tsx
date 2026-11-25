@@ -33,7 +33,7 @@ export default function Footer() {
           { href: '/partners', label: 'Partner program' },
           { href: '/blog', label: 'Blog' },
           { href: '/status', label: 'System status' },
-          { href: '/demo', label: 'Contact' },
+          { href: '/trial', label: 'Free trial' },
         ]} />
 
         <FooterCol heading="Legal" links={[

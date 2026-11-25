@@ -1,31 +1,19 @@
 import { NextResponse } from 'next/server'
+import { forwardLead } from '@/lib/lead-forward'
 
-// Demo booking endpoint. Forwards to Make.com (MAKE_WEBHOOK_DEMO) so the
-// internal team gets the lead in Slack/email and the contact lands in the CRM.
+// Legacy "book a demo" endpoint. The /demo page now redirects to /trial,
+// but anything still posting here is saved and alerted like a trial request.
 export async function POST(req: Request) {
-  const body = await req.json().catch(() => null) as Record<string, string> | null
-  if (!body) return NextResponse.json({ ok: false, error: 'Bad request' }, { status: 400 })
-
-  const required = ['firstName', 'lastName', 'phone', 'email', 'business', 'businessType']
-  for (const k of required) {
-    if (!body[k]) return NextResponse.json({ ok: false, error: `Missing ${k}` }, { status: 400 })
-  }
-
-  const webhook = process.env.MAKE_WEBHOOK_DEMO
-  if (!webhook) {
-    console.warn('[demo] MAKE_WEBHOOK_DEMO not configured — accepting silently')
-    return NextResponse.json({ ok: true, queued: false })
-  }
-
-  try {
-    await fetch(webhook, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...body, source: 'website-demo', sentAt: new Date().toISOString() }),
-    })
-  } catch (e) {
-    console.error('[demo] webhook failed:', e)
-  }
-
-  return NextResponse.json({ ok: true, queued: true })
+  const b = (await req.json().catch(() => null)) as Record<string, string> | null
+  if (!b) return NextResponse.json({ ok: false, error: 'Bad request' }, { status: 400 })
+  const r = await forwardLead(req, 'demo', {
+    full_name: [b.firstName, b.lastName].filter(Boolean).join(' ') || b.full_name,
+    phone: b.phone,
+    email: b.email,
+    business_name: b.business ?? b.business_name,
+    industry: b.businessType ?? b.industry,
+    notes: b.message ?? b.notes,
+    company_website: b.company_website,
+  })
+  return NextResponse.json({ ok: r.ok, error: r.error }, { status: r.ok ? 200 : r.status })
 }

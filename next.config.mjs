@@ -12,7 +12,13 @@ const nextConfig = {
         // Bare /receptionist has no content of its own (only /receptionist/[slug]).
         // Send anyone who lands here to the homepage's team section.
         source: '/receptionist',
-        destination: '/#team',
+        destination: '/industries',
+        permanent: false,
+      },
+      {
+        // The old demo booking page is replaced by the free trial page.
+        source: '/demo',
+        destination: '/trial',
         permanent: false,
       },
     ]

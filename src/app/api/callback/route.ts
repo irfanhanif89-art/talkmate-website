@@ -1,30 +1,12 @@
 import { NextResponse } from 'next/server'
+import { forwardLead } from '@/lib/lead-forward'
 
-// Stub endpoint for the homepage "we'll call you" form. In production this
-// should POST to MAKE_WEBHOOK_CALLBACK (Make.com → Vapi outbound call).
-// Returns 200 even when the webhook isn't configured so the UI doesn't
-// regress — server logs the missing config for ops to wire up.
+// "We'll call you back" form. Saved and alerted to Irfan via the portal.
 export async function POST(req: Request) {
-  const body = await req.json().catch(() => ({})) as { name?: string; phone?: string; biz?: string }
-  if (!body.phone || !body.name) {
+  const b = (await req.json().catch(() => ({}))) as { name?: string; phone?: string; biz?: string }
+  if (!b.phone || !b.name) {
     return NextResponse.json({ ok: false, error: 'Missing fields' }, { status: 400 })
   }
-
-  const webhook = process.env.MAKE_WEBHOOK_CALLBACK
-  if (!webhook) {
-    console.warn('[callback] MAKE_WEBHOOK_CALLBACK not configured — accepting silently')
-    return NextResponse.json({ ok: true, queued: false })
-  }
-
-  try {
-    await fetch(webhook, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...body, source: 'website-callback', sentAt: new Date().toISOString() }),
-    })
-  } catch (e) {
-    console.error('[callback] webhook failed:', e)
-  }
-
-  return NextResponse.json({ ok: true, queued: true })
+  const r = await forwardLead(req, 'callback', { full_name: b.name, phone: b.phone, business_name: b.biz })
+  return NextResponse.json({ ok: r.ok, error: r.error }, { status: r.ok ? 200 : r.status })
 }

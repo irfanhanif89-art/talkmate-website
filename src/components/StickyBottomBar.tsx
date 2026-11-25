@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { X } from 'lucide-react'
 
-const HIDE_ON = ['/', '/demo', '/status']
+const HIDE_ON = ['/', '/trial', '/status']
 
 export default function StickyBottomBar() {
   const pathname = usePathname()
@@ -35,11 +35,11 @@ export default function StickyBottomBar() {
             border: '1px solid rgba(255,255,255,0.15)',
             borderRadius: 8, textDecoration: 'none',
           }}>Learn more</Link>
-          <a href="https://app.talkmate.com.au/signup" style={{
+          <a href="/trial" style={{
             padding: '9px 20px', fontSize: 13, fontWeight: 700,
             color: 'white', background: 'var(--orange)',
             border: 'none', borderRadius: 8, textDecoration: 'none',
-          }}>Sign Up Free →</a>
+          }}>Free 7-day trial →</a>
           <button onClick={() => setClosed(true)} aria-label="Dismiss" style={{ background: 'transparent', border: 'none', color: 'rgba(255,255,255,0.4)', cursor: 'pointer', padding: 4, marginLeft: 4 }}>
             <X size={16} />
           </button>

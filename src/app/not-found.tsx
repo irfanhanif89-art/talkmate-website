@@ -9,11 +9,11 @@ export default function NotFound() {
           That page took a wrong turn.
         </h1>
         <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 28 }}>
-          But the AI agent never does. Take a step back, or book a demo and stop missing calls today.
+          But the AI agent never does. Take a step back, or book a free trial and stop missing calls.
         </p>
         <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
           <Link href="/" className="btn-orange">Back to home</Link>
-          <Link href="/demo" className="btn-ghost">Book a Demo</Link>
+          <Link href="/trial" className="btn-ghost">Book your free trial</Link>
         </div>
       </div>
     </div>

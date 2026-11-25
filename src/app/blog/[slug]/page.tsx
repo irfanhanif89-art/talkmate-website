@@ -168,7 +168,7 @@ export default function BlogPostPage() {
             TalkMate answers every call in 2 seconds, 24/7 — so you never lose a customer to voicemail again.
           </p>
           <Link
-            href="/demo"
+            href="/trial"
             style={{
               display: 'inline-block',
               background: 'white',
@@ -181,7 +181,7 @@ export default function BlogPostPage() {
               fontFamily: 'var(--font-outfit-var), Outfit, sans-serif',
             }}
           >
-            Book a Free Demo →
+            Book your free 7-day trial →
           </Link>
         </div>
       </div>
