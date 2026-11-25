@@ -74,7 +74,7 @@ export default function ReceptionistPage({ params }: { params: { slug: string } 
             <Link href={r.pricingLink} className="btn-orange" style={{ fontSize: 16, padding: '15px 26px', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
               {r.heroCTA}, $299/mo <ArrowRight size={16} />
             </Link>
-            <Link href="/#live-demo" className="btn-ghost" style={{ fontSize: 15, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <Link href="/#try-it" className="btn-ghost" style={{ fontSize: 15, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
               <Phone size={15} /> Talk to {r.name} now
             </Link>
           </div>
@@ -145,7 +145,7 @@ export default function ReceptionistPage({ params }: { params: { slug: string } 
           />
 
           <div style={{ textAlign: 'center' as const, marginTop: 30 }}>
-            <Link href="/#live-demo" className="btn-orange" style={{ fontSize: 15, padding: '13px 24px', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <Link href="/#try-it" className="btn-orange" style={{ fontSize: 15, padding: '13px 24px', display: 'inline-flex', alignItems: 'center', gap: 8 }}>
               Talk to your receptionist now <ArrowRight size={15} />
             </Link>
           </div>
